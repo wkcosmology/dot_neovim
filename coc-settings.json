@@ -1,0 +1,16 @@
+{
+  "coc.preferences.messageLevel": "warning",
+  "coc.preferences.hoverTarget": "float",
+  "diagnostic.maxWindowHeight": 5,
+  "coc.preferences.previewAutoClose": false,
+  "suggest.maxCompleteItemCount": 20,
+  "python.autoComplete.extraPaths": ["/Users/wangk/anaconda3/lib/python3.7/site-packages/"],
+  "suggest.floatEnable": false,
+  "diagnostic.messageTarget": "echo",
+  "signature.target": "echo",
+
+  "python.analysis.diagnosticEnabled": false,
+  "python.terminal.executeInFileDir": true,
+  "python.pythonPath": "/Users/wangk/anaconda3/bin/python3",
+  "python.condaPath": "/Users/wangk/anaconda3/bin/conda"
+}
