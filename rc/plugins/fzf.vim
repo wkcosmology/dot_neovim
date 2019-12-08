@@ -17,16 +17,6 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-function! Refresh_MRU()
-  for l:file in fzf_mru#mrufiles#list('raw')
-    let l:to_remove = []
-    if !filereadable(l:file)
-      call add(l:to_remove, l:file)
-    endif
-    call fzf_mru#mrufiles#remove(l:to_remove)
-  endfor
-endfunction
-
 
 " fzf floating window setting
 let $FZF_DEFAULT_OPTS = '--layout=reverse'

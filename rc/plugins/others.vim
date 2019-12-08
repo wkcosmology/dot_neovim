@@ -8,10 +8,10 @@ syntax enable
 set number
 set relativenumber
 set cursorline!
-set expandtab
-set smartindent
-set softtabstop=2
-set shiftwidth=2
+" set expandtab
+" set smartindent
+" set softtabstop=2
+" set shiftwidth=2
 
 " indent multi times
 vnoremap < <gv
@@ -28,9 +28,6 @@ augroup END
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ execute "normal! g`\"" |
   \ endif
-
-" sort import
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " python 
 let g:python3_host_prog = "/Users/wangk/anaconda3/bin/python3"

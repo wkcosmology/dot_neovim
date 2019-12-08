@@ -8,6 +8,7 @@
   "suggest.floatEnable": false,
   "diagnostic.messageTarget": "echo",
   "signature.target": "echo",
+  "suggest.echodocSupport": true,
 
   "python.analysis.diagnosticEnabled": false,
   "python.terminal.executeInFileDir": true,

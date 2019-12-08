@@ -7,6 +7,7 @@ nnoremap <silent> <leader>sc :noh <CR>
 nnoremap <silent> <leader>fs :w<CR>
 nnoremap <silent> <leader>qq :qa<CR>
 nnoremap <silent> <leader>feR :so $MYVIMRC<CR>
+nnoremap <silent><leader>' :<C-u>Deol -split=floating<CR>
 " search & files
 nnoremap <silent> <leader>: :Commands<CR>
 nnoremap <silent> <leader>fr :FZFMru <CR>
@@ -14,13 +15,14 @@ nnoremap <silent> <leader>fo :BTags <CR>
 nnoremap <silent> <leader>bb :Buffers <CR>
 nnoremap <silent> <leader>ft :DefxDefault <CR>
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
-nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>
+nnoremap <silent> <Leader>fp :exe 'Files ' . <SID>fzf_root()<CR>
+nnoremap <silent> <Leader>ff :Files <CR>
 " sync_repo
 nnoremap <silent> <leader>kf :SyncFile <CR>
 nnoremap <silent> <leader>kr :SyncRepo <CR>
 " buffer related
-nmap <silent> <leader>bd :bd <CR>
-nmap <silent> <leader>bD :CloseHiddenBuffers <CR>
+nmap <silent> <leader>bd :b#<bar>bd#<CR> <CR>
+nmap <silent> <leader>bD :CloseHiddenBuffers! <CR>
 " window related
 nnoremap <silent> <C-q> :close<CR>
 nmap <leader>wm <Plug>(zoom-toggle)
@@ -42,7 +44,7 @@ nmap <silent> <leader>je <Plug>(easymotion-bd-e)
 " coc
 nmap \r  <Plug>(coc-rename)
 " coc.python
-nmap <leader>si :CocCommand python.sortImports <CR>
+nmap <leader>si :Isort <CR>
 nmap <leader>te :CocCommand python.execInTerminal <CR>
 nmap <leader>tc :CocCommand python.createTerminal <CR>
 " using gm for mark, since m is used by vim-easyclip
