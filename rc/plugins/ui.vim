@@ -1,5 +1,8 @@
 " monokai
+set background=dark
 colorscheme monokai
+" colorscheme PaperColor
+" colorscheme gruvbox
 let g:python_highlight_all = 1
 call rainbow_parentheses#activate()
 

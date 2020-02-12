@@ -8,10 +8,15 @@ syntax enable
 set number
 set relativenumber
 set cursorline!
-" set expandtab
-" set smartindent
-" set softtabstop=2
-" set shiftwidth=2
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+" set colorcolumn
+set colorcolumn=120
 
 " indent multi times
 vnoremap < <gv

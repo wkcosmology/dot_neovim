@@ -17,14 +17,16 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
+" [Commands] --expect expression for directly executing the command
+let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " fzf floating window setting
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 " let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
 let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
 function! Centered_floating_window()
-    let width = min([&columns - 4, max([30, &columns / 2])])
-    let height = min([&lines - 4, max([20, &lines - 40])])
+    let width = min([&columns - 4, max([50, &columns * 2 / 3])])
+    let height = min([&lines - 4, max([40, &lines - 40])])
     let top = ((&lines - height) / 2) - 1
     let left = (&columns - width) / 2
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
@@ -55,7 +57,7 @@ function! OpenFloatingWin()
         \ 'relative': 'editor',
         \ 'row': height * 0.3,
         \ 'col': col + 30,
-        \ 'width': width * 2 / 3,
+        \ 'width': width * 4 / 5,
         \ 'height': height / 2,
         \ 'style': 'minimal'
         \ }
@@ -74,3 +76,26 @@ function! OpenFloatingWin()
         \ signcolumn=no
 endfunction
 
+" fuzzy find registers
+function! s:get_registers() abort
+  redir => l:regs
+  silent registers
+  redir END
+
+  return split(l:regs, '\n')[1:]
+endfunction
+
+function! s:registers(...) abort
+  let l:opts = {
+        \ 'source': s:get_registers(),
+        \ 'sink': {x -> feedkeys(matchstr(x, '\v^\S+\ze.*') . (a:1 ? 'P' : 'p'), 'x')},
+        \ 'options': '--prompt="Reg> "'
+        \ }
+  call fzf#run(fzf#wrap(l:opts))
+endfunction
+
+command! -bang Registers call s:registers('<bang>' ==# '!')
+
+" for preview
+command! -bang -nargs=? -complete=dir Files
+        \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)

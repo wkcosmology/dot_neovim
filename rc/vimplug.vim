@@ -19,6 +19,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " fzf most recently used
 Plug 'pbogut/fzf-mru.vim'
+" fzf preview
+Plug 'yuki-ycino/fzf-preview.vim'
 "----------------------------------------------------------------------------
 "fast edit
 "----------------------------------------------------------------------------
@@ -45,61 +47,101 @@ Plug 'svermeulen/vim-easyclip'
 "----------------------------------------------------------------------------
 " ui
 "----------------------------------------------------------------------------
+" monokai theme
 Plug 'crusoexia/vim-monokai'
 " show the doc on echo
 Plug 'Shougo/echodoc.vim'
+" let the cursor stay away from ceil and bottom
 Plug 'drzel/vim-scrolloff-fraction'
+" great tabline and stateline
 Plug 'vim-airline/vim-airline'
+" theme for airline
 Plug 'vim-airline/vim-airline-themes'
+" show the vertical lines to represent the indent
 Plug 'Yggdroot/indentLine'
+" different color for nesting parenthese
 Plug 'junegunn/rainbow_parentheses.vim'
+" maximum and restore current window, powerful!!!
 Plug 'dhruvasagar/vim-zoom'
-Plug 'vimlab/split-term.vim'
+" open terminal in a float window
+Plug 'voldikss/vim-floaterm'
+" pretty tab line
+Plug 'gcmt/taboo.vim'
+" paper color theme
+Plug 'NLKNguyen/papercolor-theme'
+" dracula theme
+Plug 'morhetz/gruvbox'
+" devicons
+Plug 'ryanoasis/vim-devicons'
 "----------------------------------------------------------------------------
 "python
 "----------------------------------------------------------------------------
 Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
 Plug 'vim-python/python-syntax', {'for': ['python']}
+" add docstring in different way, like numpy
 Plug 'wkcosmology/vim-pydocstring'
+" sort the import order
 Plug 'fisadev/vim-isort'
 "----------------------------------------------------------------------------
 " c family
 "----------------------------------------------------------------------------
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h']}
+" enhance cpp highlight
+Plug 'bfrg/vim-cpp-modern', {'for': ['c', 'cpp', 'h']}
+" great auto completion tool
 Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h'], 'forzen': 1}
+" mpi highlight
+Plug 'jiangxincode/mpi.vim'
+"----------------------------------------------------------------------------
+" front-end
+"----------------------------------------------------------------------------
+
 "----------------------------------------------------------------------------
 " snippet
 "----------------------------------------------------------------------------
+" Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Great snippet backend
+" Plug 'honza/vim-snippets'
 "----------------------------------------------------------------------------
-" Shougo
+" Auxiliary
 "----------------------------------------------------------------------------
-Plug 'Shougo/deol.nvim'
-"----------------------------------------------------------------------------
-" tpope
-"----------------------------------------------------------------------------
+" Great terminal tool, (since deol does not support customize config)
+Plug 'wkcosmology/deol.nvim', { 'do': ':UpdateRemotePlugins' }
+" run commands in vim
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-sleuth'
-"----------------------------------------------------------------------------
-"others
-"----------------------------------------------------------------------------
-Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree' , { 'on':  'NERDTreeCWD' }
+" show git modified line in the state column
+Plug 'mhinz/vim-signify'
+" git tool
+Plug 'tpope/vim-fugitive'
+" asynchronously check error
 Plug 'neomake/neomake'
+" add head information
 Plug 'alpertuna/vim-header', { 'on': 'AddHeader'}
+" show the tag bar
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
+" can close buffers intelligently
 Plug 'Asheq/close-buffers.vim'
+" run commands in vim
 Plug 'skywind3000/asyncrun.vim'
+" my plugin to upload files to server
 Plug 'wkcosmology/vim_sync_repo'
+" show the file tree
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-git', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-icons', { 'do': ':UpdateRemotePlugins' }
-Plug 'kassio/neoterm'
-Plug 'Shougo/deol.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'l04m33/vlime', {'rtp': 'vim/'}
+" run the test file, support many filetypes, including python
 Plug 'janko/vim-test'
-
+" kill the buffer while keep the window
+Plug 'qpkorr/vim-bufkill'
+" show marks
+Plug 'kshenoy/vim-signature'
+" the following two plugs is for session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+" supertab
+Plug 'ervandew/supertab'
+" mru for fzf preview
+Plug 'Shougo/neomru.vim'
 " Initialize plugin system
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

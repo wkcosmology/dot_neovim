@@ -1,7 +1,10 @@
 " defx config
-command! DefxDefault Defx -split=vertical -winwidth=30
-            \ -columns=git:icons:filename:type:size -show-ignored-files
-            \ -direction=botright `expand('%:p:h')` -search=`expand('%:p')`<CR>
+" command! DefxDefault Defx -split=vertical -winwidth=35
+"             \ -columns=git:icons:filename:type:size -show-ignored-files
+"             \ -direction=botright `expand('%:p:h')` -search=`expand('%:p')`<CR>
+command! DefxDefault Defx -split=floating -wincol=`&columns` -winheight=`&lines` -winwidth=60
+            \ -columns=indent:git:icons:filename:type:size -show-ignored-files
+            \  `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 call defx#custom#column('git', 'indicators', {
   \ 'Modified'  : '✹',
@@ -18,7 +21,7 @@ autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings
   nnoremap <silent><buffer><expr> <CR>
-  \ defx#do_action('drop')
+  \ defx#do_action('multi', ['drop', 'quit'])
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('copy')
   nnoremap <silent><buffer><expr> m
@@ -26,7 +29,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> p
   \ defx#do_action('paste')
   nnoremap <silent><buffer><expr> l
-  \ defx#do_action('open')
+  \ defx#do_action('open_tree')
   " nnoremap <silent><buffer><expr> E
   " \ defx#do_action('open', 'vsplit')
   " nnoremap <silent><buffer><expr> P
