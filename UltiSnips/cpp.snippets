@@ -2,6 +2,39 @@ priority -50
 
 extends c
 
+# my snippets
+
+snippet fore "for iteration" b
+for (${1:auto} ${2:var}: ${3:objects}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet cout "cout" b
+std::cout << ${1:var} << std::endl;
+endsnippet
+
+snippet cin "cin" b
+std::cin >> ${1:var}
+endsnippet
+
+snippet itera "iterating" b
+for (${1:auto} ${2:i} = ${3:container}.begin(); $2 != $3.end(); ++$2) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet vector "vector" b
+std::vector<${1:T}> ${2};
+endsnippet
+
+snippet array "array" b
+std::vector<${1:T}, ${2:N}> ${3};
+endsnippet
+
+
+# vim-snippets
+
 # We want to overwrite everything in parent ft.
 priority -49
 ###########################################################################

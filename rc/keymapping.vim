@@ -26,14 +26,15 @@ nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
 nmap <silent> <leader>jw <Plug>(easymotion-bd-w)
 nmap <silent> <leader>je <Plug>(easymotion-bd-e)
 
-
 " ---------------------------------------------------------
 " search & files
 " ---------------------------------------------------------
 " fuzzy searching command
 nnoremap <silent> <leader>: :Commands<CR>
-" fuzzy search content, TODO: need to set for .gitignore
+" fuzzy search content
 nnoremap <silent> <leader>ss :BLines<CR>
+" fuzzy search content in project
+nnoremap <silent> <leader>ps :PRg<CR>
 " fuzzy search most recent file
 nnoremap <silent> <leader>fr :FZFMru <CR>
 " fuzzy searching tags
@@ -52,85 +53,65 @@ nnoremap <silent> <Leader>re :Registers <CR>
 " buffer & tab related
 " ---------------------------------------------------------
 " close current buffer TODO: enter scratch when close the last buffer
-nmap <silent> <leader>bd :BD<CR>
+nmap <silent> <leader>bd :Bwipeout<CR>
 " close other buffers except the current one
-nmap <silent> <leader>bD :Bdelete hidden<CR><CR>
+nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>
 " close the tab
 nmap <silent> <silent>td :tabclose<CR>
 
 " ---------------------------------------------------------
 " window related
 " ---------------------------------------------------------
-nmap <leader>wm <Plug>(zoom-toggle)
-nnoremap <C-w>v :vsplit<CR>
-nnoremap <C-w>x :split<CR>
-nnoremap <C-w>d :close<CR>
+nmap <C-w>m <Plug>(zoom-toggle)
 " close the location list and quickfix window
 nnoremap <silent> <leader>lc :ccl\|lcl<CR>
+" choose the window
+nmap  -  <Plug>(choosewin)
 
+" Async-task
+noremap <silent><leader>tr :AsyncTask file-run<cr>
+noremap <silent><leader>tb :AsyncTask file-build<cr>
 
 " ---------------------------------------------------------
-" neomake key mapping
+" ale key mapping
 " ---------------------------------------------------------
-" disable neomake error check
-nnoremap <silent> <leader>ed :NeomakeDisable<CR>
-" enable neomake error check
-nnoremap <silent> <leader>ee :NeomakeEnable<CR>
-" clean all the neomake error
-nnoremap <silent> <leader>ec :NeomakeClean<CR>
-
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <leader>ec :ALEResetBuffer<CR>
 
 " ---------------------------------------------------------
 " coc
 " ---------------------------------------------------------
-" coc rename variable
-nmap \r  <Plug>(coc-rename)
+
 " sort imports
 nnoremap <leader>si :Isort <CR>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Remap keys for gotos
-autocmd FileType python nmap <silent> gd <Plug>(coc-definition)
-autocmd FileType python nmap <silent> gr <Plug>(coc-references)
-" location list
-nnoremap <leader>ll :CocList locationlist<CR>
-autocmd FileType python nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+nmap \r  <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gt <Plug>(coc-type-definition)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " ---------------------------------------------------------
 " youcompleteme
 " ---------------------------------------------------------
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-autocmd FileType cpp,c nmap <silent> gd :YcmCompleter GoToDefinition<CR>
-autocmd FileType cpp,c nmap <silent> gr :YcmCompleter GoToReferences<CR>
-autocmd FileType cpp,c nmap <silent> K :YcmCompleter GetDoc<CR>
-" ---------------------------------------------------------
-" ultisnip
-" ---------------------------------------------------------
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 " ---------------------------------------------------------
 " utilities
 " ---------------------------------------------------------
 " open defx file tree
-nnoremap <silent> <leader>ft :DefxDefault <CR>
+" nnoremap <silent> <leader>ft :DefxDefault <CR>
+nmap <space>ft :call <SID>filetree()<CR>
+
 " open tagbar
 nnoremap <silent> <leader>tt :TagbarToggle<CR>
 " using gm for mark, since m is used by vim-easyclip
 nnoremap gm m
 " test the nearest object to the cursor
 nnoremap <leader>tn :TestNearest <CR>
-" ---------------------------------------------------------
-" sync_repo
-" ---------------------------------------------------------
-nnoremap <silent> <leader>kf :SyncFile <CR>
-nnoremap <silent> <leader>kr :SyncRepo <CR>
 
 " -----------------------------------------------------------------
 " script function
@@ -140,3 +121,30 @@ fun! s:fzf_root()
 	let path = finddir(".git", expand("%:p:h").";")
 	return fnamemodify(substitute(path, ".git", "", ""), ":p:h")
 endfun
+
+" close all hidden buffers
+if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running 
+	function DeleteHiddenBuffers() " Vim with the 'hidden' option
+		let tpbl=[]
+		call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+		for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+			silent execute 'bwipeout' buf
+		endfor
+	endfunction
+endif
+command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+
+" show documentation
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" call coc-explorer in current buffer path
+function! s:filetree()
+    execute "CdPwd"
+    execute "CocCommand explorer --preset default --sources=buffer+,file+"
+endfunction

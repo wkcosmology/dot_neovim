@@ -1,1 +1,2 @@
-let g:AutoPairsMapCR = 0
+let g:AutoPairsMapCR = 1
+let g:AutoPairsCenterLine = 0

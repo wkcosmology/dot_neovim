@@ -28,7 +28,6 @@ augroup hugefile
         \ unlet size
 augroup END
 
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -40,7 +39,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
 " scroll the pop-up window
 nnoremap <expr><C-n> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
 nnoremap <expr><C-p> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
@@ -49,6 +47,16 @@ tnoremap <Esc> <C-\><C-n><CR>
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-autocmd FileType cpp let b:coc_suggest_disable = 1
-autocmd FileType h let b:coc_suggest_disable = 1
-autocmd FileType c let b:coc_suggest_disable = 1
+autocmd FileType cpp,hpp,h,c let b:coc_suggest_disable = 1
+
+" exploer
+let g:coc_explorer_global_presets = {
+\   'default':{
+\      'position': 'floating',
+\      'floating-position': 'right-center',
+\      'floating-width': 80,
+\      'floating-height': -4,
+\      'file.child.template': '[git | 2][selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]',
+\   }
+\ }
+

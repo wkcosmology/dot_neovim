@@ -56,7 +56,34 @@ snippet incc "include" b
 #include <${1:stdio.h}>
 endsnippet
 
-# ---get online
+snippet incu "include" b
+#include "${1}"
+endsnippet
+
+snippet switch "switch" b
+switch(${1:/*condition*/}) {
+	case ${2:/*case1*/}: {
+		${3}
+	} break;
+	default: {
+		${4}
+	}
+}
+endsnippet
+
+snippet un "union" b
+union ${1:/*typename*/} {
+	${2:/*type*/} ${3:/*var*/};
+};
+endsnippet
+
+snippet iff "if in one line" b
+if (${1}) ${2};
+endsnippet
+
+
+
+# vim-snippet
 snippet def "#define ..."
 #define $1
 endsnippet
@@ -107,7 +134,8 @@ if not snip.c:
 	import random, string
 	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
 	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
-	snip.rv = ('%s_%s' % (name,rand)).upper()
+	# snip.rv = ('%s_%s' % (name,rand)).upper()
+	snip.rv = ('%s_' % (name)).upper()
 else:
 	snip.rv = snip.c`}
 #define $1

@@ -18,6 +18,9 @@ set expandtab
 " set colorcolumn
 set colorcolumn=120
 
+autocmd FileType cpp,hpp,c,h setlocal shiftwidth=2 softtabstop=2 expandtab
+
+
 " indent multi times
 vnoremap < <gv
 vnoremap > >gv
@@ -35,4 +38,4 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ endif
 
 " python 
-let g:python3_host_prog = "/Users/wangk/anaconda3/bin/python3"
+let g:python3_host_prog="/Users/wangk/anaconda3/bin/python3"

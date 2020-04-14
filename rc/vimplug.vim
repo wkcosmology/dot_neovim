@@ -19,8 +19,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " fzf most recently used
 Plug 'pbogut/fzf-mru.vim'
-" fzf preview
-Plug 'yuki-ycino/fzf-preview.vim'
+
 "----------------------------------------------------------------------------
 "fast edit
 "----------------------------------------------------------------------------
@@ -44,6 +43,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'google/vim-searchindex'
 " define s as substitution
 Plug 'svermeulen/vim-easyclip'
+
 "----------------------------------------------------------------------------
 " ui
 "----------------------------------------------------------------------------
@@ -63,16 +63,13 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/rainbow_parentheses.vim'
 " maximum and restore current window, powerful!!!
 Plug 'dhruvasagar/vim-zoom'
-" open terminal in a float window
-Plug 'voldikss/vim-floaterm'
 " pretty tab line
 Plug 'gcmt/taboo.vim'
-" paper color theme
-Plug 'NLKNguyen/papercolor-theme'
-" dracula theme
-Plug 'morhetz/gruvbox'
 " devicons
 Plug 'ryanoasis/vim-devicons'
+" choose the window
+Plug 't9md/vim-choosewin'
+
 "----------------------------------------------------------------------------
 "python
 "----------------------------------------------------------------------------
@@ -82,66 +79,59 @@ Plug 'vim-python/python-syntax', {'for': ['python']}
 Plug 'wkcosmology/vim-pydocstring'
 " sort the import order
 Plug 'fisadev/vim-isort'
+
 "----------------------------------------------------------------------------
 " c family
 "----------------------------------------------------------------------------
 " enhance cpp highlight
-Plug 'bfrg/vim-cpp-modern', {'for': ['c', 'cpp', 'h']}
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp', 'hpp']}
 " great auto completion tool
-Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h'], 'forzen': 1}
+Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h', 'hpp'], 'forzen': 1}
 " mpi highlight
-Plug 'jiangxincode/mpi.vim'
-"----------------------------------------------------------------------------
-" front-end
-"----------------------------------------------------------------------------
+Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
+" clang-formater
+Plug 'kana/vim-operator-user'
+Plug 'rhysd/vim-clang-format'
 
 "----------------------------------------------------------------------------
 " snippet
 "----------------------------------------------------------------------------
 " Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
-" Great snippet backend
-" Plug 'honza/vim-snippets'
+
 "----------------------------------------------------------------------------
 " Auxiliary
 "----------------------------------------------------------------------------
 " Great terminal tool, (since deol does not support customize config)
 Plug 'wkcosmology/deol.nvim', { 'do': ':UpdateRemotePlugins' }
 " run commands in vim
-Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-dispatch'
 " show git modified line in the state column
 Plug 'mhinz/vim-signify'
 " git tool
 Plug 'tpope/vim-fugitive'
 " asynchronously check error
-Plug 'neomake/neomake'
+Plug 'dense-analysis/ale'
 " add head information
 Plug 'alpertuna/vim-header', { 'on': 'AddHeader'}
 " show the tag bar
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
-" can close buffers intelligently
-Plug 'Asheq/close-buffers.vim'
+" Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
+" kill the buffer while keep the window
+Plug 'moll/vim-bbye'
 " run commands in vim
 Plug 'skywind3000/asyncrun.vim'
-" my plugin to upload files to server
-Plug 'wkcosmology/vim_sync_repo'
-" show the file tree
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kristijanhusak/defx-git', { 'do': ':UpdateRemotePlugins' }
-Plug 'kristijanhusak/defx-icons', { 'do': ':UpdateRemotePlugins' }
 " run the test file, support many filetypes, including python
 Plug 'janko/vim-test'
-" kill the buffer while keep the window
-Plug 'qpkorr/vim-bufkill'
 " show marks
 Plug 'kshenoy/vim-signature'
 " the following two plugs is for session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-" supertab
-Plug 'ervandew/supertab'
 " mru for fzf preview
 Plug 'Shougo/neomru.vim'
-" Initialize plugin system
+" task control
+Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/asyncrun.vim'
+
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------
