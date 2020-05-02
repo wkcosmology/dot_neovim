@@ -1,19 +1,17 @@
-
 let g:ycm_filetype_whitelist = {
-			\ "c":1,
-			\ "cpp":1,
-			\ "h":1,
-			\ "sh":1,
-			\ "python":1,
-			\ "zsh":1,
-			\ }
-set completeopt=menu,menuone
+            \ "c":1,
+            \ "cpp":1,
+            \ "h":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ }
+set completeopt=menu,menuone,noinsert,noselect
 " ycm auto completion only triggered by the following symbols
 " In other cases, you should use Ctrl-Space to trigger the completion
 let g:ycm_semantic_triggers =  {
-  \   'c,h': ['->', '.'],
-  \   'cpp,hpp,cuda,objcpp': ['->', '.', '::'],
-  \ }
+            \   'c,h': ['->', '.'],
+            \   'cpp,hpp,cuda,objcpp': ['->', '.', '::'],
+            \ }
 
 " ---------------------------------------------------------------
 " ycm config
@@ -23,7 +21,7 @@ let g:ycm_semantic_triggers =  {
 "  Config file
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
-let g:ycm_use_clangd = 0 " very important!!!
+let g:ycm_use_clangd = 1 " very important!!!
 
 " ---------------------------------------------------------------
 "  diagnostic
@@ -57,3 +55,36 @@ let g:ycm_seed_identifiers_with_syntax=0
 " Others
 let g:ycm_cache_omnifunc=0
 let g:ycm_disable_for_files_larger_than_kb = 1000
+
+" ---------------------------------------------------------------
+" script: display doc with floating window
+function s:Hover()
+    " get the doc string from YCM
+    let response = youcompleteme#GetCommandResponse('GetDoc')
+    if response == ''
+        return
+    endif
+    " set the width
+    let s:width = min([winwidth('%') * 9 / 10, 100])
+    " calculate the height to show the whole doc with wrap enabled
+    let lines = split(response, '\n')
+    let s:height = len(lines) + 1
+    for s:line in lines
+        let s:height = s:height + len(s:line) / s:width
+    endfor
+    " nvim floating window interface
+    let buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(buf, 0, -1, v:true, lines)
+    let opts = {'relative': 'cursor', 'width': s:width, 'height': len(lines) + 1, 'col': 1,
+                \ 'row': 0, 'anchor': 'SW', 'style': 'minimal'}
+    let s:win = nvim_open_win(buf, 0, opts)
+    " set the window option
+    call nvim_win_set_option(s:win, 'winhl', 'Normal:NormalFloat')
+    call nvim_win_set_option(s:win, 'wrap', v:true)
+    call nvim_win_set_option(s:win, 'linebreak', v:true)
+    " close the window once the cursor moved
+    autocmd CursorMoved <buffer> ++once call nvim_win_close(s:win, v:false)
+endfunction
+
+" autocmd FileType c,cpp,h,hpp nnoremap <silent> K :call <SID>Hover()<CR>
+command! YcmGetDocFloatWin :call <SID>Hover()

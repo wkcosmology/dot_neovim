@@ -1,4 +1,3 @@
-" 
 let g:ale_linters_explicit = 1
 
 " enable lint on save
@@ -32,15 +31,17 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " ---------------------------------------------------------------
 " linter
 let g:ale_linters = {
-  \   'csh': ['shell'],
-  \   'zsh': ['shell'],
-  \   'go': ['gofmt', 'golint'],
-  \   'python': ['flake8'],
-  \   'c': ['gcc'],
-  \   'h': ['gcc'],
-  \   'cpp': ['g++'],
-  \   'hpp': ['g++'],
-  \   'text': [],
-  \}
+            \   'csh': ['shell'],
+            \   'zsh': ['shell'],
+            \   'go': ['gofmt', 'golint'],
+            \   'python': ['flake8'],
+            \   'javascript': ['eslint'],
+            \   'c': ['gcc'],
+            \   'h': ['gcc'],
+            \   'cpp': ['g++'],
+            \   'hpp': ['g++'],
+            \   'text': [],
+            \   'vim':['vint'],
+            \}
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'

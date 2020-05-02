@@ -13,51 +13,69 @@ inoremap <C-a> <Home>
 inoremap <C-e> <End>
 " clear the searching highlight
 nnoremap <silent> <leader>sc :noh <CR>
-" save the file
-nnoremap <silent> <leader>fs :w<CR>
 " quit vim
 nnoremap <silent> <leader>qq :qa<CR>
-" reload the vimrc setting
-nnoremap <silent> <leader>feR :so $MYVIMRC<CR>
 " open terminal in floating window
-nnoremap <silent><leader>' :<C-u>Deol -split=floating<CR>
+nnoremap <silent> <leader>' :FloatermToggle<CR>
 " easy motion setting
 nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
 nmap <silent> <leader>jw <Plug>(easymotion-bd-w)
 nmap <silent> <leader>je <Plug>(easymotion-bd-e)
 
 " ---------------------------------------------------------
-" search & files
+" search
 " ---------------------------------------------------------
 " fuzzy searching command
 nnoremap <silent> <leader>: :Commands<CR>
 " fuzzy search content
 nnoremap <silent> <leader>ss :BLines<CR>
 " fuzzy search content in project
-nnoremap <silent> <leader>ps :PRg<CR>
+nnoremap <silent> <leader>sp :PRg<CR>
+" yank history
+nnoremap <silent> <space>sy  :<C-u>CocList yank<cr>
+
+" ---------------------------------------------------------
+" files
+" ---------------------------------------------------------
+nnoremap <silent> <leader>f <Nop>
+" save the file
+nnoremap <silent> <leader>fs :w<CR>
+" reload the vimrc setting
+nnoremap <silent> <leader>feR :so $MYVIMRC<CR>
 " fuzzy search most recent file
 nnoremap <silent> <leader>fr :FZFMru <CR>
 " fuzzy searching tags
 nnoremap <silent> <leader>fo :BTags <CR>
-" fuzzy search buffers
-nnoremap <silent> <leader>bb :Buffers <CR>
 " fuzzy search files under current project
 nnoremap <silent> <Leader>fp :exe 'Files ' . <SID>fzf_root()<CR>
 " fuzzy search files under current path
 nnoremap <silent> <Leader>ff :Files <CR>
-" fuzzy search registers
-nnoremap <silent> <Leader>re :Registers <CR>
-
+" open defx file tree
+nnoremap <silent> <space>ft :DefxDefault <CR>
 
 " ---------------------------------------------------------
-" buffer & tab related
+" buffers
 " ---------------------------------------------------------
-" close current buffer TODO: enter scratch when close the last buffer
+" fuzzy search buffers
+nnoremap <silent> <leader>bb :Buffers <CR>
+" close current buffer
 nmap <silent> <leader>bd :Bwipeout<CR>
+" previous buffer
+nmap <silent> <leader>bp :bp<CR>
+" next buffer
+nmap <silent> <leader>bn :bn<CR>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>
+
+" ---------------------------------------------------------
+" tabs
+" ---------------------------------------------------------
 " close the tab
-nmap <silent> <silent>td :tabclose<CR>
+nmap <C-t> <Nop>
+nmap <C-t>d :tabclose<CR>
+nmap <C-t>l :tabNext<CR>
+nmap <C-t>n :TabooOpen 
+nmap <C-t>h :tabNext<CR>
 
 " ---------------------------------------------------------
 " window related
@@ -67,10 +85,26 @@ nmap <C-w>m <Plug>(zoom-toggle)
 nnoremap <silent> <leader>lc :ccl\|lcl<CR>
 " choose the window
 nmap  -  <Plug>(choosewin)
+nnoremap <silent> <leader>oo :only<CR>
 
+" ---------------------------------------------------------
 " Async-task
+" ---------------------------------------------------------
 noremap <silent><leader>tr :AsyncTask file-run<cr>
 noremap <silent><leader>tb :AsyncTask file-build<cr>
+noremap <silent><leader>tf :AsyncTaskFzf<cr>
+
+" ---------------------------------------------------------
+" Git
+" ---------------------------------------------------------
+nnoremap <leader>gd :Gvdiffsplit!<cr>
+nnoremap <leader>gdh :diffget //2<cr>
+nnoremap <leader>gdl :diffget //3<cr>
+nnoremap <leader>gw :Gwrite<cr>
+" nnoremap <leader>gr :Gread<cr> # too dangerous
+nnoremap <leader>gg :G<cr>
+nnoremap <leader>gv :GV<cr>
+nnoremap <leader>gc :Gcommit<cr>
 
 " ---------------------------------------------------------
 " ale key mapping
@@ -84,34 +118,37 @@ nmap <silent> <leader>ec :ALEResetBuffer<CR>
 " ---------------------------------------------------------
 
 " sort imports
-nnoremap <leader>si :Isort <CR>
+autocmd FileType python nnoremap <leader>si :Isort <CR>
 " Remap keys for gotos
 nmap \r  <Plug>(coc-rename)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gt <Plug>(coc-type-definition)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+autocmd FileType python,javascript nmap <silent> gd <Plug>(coc-definition)
+autocmd FileType python,javascript nmap <silent> gr <Plug>(coc-references)
+autocmd FileType python,javascript nmap <silent> gi <Plug>(coc-implementation)
+autocmd FileType python,javascript nmap <silent> gt <Plug>(coc-type-definition)
+autocmd FileType python,javascript nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " ---------------------------------------------------------
 " youcompleteme
 " ---------------------------------------------------------
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+autocmd FileType c,cpp,h,hpp nmap gd :YcmCompleter GoToInclude<cr>
+autocmd FileType c,cpp,h,hpp nmap gt :YcmCompleter GetType<cr>
+autocmd FileType c,cpp,h,hpp nmap gr :YcmCompleter GoToReferences<cr>
+autocmd FileType c,cpp,h,hpp nmap K :YcmGetDocFloatWin<cr>
+autocmd FileType c,cpp,h,hpp nmap \r :YcmCompleter RefactorRename 
 
 " ---------------------------------------------------------
 " utilities
 " ---------------------------------------------------------
-" open defx file tree
-" nnoremap <silent> <leader>ft :DefxDefault <CR>
-nmap <space>ft :call <SID>filetree()<CR>
 
-" open tagbar
-nnoremap <silent> <leader>tt :TagbarToggle<CR>
 " using gm for mark, since m is used by vim-easyclip
 nnoremap gm m
 " test the nearest object to the cursor
 nnoremap <leader>tn :TestNearest <CR>
+" code format
+autocmd FileType c,cpp,h,hpp nmap <F1> :ClangFormat<cr>
+autocmd FileType python nmap <F1> :call CocAction('format')<cr>
 
 " -----------------------------------------------------------------
 " script function

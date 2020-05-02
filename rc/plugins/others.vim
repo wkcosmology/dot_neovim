@@ -1,8 +1,5 @@
 " my config--------------------------------------------------------------------
 " simple vim setting
-if &compatible
-  set nocompatible
-endif
 filetype plugin indent on
 syntax enable
 set number
@@ -18,24 +15,23 @@ set expandtab
 " set colorcolumn
 set colorcolumn=120
 
-autocmd FileType cpp,hpp,c,h setlocal shiftwidth=2 softtabstop=2 expandtab
-
 
 " indent multi times
 vnoremap < <gv
 vnoremap > >gv
-" spell check for markdown file
-autocmd BufRead,BufNewFile *.md setlocal spell
-
-" quickfix window: open quickfix window when something add to it
-augroup vimrc
-  autocmd QuickFixCmdPost * botright copen 8
-augroup END
 
 " let the cursor in the previous place
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ execute "normal! g`\"" |
-  \ endif
+augroup keepcursorpos
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
+                \ execute "normal! g`\"" |
+                \ endif
+augroup END
 
 " python 
-let g:python3_host_prog="/Users/wangk/anaconda3/bin/python3"
+let g:python3_host_prog = '/Users/wangk/anaconda3/bin/python3'
+
+" exit help using q
+augroup exitwithq
+autocmd!
+    autocmd FileType help,fzf,qf nnoremap <buffer> q :close<CR>
+augroup END

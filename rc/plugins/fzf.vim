@@ -1,6 +1,7 @@
 " fzf configure
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_preview_window = 'right:60%'
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
@@ -22,18 +23,17 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 " fzf floating window setting
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
-" let g:fzf_layout = { 'window': 'call OpenFloatingWin()' }
 let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
 function! Centered_floating_window()
-    let width = min([&columns - 4, max([50, &columns * 2 / 3])])
+    let width = min([&columns - 4, max([80, &columns * 2 / 3])])
     let height = min([&lines - 4, max([40, &lines - 40])])
     let top = ((&lines - height) / 2) - 1
     let left = (&columns - width) / 2
     let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let top = '╭' . repeat('─', width - 2) . '╮'
+    let mid = '│' . repeat(' ', width - 2) . '│'
+    let bot = '╰' . repeat('─', width - 2) . '╯'
     let lines = [top] + repeat([mid], height - 2) + [bot]
     let s:buf = nvim_create_buf(v:false, v:true)
     call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
@@ -44,36 +44,10 @@ function! Centered_floating_window()
     let opts.col += 2
     let opts.width -= 4
     call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
-
-" old fzf window config, deprecated
-function! OpenFloatingWin()
-
-  let height = &lines - 3
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': height * 0.3,
-        \ 'col': col + 30,
-        \ 'width': width * 4 / 5,
-        \ 'height': height / 2,
-        \ 'style': 'minimal'
-        \ }
-  let buf = nvim_create_buf(v:false, v:true)
-  let win = nvim_open_win(buf, v:true, opts)
-
-  " 设置浮动窗口高亮
-  call setwinvar(win, '&winhl', 'Normal:Pmenu')
-
-  setlocal
-        \ buftype=nofile
-        \ nobuflisted
-        \ bufhidden=hide
-        \ nonumber
-        \ norelativenumber
-        \ signcolumn=no
+    augroup bufwipeout
+        autocmd!
+        au BufWipeout <buffer> exe 'bw '.s:buf
+    augroup END
 endfunction
 
 " fuzzy find registers
@@ -96,9 +70,40 @@ endfunction
 
 command! -bang Registers call s:registers('<bang>' ==# '!')
 
-" for preview
+" for Files
 command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+        \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 
 command! -bang -nargs=* PRg
-  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+
+" for asynctasks.vim
+function! s:fzf_sink(what)
+	let p1 = stridx(a:what, '<')
+	if p1 >= 0
+		let name = strpart(a:what, 0, p1)
+		let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+		if name !=? ''
+			exec 'AsyncTask '. fnameescape(name)
+		endif
+	endif
+endfunction
+
+function! s:fzf_task()
+	let rows = asynctasks#source(&columns * 48 / 100)
+	let source = []
+	for row in rows
+		let name = row[0]
+		let source += [name . '  ' . row[1] . '  : ' . row[2]]
+	endfor
+	let opts = { 'source': source, 'sink': function('s:fzf_sink'),
+				\ 'options': '+m --nth 1 --inline-info --tac' }
+	if exists('g:fzf_layout')
+		for key in keys(g:fzf_layout)
+			let opts[key] = deepcopy(g:fzf_layout[key])
+		endfor
+	endif
+	call fzf#run(opts)
+endfunction
+
+command! -nargs=0 AsyncTaskFzf call s:fzf_task()

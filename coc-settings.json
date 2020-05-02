@@ -1,22 +1,31 @@
 {
 "coc.preferences.messageLevel": "warning",
 "coc.preferences.hoverTarget": "float",
-"diagnostic.enable": false,
-"diagnostic.maxWindowHeight": 5,
 "coc.preferences.previewAutoClose": false,
-"suggest.maxCompleteItemCount": 20,
-"python.autoComplete.extraPaths": ["/Users/wangk/anaconda3/lib/python3.7/site-packages/"],
-"suggest.floatEnable": true,
-"diagnostic.messageTarget": "echo",
+
 "signature.target": "echo",
 "signature.enable": true,
+
+"suggest.maxCompleteItemCount": 20,
+"suggest.floatEnable": true,
 "suggest.enablePreview": true,
 "suggest.echodocSupport": true,
+"suggest.minTriggerInputLength": 2,
+"suggest.keepCompleteopt": false,
 
-"python.analysis.diagnosticEnabled": false,
+"diagnostic.enable": false,
+
+"python.autoComplete.extraPaths": ["/Users/wangk/anaconda3/lib/python3.7/site-packages/"],
 "python.terminal.executeInFileDir": true,
 "python.pythonPath": "/Users/wangk/anaconda3/bin/python3",
 "python.condaPath": "/Users/wangk/anaconda3/bin/conda",
+"python.formatting.provider": "yapf",
+"python.analysis.diagnosticEnabled": false,
+"python.linting.enabled": false,
+
+"yank.highlight.enable": false,
+"yank.list.maxsize": 50,
+"yank.enableCompletion": false,
 
 "languageserver": {
     "ccls": {
@@ -30,7 +39,6 @@
        }
     }
   },
-
 
 "suggest.completionItemKindLabels": {
 		"keyword": "\uf1de",
@@ -58,75 +66,7 @@
 		"snippet": "\ue60b",
 		"typeParameter": "\uf728",
 		"default": "\uf29c"
-},
-
-"explorer.keyMappings": {
-    "i": "unmap", 
-
-    "k": "nodePrev",
-    "j": "nodeNext",
-    "gk": "expandablePrev",
-    "gj": "expandableNext",
-
-    "<space>": "toggleSelection",
-    "<tab>": "actionMenu",
-
-    "h": "collapse",
-    "l": ["expandable?", "expand", "open"],
-    "J": ["toggleSelection", "nodeNext"],
-    "K": ["toggleSelection", "nodePrev"],
-    "gl": "expandRecursive",
-    "gh": "collapseRecursive",
-    "o": "expandOrCollapse",
-    "<cr>": ["expandable?", "cd", "open"],
-    "e": "open",
-    "s": "open:split",
-    "S": "open:split:plain",
-    "E": "open:vsplit",
-    "t": "open:tab",
-    "<bs>": "gotoParent",
-    "gp": "preview:labeling",
-
-    "y": "copyFilepath",
-    "Y": "copyFilename",
-    "c": "copyFile",
-    "x": "cutFile",
-    "p": "pasteFile",
-    "d": "delete",
-    "D": "deleteForever",
-
-    "N": "addFile",
-    "r": "rename",
-
-    ".": "toggleHidden",
-    "R": "refresh",
-
-    "?": "help",
-    "q": "quit",
-    "<esc>": "esc",
-    "X": "systemExecute",
-    "gd": "listDrive",
-
-    "f": "search",
-    "F": "searchRecursive",
-
-    "gf": "gotoSource:file",
-    "gb": "gotoSource:buffer",
-
-    "[[": "sourcePrev",
-    "]]": "sourceNext",
-
-    "[d": "diagnosticPrev",
-    "]d": "diagnosticNext",
-
-    "[c": "gitPrev",
-    "]c": "gitNext",
-    ">>": "gitStage",
-    "<<": "gitUnstage"
-},
-"explorer.icon.enableNerdfont": true,
-"explorer.previewAction.onHover": false,
-"explorer.icon.enableVimDevicons": true,
-"explorer.floating.border.chars": [ "╭", "─", "╮", "│", "╯", "─", "╰", "│" ],
-"explorer.quitOnOpen": true
 }
+
+}
+

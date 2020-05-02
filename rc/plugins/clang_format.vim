@@ -1,5 +1,4 @@
 let g:clang_format#command = '/usr/local/bin/clang-format'
-nmap <F1> :ClangFormat<cr>
 " autocmd FileType cpp,hpp ClangFormatAutoEnable
 let g:clang_format#detect_style_file = 0
 
@@ -8,8 +7,8 @@ let g:clang_format#style_options = {
         \ "BasedOnStyle" : "Google",
         \ "BinPackParameters" : "false",
         \ "BinPackArguments" : "false",
-        \ "IndentWidth" : 2,
-        \ "TabWidth" : 2,
+        \ "IndentWidth" : 4,
+        \ "TabWidth" : 4,
         \ "UseTab" : "Never",
         \ "AlignAfterOpenBracket" : "false",
         \ "AllowShortBlocksOnASingleLine" : "false",
@@ -47,7 +46,7 @@ let g:clang_format#style_options = {
         \ "SpaceBeforeAssignmentOperators" : "true",
         \ "SpaceBeforeCpp11BracedList" : "false",
         \ "SpaceBeforeRangeBasedForLoopColon" : "false",
-        \ "ColumnLimit" : 80,
+        \ "ColumnLimit" : 120,
         \ "AccessModifierOffset" : -1,
         \ "AlignEscapedNewlinesLeft" : "true",
         \ "AlignOperands" : "true",

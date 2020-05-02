@@ -32,6 +32,20 @@ snippet array "array" b
 std::vector<${1:T}, ${2:N}> ${3};
 endsnippet
 
+snippet tryh5 "try and catch in hdf5" b
+try {
+Exception::dontPrint();
+${0}
+} catch (FileIException error) {
+error.printErrorStack();
+} catch (DataSetIException error) {
+error.printErrorStack();
+} catch (DataSpaceIException error) {
+error.printErrorStack();
+} catch (DataTypeIException error) {
+error.printErrorStack();
+}
+endsnippet
 
 # vim-snippets
 

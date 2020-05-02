@@ -33,6 +33,8 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 " for quick commentary
 Plug 'tpope/vim-commentary'
+" abbreviation substitution and Coerion
+Plug 'tpope/vim-abolish'
 " extend f, F, t, T for searching
 Plug 'rhysd/clever-f.vim'
 " add more text object
@@ -43,12 +45,19 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'google/vim-searchindex'
 " define s as substitution
 Plug 'svermeulen/vim-easyclip'
+" multi cursor
+Plug 'mg979/vim-visual-multi'
+" file explorer
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'kristijanhusak/defx-git'
+Plug 'kristijanhusak/defx-icons'
 
 "----------------------------------------------------------------------------
 " ui
 "----------------------------------------------------------------------------
 " monokai theme
-Plug 'crusoexia/vim-monokai'
+" Plug 'crusoexia/vim-monokai'
+Plug 'morhetz/gruvbox'
 " show the doc on echo
 Plug 'Shougo/echodoc.vim'
 " let the cursor stay away from ceil and bottom
@@ -76,22 +85,20 @@ Plug 't9md/vim-choosewin'
 Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
 Plug 'vim-python/python-syntax', {'for': ['python']}
 " add docstring in different way, like numpy
-Plug 'wkcosmology/vim-pydocstring'
+Plug 'wkcosmology/vim-pydocstring', {'for': ['python']}
 " sort the import order
-Plug 'fisadev/vim-isort'
+Plug 'fisadev/vim-isort', {'for': ['python']}
 
 "----------------------------------------------------------------------------
 " c family
 "----------------------------------------------------------------------------
-" enhance cpp highlight
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['cpp', 'hpp']}
 " great auto completion tool
-Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h', 'hpp'], 'forzen': 1}
+Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 " clang-formater
-Plug 'kana/vim-operator-user'
-Plug 'rhysd/vim-clang-format'
+Plug 'kana/vim-operator-user', {'for': ['c', 'cpp', 'h', 'hpp']}
+Plug 'rhysd/vim-clang-format', {'for': ['c', 'cpp', 'h', 'hpp']}
 
 "----------------------------------------------------------------------------
 " snippet
@@ -102,24 +109,24 @@ Plug 'SirVer/ultisnips'
 "----------------------------------------------------------------------------
 " Auxiliary
 "----------------------------------------------------------------------------
-" Great terminal tool, (since deol does not support customize config)
-Plug 'wkcosmology/deol.nvim', { 'do': ':UpdateRemotePlugins' }
-" run commands in vim
-" Plug 'tpope/vim-dispatch'
+" Great terminal tool
+Plug 'voldikss/vim-floaterm'
 " show git modified line in the state column
 Plug 'mhinz/vim-signify'
-" git tool
+" powerful git tool
 Plug 'tpope/vim-fugitive'
+" github for fugitive
+Plug 'tpope/vim-rhubarb'
+" tree like git browser
+Plug 'junegunn/gv.vim'
 " asynchronously check error
 Plug 'dense-analysis/ale'
 " add head information
 Plug 'alpertuna/vim-header', { 'on': 'AddHeader'}
-" show the tag bar
-" Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
 " kill the buffer while keep the window
 Plug 'moll/vim-bbye'
 " run commands in vim
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 " run the test file, support many filetypes, including python
 Plug 'janko/vim-test'
 " show marks
@@ -127,11 +134,13 @@ Plug 'kshenoy/vim-signature'
 " the following two plugs is for session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-" mru for fzf preview
-Plug 'Shougo/neomru.vim'
 " task control
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
+" vimtex
+Plug 'lervag/vimtex'
+" all the language syntax
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------
