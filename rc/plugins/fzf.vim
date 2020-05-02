@@ -1,27 +1,29 @@
-" fzf configure
+" fzf basic configure {{
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_preview_window = 'right:60%'
 
 let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
+" }}
 
-" [Commands] --expect expression for directly executing the command
+" for directly executing the command {{
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
+" }}
 
-" fzf floating window setting
+" fzf floating window setting {{
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
 function! Centered_floating_window()
@@ -49,61 +51,68 @@ function! Centered_floating_window()
         au BufWipeout <buffer> exe 'bw '.s:buf
     augroup END
 endfunction
+" }}
 
-" fuzzy find registers
+" fuzzy find registers {{
 function! s:get_registers() abort
-  redir => l:regs
-  silent registers
-  redir END
-
-  return split(l:regs, '\n')[1:]
+    redir => l:regs
+    silent registers
+    redir END
+    return split(l:regs, '\n')[1:]
 endfunction
 
 function! s:registers(...) abort
-  let l:opts = {
-        \ 'source': s:get_registers(),
-        \ 'sink': {x -> feedkeys(matchstr(x, '\v^\S+\ze.*') . (a:1 ? 'P' : 'p'), 'x')},
-        \ 'options': '--prompt="Reg> "'
-        \ }
-  call fzf#run(fzf#wrap(l:opts))
+    let l:opts = {
+                \ 'source': s:get_registers(),
+                \ 'sink': {x -> feedkeys(matchstr(x, '\v^\S+\ze.*') . (a:1 ? 'P' : 'p'), 'x')},
+                \ 'options': '--prompt="Reg> "'
+                \ }
+    call fzf#run(fzf#wrap(l:opts))
 endfunction
 
 command! -bang Registers call s:registers('<bang>' ==# '!')
+" }}
 
-" for Files
+" fzf Files {{
 command! -bang -nargs=? -complete=dir Files
-        \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+            \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+" }}
 
+" using rg to perform the fuzzy search {{
 command! -bang -nargs=* PRg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+            \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+" }}
 
-" for asynctasks.vim
+" asynctasks.vim {{
 function! s:fzf_sink(what)
-	let p1 = stridx(a:what, '<')
-	if p1 >= 0
-		let name = strpart(a:what, 0, p1)
-		let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
-		if name !=? ''
-			exec 'AsyncTask '. fnameescape(name)
-		endif
-	endif
+    let p1 = stridx(a:what, '<')
+    if p1 >= 0
+        let name = strpart(a:what, 0, p1)
+        let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+        if name !=? ''
+            exec 'AsyncTask '. fnameescape(name)
+        endif
+    endif
 endfunction
 
 function! s:fzf_task()
-	let rows = asynctasks#source(&columns * 48 / 100)
-	let source = []
-	for row in rows
-		let name = row[0]
-		let source += [name . '  ' . row[1] . '  : ' . row[2]]
-	endfor
-	let opts = { 'source': source, 'sink': function('s:fzf_sink'),
-				\ 'options': '+m --nth 1 --inline-info --tac' }
-	if exists('g:fzf_layout')
-		for key in keys(g:fzf_layout)
-			let opts[key] = deepcopy(g:fzf_layout[key])
-		endfor
-	endif
-	call fzf#run(opts)
+    let rows = asynctasks#source(&columns * 48 / 100)
+    let source = []
+    for row in rows
+        let name = row[0]
+        let source += [name . '  ' . row[1] . '  : ' . row[2]]
+    endfor
+    let opts = { 'source': source, 'sink': function('s:fzf_sink'),
+                \ 'options': '+m --nth 1 --inline-info --tac' }
+    if exists('g:fzf_layout')
+        for key in keys(g:fzf_layout)
+            let opts[key] = deepcopy(g:fzf_layout[key])
+        endfor
+    endif
+    call fzf#run(opts)
 endfunction
 
 command! -nargs=0 AsyncTaskFzf call s:fzf_task()
+" }}
+
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{,}} foldmethod=marker foldlevel=0:

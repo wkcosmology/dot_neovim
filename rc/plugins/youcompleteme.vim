@@ -61,7 +61,7 @@ let g:ycm_disable_for_files_larger_than_kb = 1000
 function s:Hover()
     " get the doc string from YCM
     let response = youcompleteme#GetCommandResponse('GetDoc')
-    if response == ''
+    if response ==# ''
         return
     endif
     " set the width
