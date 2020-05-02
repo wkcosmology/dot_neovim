@@ -96,7 +96,6 @@ nnoremap <leader>gg :G<cr>
 nnoremap <leader>gv :GV<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gP :Nrun Gpush<cr>
-nnoremap <leader>gp :Nrun Gpull<cr>
 " }}
 
 " ale key mapping {{
