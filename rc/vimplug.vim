@@ -36,6 +36,7 @@ Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 " Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-unimpaired'
 " }}
 
 " coc/fzf{{
@@ -96,9 +97,6 @@ Plug 'wkcosmology/vim-pydocstring', {'for': ['python']}
 Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
-" clang-formater
-Plug 'kana/vim-operator-user', {'for': ['c', 'cpp', 'h', 'hpp']}
-Plug 'rhysd/vim-clang-format', {'for': ['c', 'cpp', 'h', 'hpp']}
 " }}
 
 " Git {{
@@ -128,6 +126,9 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'lervag/vimtex'
 " all the language syntax
 Plug 'sheerun/vim-polyglot'
+" spell check
+Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
+Plug 'tpope/vim-scriptease'
 " }}
 
 call plug#end()

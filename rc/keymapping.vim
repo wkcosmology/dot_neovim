@@ -1,6 +1,8 @@
 " fast editing {{
 " set the leader to space
 let mapleader=' '
+" use Esc to exit terminal
+tnoremap <Esc> <C-\><C-n><CR>
 " alias to left and right in insert mode
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
@@ -8,6 +10,11 @@ inoremap <C-n> <Down>
 inoremap <C-p> <Up>
 inoremap <C-a> <Home>
 inoremap <C-e> <End>
+" alias to left and right in command mode
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 " clear the searching highlight
 nnoremap <silent> <leader>sc :noh <CR>
 " quit vim
@@ -29,6 +36,7 @@ nnoremap <silent> <leader>ss :BLines<CR>
 nnoremap <silent> <leader>sp :PRg<CR>
 " yank history
 nnoremap <silent> <space>sy  :<C-u>CocList yank<cr>
+command! TrimSpace execute':%s/\s\+$//e'
 " }}
 
 " File related {{
@@ -67,7 +75,7 @@ nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>
 nmap <C-t> <Nop>
 nmap <C-t>d :tabclose<CR>
 nmap <C-t>l :tabNext<CR>
-nmap <C-t>n :TabooOpen 
+nmap <C-t>n :TabooOpen
 nmap <C-t>h :tabNext<CR>
 " }}
 
@@ -102,19 +110,18 @@ nnoremap <leader>gP :Gpush<cr>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <leader>ec :ALEResetBuffer<CR>
+nmap <F2> :ALEFix<cr>
 " }}
 
 " coc {{
 augroup cocmapping
     autocmd!
-    autocmd FileType python nnoremap <leader>si :CocCommand python.sortImports<CR>
     nmap \r  <Plug>(coc-rename)
     autocmd FileType python,javascript,vim nmap <silent> gd <Plug>(coc-definition)
     autocmd FileType python,javascript,vim nmap <silent> gr <Plug>(coc-references)
     autocmd FileType python,javascript,vim nmap <silent> gi <Plug>(coc-implementation)
     autocmd FileType python,javascript,vim nmap <silent> gt <Plug>(coc-type-definition)
     autocmd FileType python,javascript,vim nnoremap <silent> K :call <SID>show_documentation()<CR>
-    autocmd FileType python nmap <F1> :call CocAction('format')<cr>
 augroup END
 " }}
 
@@ -127,9 +134,7 @@ augroup ycmgotomap
     autocmd FileType c,cpp,h,hpp nmap gt :YcmCompleter GetType<cr>
     autocmd FileType c,cpp,h,hpp nmap gr :YcmCompleter GoToReferences<cr>
     autocmd FileType c,cpp,h,hpp nmap K :YcmGetDocFloatWin<cr>
-    autocmd FileType c,cpp,h,hpp nmap \r :YcmCompleter RefactorRename 
-    " code format
-    autocmd FileType c,cpp,h,hpp nmap <F1> :ClangFormat<cr>
+    autocmd FileType c,cpp,h,hpp nmap \r :YcmCompleter RefactorRename
 augroup END
 " }}
 
@@ -148,7 +153,7 @@ fun! s:fzf_root()
 endfun
 
 " close all hidden buffers
-if !exists('*DeleteHiddenBuffers') " Clear all hidden buffers when running 
+if !exists('*DeleteHiddenBuffers') " Clear all hidden buffers when running
     function DeleteHiddenBuffers() " Vim with the 'hidden' option
         let tpbl=[]
         call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')

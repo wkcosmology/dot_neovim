@@ -22,7 +22,6 @@
 "python.formatting.provider": "yapf",
 "python.analysis.diagnosticEnabled": false,
 "python.linting.enabled": false,
-"python.sortImports.path": "/Users/wangk/anaconda3/bin/isort",
 
 "yank.highlight.enable": false,
 "yank.list.maxsize": 50,

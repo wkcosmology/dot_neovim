@@ -35,3 +35,9 @@ augroup exitwithq
 autocmd!
     autocmd FileType help,fzf,qf nnoremap <buffer> q :close<CR>
 augroup END
+
+" spell check
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd,tex call lexical#init()
+augroup END
