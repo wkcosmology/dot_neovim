@@ -4,6 +4,10 @@ extends c
 
 # my snippets
 
+snippet std "using namespace std" b
+using namespace std;
+endsnippet
+
 snippet fore "for iteration" b
 for (${1:auto} ${2:var}: ${3:objects}) {
 	${VISUAL}$0
@@ -11,11 +15,11 @@ for (${1:auto} ${2:var}: ${3:objects}) {
 endsnippet
 
 snippet cout "cout" b
-std::cout << ${1:var} << std::endl;
+cout << ${1:var} << endl;
 endsnippet
 
 snippet cin "cin" b
-std::cin >> ${1:var}
+cin >> ${1:var}
 endsnippet
 
 snippet itera "iterating" b
@@ -24,12 +28,12 @@ for (${1:auto} ${2:i} = ${3:container}.begin(); $2 != $3.end(); ++$2) {
 }
 endsnippet
 
-snippet vector "vector" b
-std::vector<${1:T}> ${2};
+snippet vec "vector" b
+vector<${1:T}> ${2}
 endsnippet
 
-snippet array "array" b
-std::vector<${1:T}, ${2:N}> ${3};
+snippet vvec "vector" b
+vector<vector<${1:T}>> ${2}
 endsnippet
 
 snippet tryh5 "try and catch in hdf5" b
@@ -115,10 +119,6 @@ snippet map "std::map (map)"
 std::map<${1:key}, ${2:value}> map$0;
 endsnippet
 
-snippet vec "std::vector (v)"
-std::vector<${1:char}> v$0;
-endsnippet
-
 snippet tp "template <typename ..> (template)"
 template <typename ${1:_InputIter}>
 endsnippet
@@ -139,7 +139,6 @@ public:
 
 #endif /* $2 */
 endsnippet
-
 
 snippet fnc "Basic c++ doxygen function template" b
 /**

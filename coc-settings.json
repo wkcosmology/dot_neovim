@@ -28,15 +28,14 @@
 "yank.enableCompletion": false,
 
 "languageserver": {
-    "ccls": {
+    "clangd": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "h", "hpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/Users/wangk/.cache/LanguageClient"
-         }
-       }
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/"],
+      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
     }
   },
 
@@ -66,7 +65,14 @@
 		"snippet": "\ue60b",
 		"typeParameter": "\uf728",
 		"default": "\uf29c"
-}
+},
+
+"list.insertMappings": {
+        "<C-r>": "do:refresh",
+		"<C-n>": "normal:j",
+		"<C-p>": "normal:k",
+        "<C-g>": "do:exit"
+    }
 
 }
 

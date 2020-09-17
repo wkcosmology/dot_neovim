@@ -1,15 +1,15 @@
 let g:coc_global_extensions = [
             \ 'coc-lists',
-            \ 'coc-vimlsp',
             \ 'coc-python',
             \ 'coc-tasks',
             \ 'coc-yank',
             \ 'coc-json',
+            \ 'coc-vimlsp',
             \ 'coc-vimtex',
             \ 'coc-snippets',
             \ 'coc-html',
-            \ 'coc-css',
-            \ 'coc-tsserver']
+            \ 'coc-lua',
+            \ 'coc-css']
 
 "coc normal config {{
 set hidden
@@ -18,6 +18,8 @@ set nowritebackup
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+" using <C-space> to trigger the completion
+autocmd FileType python inoremap <silent><expr> <c-space> coc#refresh()
 " }}
 
 " let coc server begins 500ms after vim start {{
@@ -68,7 +70,4 @@ augroup END
 "     let col = col('.') - 1
 "     return !col || getline('.')[col - 1]  =~# '\s'
 " endfunction
-" using Esc to exit the terminal
-" tnoremap <Esc> <C-\><C-n><CR>
 " }}
-" vim: set sw=2 ts=2 sts=2 et tw=120 foldmarker={{,}} foldmethod=marker foldlevel=0:

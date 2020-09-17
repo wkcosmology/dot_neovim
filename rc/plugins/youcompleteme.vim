@@ -85,6 +85,14 @@ function s:Hover()
     " close the window once the cursor moved
     autocmd CursorMoved <buffer> ++once call nvim_win_close(s:win, v:false)
 endfunction
-
 " autocmd FileType c,cpp,h,hpp nnoremap <silent> K :call <SID>Hover()<CR>
 command! YcmGetDocFloatWin :call <SID>Hover()
+
+" " open quickfix window after 
+" function! s:CustomizeYcmQuickFixWindow()
+"   " Move the window to the top of the screen.
+"   wincmd K
+"   " Set the window height to 5.
+"   5wincmd _
+" endfunction
+" autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()

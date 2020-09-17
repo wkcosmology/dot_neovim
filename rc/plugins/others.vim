@@ -4,7 +4,7 @@ filetype plugin indent on
 syntax enable
 set number
 set relativenumber
-set cursorline!
+" set cursorline!
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -15,6 +15,9 @@ set expandtab
 " set colorcolumn
 set colorcolumn=120
 
+" set smartcase
+set ignorecase
+set smartcase
 
 " indent multi times
 vnoremap < <gv
@@ -29,12 +32,7 @@ augroup END
 
 " python 
 let g:python3_host_prog = '/Users/wangk/anaconda3/bin/python3'
-
-" exit help using q
-augroup exitwithq
-autocmd!
-    autocmd FileType help,fzf,qf nnoremap <buffer> q :close<CR>
-augroup END
+let g:python_host_prog = '/Users/wangk/anaconda3/bin/python3'
 
 " spell check
 augroup lexical

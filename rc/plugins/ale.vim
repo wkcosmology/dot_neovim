@@ -39,7 +39,7 @@ let g:ale_linters = {
             \   'text': [],
             \}
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++11'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
 "}}
 
 " formater(fixer) config {{
@@ -64,7 +64,7 @@ let g:ale_c_clangformat_options='-style="{
         \ AlignAfterOpenBracket : false,
         \ AllowShortBlocksOnASingleLine : false,
         \ AllowShortCaseLabelsOnASingleLine : false,
-        \ AllowShortFunctionsOnASingleLine : false,
+        \ AllowShortFunctionsOnASingleLine : Inline,
         \ AllowShortIfStatementsOnASingleLine : Never,
         \ AllowShortLoopsOnASingleLine : false,
         \ AllowShortLambdasOnASingleLine : All,
@@ -120,4 +120,3 @@ let g:ale_c_clangformat_options='-style="{
         \ SpacesBeforeTrailingComments : 2,
         \ Standard : Auto}"'
 "}}
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{,}} foldmethod=marker foldlevel=0:

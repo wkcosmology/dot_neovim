@@ -5,9 +5,11 @@
 call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
-" fast edit{{
-" matching while typing for search
-Plug 'haya14busa/incsearch.vim'
+" ---------------------------------------------------------------------------
+" fast edit
+" ---------------------------------------------------------------------------
+" highlights patterns and ranges, and preview
+Plug 'markonm/traces.vim'
 " powerful!!! operate on surround
 Plug 'tpope/vim-surround'
 " enhance . operate, support more like vim-surround
@@ -28,18 +30,25 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'google/vim-searchindex'
 " define s as substitution
 Plug 'svermeulen/vim-easyclip'
-" multi cursor
-Plug 'mg979/vim-visual-multi'
 " file explorer
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
 " Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
+" paired operation
 Plug 'tpope/vim-unimpaired'
-" }}
+" Useful UNIX command
+Plug 'tpope/vim-eunuch'
+" align
+Plug 'junegunn/vim-easy-align'
+" markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
-" coc/fzf{{
+" ---------------------------------------------------------------------------
+" coc/fzf
+" ---------------------------------------------------------------------------
 " coc plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " fzf plugin
@@ -48,17 +57,21 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " fzf most recently used
 Plug 'pbogut/fzf-mru.vim'
-" }}
+" fzf for branches
+Plug 'stsewd/fzf-checkout.vim'
 
-" Buffer/Window/Session {{
+" ---------------------------------------------------------------------------
+" Buffer/Window/Session
+" ---------------------------------------------------------------------------
 " kill the buffer while keep the window
 Plug 'moll/vim-bbye'
 " the following two plugs is for session
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-" }}
 
-" ui{{
+" ---------------------------------------------------------------------------
+" ui
+" ---------------------------------------------------------------------------
 " Plug 'crusoexia/vim-monokai'
 Plug 'morhetz/gruvbox'
 " show the doc on echo
@@ -83,23 +96,31 @@ Plug 'ryanoasis/vim-devicons'
 Plug 't9md/vim-choosewin'
 " show marks
 Plug 'kshenoy/vim-signature'
-" }}
 
-" python related {{
+" ---------------------------------------------------------------------------
+" python related
+" ---------------------------------------------------------------------------
 Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
 Plug 'vim-python/python-syntax', {'for': ['python']}
 " add docstring in different way, like numpy
 Plug 'wkcosmology/vim-pydocstring', {'for': ['python']}
-" }}
 
-" C/C++ related {{
+" ---------------------------------------------------------------------------
+" C/C++ related
+" ---------------------------------------------------------------------------
 " great auto completion tool
-Plug 'Valloric/YouCompleteMe', {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
+Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
-" }}
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
+" Doxygen docstring for C++
+Plug 'vim-scripts/DoxygenToolkit.vim'
+" GDB
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 
-" Git {{
+" ---------------------------------------------------------------------------
+" Git
+" ---------------------------------------------------------------------------
 " show git modified line in the state column
 Plug 'mhinz/vim-signify'
 " powerful git tool
@@ -108,9 +129,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 " tree like git browser
 Plug 'junegunn/gv.vim'
-" }}
 
-" Anxuliary {{
+" ---------------------------------------------------------------------------
+" Anxuliary
+" ---------------------------------------------------------------------------
 " Great terminal tool
 Plug 'voldikss/vim-floaterm'
 " asynchronously check error
@@ -118,7 +140,7 @@ Plug 'dense-analysis/ale'
 " add head information
 Plug 'alpertuna/vim-header', { 'on': 'AddHeader'}
 " run the test file, support many filetypes, including python
-Plug 'janko/vim-test'
+Plug 'vim-test/vim-test'
 " task control
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
@@ -128,10 +150,13 @@ Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 " spell check
 Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
-Plug 'tpope/vim-scriptease'
-" }}
+" undo tree
+Plug 'mbbill/undotree'
+" tag bar
+Plug 'majutsushi/tagbar'
+" gist
+Plug 'lambdalisue/vim-gista'
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------
 " :setlocal foldmethod=marker
-" vim: set sw=2 ts=2 sts=2 et tw=120 foldmarker={{,}} foldmethod=marker foldlevel=0:

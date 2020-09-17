@@ -1,10 +1,10 @@
 " fzf basic configure {{
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~30%' }
-let g:fzf_preview_window = 'right:60%'
+let g:fzf_preview_window = ''
 
-let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
+let g:fzf_colors = {
+            \ 'fg':      ['fg', 'Normal'],
             \ 'bg':      ['bg', 'Normal'],
             \ 'hl':      ['fg', 'Comment'],
             \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
@@ -80,7 +80,10 @@ command! -bang -nargs=? -complete=dir Files
 
 " using rg to perform the fuzzy search {{
 command! -bang -nargs=* PRg
-            \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+            \ call fzf#vim#grep(
+            \ 'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>),
+            \ 1,
+            \ {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
 " }}
 
 " asynctasks.vim {{
@@ -115,4 +118,65 @@ endfunction
 command! -nargs=0 AsyncTaskFzf call s:fzf_task()
 " }}
 
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{,}} foldmethod=marker foldlevel=0:
+" fzf for tex (no need to install plugin) {{
+function! s:bibtex_cite_sink(lines)
+    let r=system('bibtex-cite ', a:lines[1])[1:]
+    if a:lines[0] ==# 'ctrl-t'
+        execute ':normal! a\citet{' . r . '}'
+    else
+        execute ':normal! a\citep[][]{' . r . '}'
+    endif
+endfunction
+
+command! FZFBibtex :call fzf#run({
+                \ 'source': 'bibtex-ls '.expand("%:p:h").'/bibtex.bib',
+                \ 'sink*': function('<sid>bibtex_cite_sink'),
+                \ 'window': 'call Centered_floating_window()',
+                \ 'options': '--ansi --layout=reverse-list --expect=ctrl-t,<CR> --multi --prompt "Cite> "'})
+command! FZFTexToc :call vimtex#fzf#run('ctli', g:fzf_layout)
+" }}
+
+
+" fzf for project path {{
+function! s:fzf_project(lines)
+    let l:line_list = split(a:lines[0])
+    echo 'Enter Project: ' . l:line_list[0] . ' >> Path: ' . l:line_list[1]
+    execute ':cd '. l:line_list[1]
+endfunction
+
+command! FZFProject :call fzf#run({
+                \ 'source': 'cat /Users/wangk/.config/nvim/.myprojects.fzf',
+                \ 'sink*': function('<sid>fzf_project'),
+                \ 'window': 'call Centered_floating_window()',
+                \ 'options': '--ansi --layout=reverse-list --multi --prompt "Project> "'})
+"}}
+
+" FZF for asynctasks.vim
+function! s:fzf_sink(what)
+	let p1 = stridx(a:what, '<')
+	if p1 >= 0
+		let name = strpart(a:what, 0, p1)
+		let name = substitute(name, '^\s*\(.\{-}\)\s*$', '\1', '')
+		if name != ''
+			exec "AsyncTask ". fnameescape(name)
+		endif
+	endif
+endfunction
+
+function! s:fzf_task()
+	let rows = asynctasks#source(&columns * 48 / 100)
+	let source = []
+	for row in rows
+		let name = row[0]
+		let source += [name . '  ' . row[1] . '  : ' . row[2]]
+	endfor
+	let opts = { 'source': source, 'sink': function('s:fzf_sink'),
+				\ 'options': '+m --nth 1 --inline-info --tac' }
+	if exists('g:fzf_layout')
+		for key in keys(g:fzf_layout)
+			let opts[key] = deepcopy(g:fzf_layout[key])
+		endfor
+	endif
+	call fzf#run(opts)
+endfunction
+command! -nargs=0 AsyncTaskFzf call s:fzf_task()

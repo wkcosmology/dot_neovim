@@ -1,0 +1,379 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/96237bc/
+$FZF_DEFAULT_OPTS	rc/plugins/fzf.vim	/^let $FZF_DEFAULT_OPTS = '--layout=reverse'$/;"	v
+*	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> *$/;"	m
+.	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> .$/;"	m
+0	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+0	coc-settings.json	/^      "filetypes": ["lua"]$/;"	s	array:languageserver.lua.filetypes
+0	coc-settings.json	/^      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git\/"],$/;"	s	array:languageserver.clangd.rootPatterns
+0	coc-settings.json	/^"python.autoComplete.extraPaths": ["\/Users\/wangk\/anaconda3\/lib\/python3.7\/site-packages\/"]/;"	s	array:python.autoComplete.extraPaths
+1	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+1	coc-settings.json	/^      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git\/"],$/;"	s	array:languageserver.clangd.rootPatterns
+2	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+2	coc-settings.json	/^      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git\/"],$/;"	s	array:languageserver.clangd.rootPatterns
+3	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+4	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+5	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+6	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	s	array:languageserver.clangd.filetypes
+;	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> ;$/;"	m
+<	rc/plugins/others.vim	/^vnoremap < <gv$/;"	m
+<C-_>	rc/plugins/vim_pydocstring.vim	/^nmap <silent> <C-_> <Plug>(pydocstring)$/;"	m
+<C-a>	rc/keymapping.vim	/^cnoremap <C-a> <Home>$/;"	m
+<C-a>	rc/keymapping.vim	/^inoremap <C-a> <Home>$/;"	m
+<C-b>	rc/keymapping.vim	/^cnoremap <C-b> <Left>$/;"	m
+<C-b>	rc/keymapping.vim	/^inoremap <C-b> <Left>$/;"	m
+<C-e>	rc/keymapping.vim	/^cnoremap <C-e> <End>$/;"	m
+<C-e>	rc/keymapping.vim	/^inoremap <C-e> <End>$/;"	m
+<C-f>	rc/keymapping.vim	/^cnoremap <C-f> <Right>$/;"	m
+<C-f>	rc/keymapping.vim	/^inoremap <C-f> <Right>$/;"	m
+<C-g>	coc-settings.json	/^        "<C-g>": "do:exit"$/;"	s	object:list.insertMappings
+<C-g>	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> <C-g>$/;"	m
+<C-j>	rc/keymapping.vim	/^nmap <silent> <C-j> <Plug>(ale_next_wrap)$/;"	m
+<C-k>	rc/keymapping.vim	/^nmap <silent> <C-k> <Plug>(ale_previous_wrap)$/;"	m
+<C-l>	rc/keymapping.vim	/^nnoremap <silent> <C-l> :nohlsearch<cr>$/;"	m
+<C-l>	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> <C-l>$/;"	m
+<C-n>	coc-settings.json	/^		"<C-n>": "normal:j",$/;"	s	object:list.insertMappings
+<C-n>	rc/keymapping.vim	/^inoremap <C-n> <Down>$/;"	m
+<C-n>	rc/plugins/coc.vim	/^nnoremap <expr><C-n> coc#util#has_float() ? coc#util#float_scroll(1) : "\\<C-f>"$/;"	m
+<C-p>	coc-settings.json	/^		"<C-p>": "normal:k",$/;"	s	object:list.insertMappings
+<C-p>	rc/keymapping.vim	/^inoremap <C-p> <Up>$/;"	m
+<C-p>	rc/plugins/coc.vim	/^nnoremap <expr><C-p> coc#util#has_float() ? coc#util#float_scroll(0) : "\\<C-b>"$/;"	m
+<C-r>	coc-settings.json	/^        "<C-r>": "do:refresh",$/;"	s	object:list.insertMappings
+<C-t>	rc/keymapping.vim	/^nmap <C-t> <Nop>$/;"	m
+<C-t>c	rc/keymapping.vim	/^nmap <C-t>c :tabclose<CR>$/;"	m
+<C-t>n	rc/keymapping.vim	/^nmap <C-t>n :TabooOpen$/;"	m
+<C-t>r	rc/keymapping.vim	/^nmap <C-t>r :TabooRename$/;"	m
+<C-w>m	rc/keymapping.vim	/^nmap <C-w>m <Plug>(zoom-toggle)$/;"	m
+<C-w>w	rc/keymapping.vim	/^nmap <C-w>w  <Plug>(choosewin)$/;"	m
+<CR>	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> <CR>$/;"	m
+<F1>	rc/keymapping.vim	/^nmap <F1> :ALEFix<cr>$/;"	m
+<F3>	rc/keymapping.vim	/^noremap <F3> :call asyncrun#quickfix_toggle(10)<cr>$/;"	m
+<F8>	rc/keymapping.vim	/^nmap <F8> :TagbarToggle<CR>$/;"	m
+<Leader>ff	rc/keymapping.vim	/^nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>$/;"	m
+<Leader>fp	rc/keymapping.vim	/^nnoremap <silent> <Leader>fp :FZFProject <CR>$/;"	m
+<Space>	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> <Space>$/;"	m
+<leader>1	rc/plugins/ui.vim	/^nmap <leader>1 <Plug>AirlineSelectTab1$/;"	m
+<leader>2	rc/plugins/ui.vim	/^nmap <leader>2 <Plug>AirlineSelectTab2$/;"	m
+<leader>3	rc/plugins/ui.vim	/^nmap <leader>3 <Plug>AirlineSelectTab3$/;"	m
+<leader>4	rc/plugins/ui.vim	/^nmap <leader>4 <Plug>AirlineSelectTab4$/;"	m
+<leader>5	rc/plugins/ui.vim	/^nmap <leader>5 <Plug>AirlineSelectTab5$/;"	m
+<leader>6	rc/plugins/ui.vim	/^nmap <leader>6 <Plug>AirlineSelectTab6$/;"	m
+<leader>7	rc/plugins/ui.vim	/^nmap <leader>7 <Plug>AirlineSelectTab7$/;"	m
+<leader>8	rc/plugins/ui.vim	/^nmap <leader>8 <Plug>AirlineSelectTab8$/;"	m
+<leader>9	rc/plugins/ui.vim	/^nmap <leader>9 <Plug>AirlineSelectTab9$/;"	m
+<leader>:	rc/keymapping.vim	/^nnoremap <silent> <leader>: :Commands<CR>$/;"	m
+<leader>[	rc/plugins/ui.vim	/^nmap <leader>[ <Plug>AirlineSelectPrevTab$/;"	m
+<leader>]	rc/plugins/ui.vim	/^nmap <leader>] <Plug>AirlineSelectNextTab$/;"	m
+<leader>bD	rc/keymapping.vim	/^nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>$/;"	m
+<leader>bb	rc/keymapping.vim	/^nnoremap <silent> <leader>bb :Buffers <CR>$/;"	m
+<leader>bd	rc/keymapping.vim	/^nmap <silent> <leader>bd :Bwipeout<CR>$/;"	m
+<leader>ec	rc/keymapping.vim	/^nmap <silent> <leader>ec :ALEResetBuffer<CR>$/;"	m
+<leader>feR	rc/keymapping.vim	/^nnoremap <silent> <leader>feR :so $MYVIMRC<CR>$/;"	m
+<leader>fr	rc/keymapping.vim	/^nnoremap <silent> <leader>fr :FZFMru <CR>$/;"	m
+<leader>fs	rc/keymapping.vim	/^nnoremap <silent> <leader>fs :w<CR>$/;"	m
+<leader>gP	rc/keymapping.vim	/^nnoremap <leader>gP :Gpush<cr>$/;"	m
+<leader>gb	rc/keymapping.vim	/^nnoremap <leader>gb :GCheckout<cr>$/;"	m
+<leader>gc	rc/keymapping.vim	/^nnoremap <leader>gc :Gcommit<cr>$/;"	m
+<leader>gd	rc/keymapping.vim	/^nnoremap <leader>gd :Gvdiffsplit!<cr>$/;"	m
+<leader>gdh	rc/keymapping.vim	/^nnoremap <leader>gdh :diffget \/\/2<cr>$/;"	m
+<leader>gdl	rc/keymapping.vim	/^nnoremap <leader>gdl :diffget \/\/3<cr>$/;"	m
+<leader>gg	rc/keymapping.vim	/^nnoremap <leader>gg :G<cr>$/;"	m
+<leader>gl	rc/keymapping.vim	/^nnoremap <leader>gl :Gclog<cr>$/;"	m
+<leader>gv	rc/keymapping.vim	/^nnoremap <leader>gv :GV<cr>$/;"	m
+<leader>gw	rc/keymapping.vim	/^nnoremap <leader>gw :Gwrite<cr>$/;"	m
+<leader>je	rc/keymapping.vim	/^nmap <silent> <leader>je <Plug>(easymotion-bd-e)$/;"	m
+<leader>jj	rc/keymapping.vim	/^nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)$/;"	m
+<leader>jl	rc/keymapping.vim	/^nmap <silent> <leader>jl <Plug>(easymotion-bd-jk)$/;"	m
+<leader>js	rc/keymapping.vim	/^nmap <silent> <leader>js <Plug>(easymotion-overwin-f2)$/;"	m
+<leader>jw	rc/keymapping.vim	/^nmap <silent> <leader>jw <Plug>(easymotion-bd-w)$/;"	m
+<leader>lc	rc/keymapping.vim	/^nnoremap <silent> <leader>lc :ccl\\|lcl<CR>$/;"	m
+<leader>sp	rc/keymapping.vim	/^nnoremap <silent> <leader>sp :PRg<CR>$/;"	m
+<leader>ss	rc/keymapping.vim	/^nnoremap <silent> <leader>ss :BLines<CR>$/;"	m
+<leader>st	rc/keymapping.vim	/^nnoremap <silent> <leader>st :AsyncTaskFzf<CR>$/;"	m
+<leader>te	rc/keymapping.vim	/^nnoremap <leader>te :TestNearest<CR>$/;"	m
+<leader>tf	rc/keymapping.vim	/^noremap <silent><leader>tf :AsyncTaskFzf<cr>$/;"	m
+<leader>tn	rc/keymapping.vim	/^nnoremap <leader>tn :FloatermNew<cr>$/;"	m
+<leader>tt	rc/keymapping.vim	/^nnoremap <leader>tt :FloatermToggle<cr>$/;"	m
+<leader>ud	rc/keymapping.vim	/^nnoremap <leader>ud :UndotreeToggle<cr>$/;"	m
+<space>ft	rc/keymapping.vim	/^nnoremap <silent> <space>ft :DefxDefault <CR>$/;"	m
+<space>sy	rc/keymapping.vim	/^nnoremap <silent> <space>sy  :<C-u>CocList yank<cr>$/;"	m
+>	rc/plugins/others.vim	/^vnoremap > >gv$/;"	m
+ALWAYS	pythonx/javascript_snippets.py	/^ALWAYS = 'always'$/;"	v
+AsyncTaskFzf	rc/plugins/fzf.vim	/^command! -nargs=0 AsyncTaskFzf call s:fzf_task()$/;"	c
+C	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> C$/;"	m
+CdPwd	rc/script.vim	/^command! -nargs=0 CdPwd :lcd %:p:h$/;"	c
+Centered_floating_window	rc/plugins/fzf.vim	/^function! Centered_floating_window()$/;"	f
+CloseFloatingWin	rc/keymapping.vim	/^command! CloseFloatingWin execute 'windo call <SID>closefloatingwin()'$/;"	c
+CloseLoclistWindowGroup	rc/script.vim	/^augroup CloseLoclistWindowGroup$/;"	a
+CocTimerStart	rc/plugins/coc.vim	/^function! CocTimerStart(timer)$/;"	f
+DefxDefault	rc/plugins/defx.vim	/^command! DefxDefault Defx -split=floating -wincol=`&columns` -winheight=`&lines` -winwidth=60$/;"	c
+DeleteHiddenBuffers	rc/keymapping.vim	/^    function DeleteHiddenBuffers() " Vim with the 'hidden' option$/;"	f
+DeleteHiddenBuffers	rc/keymapping.vim	/^command! DeleteHiddenBuffers call DeleteHiddenBuffers()$/;"	c
+Dot	init.vim	/^function! Dot(path)$/;"	f
+FZFBibtex	rc/plugins/fzf.vim	/^command! FZFBibtex :call fzf#run({$/;"	c
+FZFProject	rc/plugins/fzf.vim	/^command! FZFProject :call fzf#run({$/;"	c
+FZFTexToc	rc/plugins/fzf.vim	/^command! FZFTexToc :call vimtex#fzf#run('ctli', g:fzf_layout)$/;"	c
+Files	rc/plugins/fzf.vim	/^command! -bang -nargs=? -complete=dir Files$/;"	c
+K	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> K$/;"	m
+M	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> M$/;"	m
+N	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> N$/;"	m
+NEVER	pythonx/javascript_snippets.py	/^NEVER = 'never'$/;"	v
+Nrun	rc/script.vim	/^command! -complete=file -nargs=* Nrun :call s:Terminal(<q-args>)$/;"	c
+PRg	rc/plugins/fzf.vim	/^command! -bang -nargs=* PRg$/;"	c
+Registers	rc/plugins/fzf.vim	/^command! -bang Registers call s:registers('<bang>' ==# '!')$/;"	c
+S	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> S$/;"	m
+TrimSpace	rc/keymapping.vim	/^command! TrimSpace execute':%s\/\\s\\+$\/\/e'$/;"	c
+UpdateSkim	rc/plugins/vimtex.vim	/^function! UpdateSkim(status)$/;"	f
+YcmGetDocFloatWin	rc/plugins/youcompleteme.vim	/^command! YcmGetDocFloatWin :call <SID>Hover()$/;"	c
+[t	rc/keymapping.vim	/^nnoremap [t :FloatermPrev<cr><C-\\><C-n><cr>$/;"	m
+]t	rc/keymapping.vim	/^nnoremap ]t :FloatermNext<cr><C-\\><C-n><cr>$/;"	m
+_parse_comments	pythonx/vimsnippets.py	/^def _parse_comments(s):$/;"	f
+align	rc/keymapping.vim	/^augroup align$/;"	a
+bufwipeout	rc/plugins/fzf.vim	/^    augroup bufwipeout$/;"	a
+c	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> c$/;"	m
+cd	rc/keymapping.vim	/^nmap cd :call <SID>CdPwd()<cr>$/;"	m
+cd	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> cd$/;"	m
+clangd	coc-settings.json	/^    "clangd": {$/;"	o	object:languageserver
+class	coc-settings.json	/^		"class": "\\uf0e8",$/;"	s	object:suggest.completionItemKindLabels
+coc.preferences.hoverTarget	coc-settings.json	/^"coc.preferences.hoverTarget": "float",$/;"	s
+coc.preferences.messageLevel	coc-settings.json	/^"coc.preferences.messageLevel": "warning",$/;"	s
+coc.preferences.previewAutoClose	coc-settings.json	/^"coc.preferences.previewAutoClose": false,$/;"	b
+cocmapping	rc/keymapping.vim	/^augroup cocmapping$/;"	a
+color	coc-settings.json	/^		"color": "\\ue22b",$/;"	s	object:suggest.completionItemKindLabels
+command	coc-settings.json	/^      "command": "ccls",$/;"	s	object:languageserver.clangd
+command	coc-settings.json	/^      "command": "lua-lsp",$/;"	s	object:languageserver.lua
+complete	pythonx/vimsnippets.py	/^def complete(tab, opts):$/;"	f
+constant	coc-settings.json	/^		"constant": "\\uf8fe",$/;"	s	object:suggest.completionItemKindLabels
+d	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> d$/;"	m
+default	coc-settings.json	/^		"default": "\\uf29c"$/;"	s	object:suggest.completionItemKindLabels
+diagnostic.enable	coc-settings.json	/^"diagnostic.enable": false,$/;"	b
+display_width	pythonx/vimsnippets.py	/^def display_width(str):$/;"	f
+enum	coc-settings.json	/^		"enum": "\\uf435",$/;"	s	object:suggest.completionItemKindLabels
+enumMember	coc-settings.json	/^		"enumMember": "\\uf02b",$/;"	s	object:suggest.completionItemKindLabels
+event	coc-settings.json	/^		"event": "\\ufacd",$/;"	s	object:suggest.completionItemKindLabels
+exitwithq	rc/keymapping.vim	/^augroup exitwithq$/;"	a
+field	coc-settings.json	/^		"field": "\\uf9be",$/;"	s	object:suggest.completionItemKindLabels
+file	coc-settings.json	/^		"file": "\\uf723",$/;"	s	object:suggest.completionItemKindLabels
+filetypes	coc-settings.json	/^      "filetypes": ["c", "cc", "cpp", "hpp", "c++", "objc", "objcpp"]$/;"	a	object:languageserver.clangd
+filetypes	coc-settings.json	/^      "filetypes": ["lua"]$/;"	a	object:languageserver.lua
+folder	coc-settings.json	/^		"folder": "\\uf114",$/;"	s	object:suggest.completionItemKindLabels
+foldmarker	pythonx/vimsnippets.py	/^def foldmarker():$/;"	f
+function	coc-settings.json	/^		"function": "\\u0192",$/;"	s	object:suggest.completionItemKindLabels
+g:AutoPairsCenterLine	rc/plugins/auto_pairs.vim	/^let g:AutoPairsCenterLine = 0$/;"	v
+g:AutoPairsMapCR	rc/plugins/auto_pairs.vim	/^let g:AutoPairsMapCR = 1$/;"	v
+g:EasyClipEnableBlackHoleRedirect	rc/plugins/vim_easyclip.vim	/^let g:EasyClipEnableBlackHoleRedirect = 0$/;"	v
+g:EasyClipUseCutDefaults	rc/plugins/vim_easyclip.vim	/^let g:EasyClipUseCutDefaults = 0$/;"	v
+g:EasyClipUseSubstituteDefaults	rc/plugins/vim_easyclip.vim	/^let g:EasyClipUseSubstituteDefaults = 1$/;"	v
+g:UltiSnipsExpandTrigger	rc/plugins/ultisnip.vim	/^let g:UltiSnipsExpandTrigger = '<C-j>'$/;"	v
+g:UltiSnipsJumpBackwardTrigger	rc/plugins/ultisnip.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<C-k>'$/;"	v
+g:UltiSnipsJumpForwardTrigger	rc/plugins/ultisnip.vim	/^let g:UltiSnipsJumpForwardTrigger = '<C-j>'$/;"	v
+g:airline#extensions#ale#enabled	rc/plugins/ale.vim	/^let g:airline#extensions#ale#enabled = 1$/;"	v
+g:airline#extensions#csv#enabled	rc/plugins/ui.vim	/^let g:airline#extensions#csv#enabled = 1$/;"	v
+g:airline#extensions#tabline#buffer_idx_mode	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#buffer_idx_mode = 1$/;"	v
+g:airline#extensions#tabline#enabled	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#enabled = 1$/;"	v
+g:airline#extensions#tabline#fnamemod	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#fnamemod = ':t'$/;"	v
+g:airline#extensions#tabline#show_buffers	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#show_buffers = 0$/;"	v
+g:airline#extensions#tabline#show_tab_count	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#show_tab_count = 1$/;"	v
+g:airline#extensions#tabline#show_tab_nr	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#show_tab_nr = 1$/;"	v
+g:airline#extensions#tabline#tab_nr_type	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#tab_nr_type = 2$/;"	v
+g:airline#extensions#tabline#tabnr_formatter	rc/plugins/ui.vim	/^let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'$/;"	v
+g:airline#extensions#virtualenv#enabled	rc/plugins/ui.vim	/^let g:airline#extensions#virtualenv#enabled = 0$/;"	v
+g:airline_extensions	rc/plugins/ui.vim	/^let g:airline_extensions = ['ale', 'branch', 'fugitiveline', 'tabline']$/;"	v
+g:airline_powerline_fonts	rc/plugins/ui.vim	/^let g:airline_powerline_fonts = 1$/;"	v
+g:ale_c_clangformat_executable	rc/plugins/ale.vim	/^let g:ale_c_clangformat_executable='\/usr\/local\/bin\/clang-format'$/;"	v
+g:ale_c_clangformat_options	rc/plugins/ale.vim	/^let g:ale_c_clangformat_options='-style="{$/;"	v
+g:ale_c_gcc_options	rc/plugins/ale.vim	/^let g:ale_c_gcc_options = '-Wall -O2 -std=c99'$/;"	v
+g:ale_completion_enabled	rc/plugins/ale.vim	/^let g:ale_completion_enabled = 0$/;"	v
+g:ale_cpp_gcc_options	rc/plugins/ale.vim	/^let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'$/;"	v
+g:ale_echo_msg_error_str	rc/plugins/ale.vim	/^let g:ale_echo_msg_error_str = 'E'$/;"	v
+g:ale_echo_msg_format	rc/plugins/ale.vim	/^let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'$/;"	v
+g:ale_echo_msg_warning_str	rc/plugins/ale.vim	/^let g:ale_echo_msg_warning_str = 'W'$/;"	v
+g:ale_fixers	rc/plugins/ale.vim	/^let g:ale_fixers={$/;"	v
+g:ale_lint_on_enter	rc/plugins/ale.vim	/^let g:ale_lint_on_enter = 0$/;"	v
+g:ale_lint_on_insert_leave	rc/plugins/ale.vim	/^let g:ale_lint_on_insert_leave = 0$/;"	v
+g:ale_lint_on_text_changed	rc/plugins/ale.vim	/^let g:ale_lint_on_text_changed = 'never'$/;"	v
+g:ale_linters	rc/plugins/ale.vim	/^let g:ale_linters = {$/;"	v
+g:ale_linters_explicit	rc/plugins/ale.vim	/^let g:ale_linters_explicit = 1$/;"	v
+g:ale_list_window_size	rc/plugins/ale.vim	/^let g:ale_list_window_size = 5$/;"	v
+g:ale_open_list	rc/plugins/ale.vim	/^let g:ale_open_list = 1$/;"	v
+g:ale_python_isort_executable	rc/plugins/ale.vim	/^let g:ale_python_isort_executable='\/Users\/wangk\/anaconda3\/bin\/isort'$/;"	v
+g:ale_python_isort_options	rc/plugins/ale.vim	/^let g:ale_python_isort_options='-sl'$/;"	v
+g:ale_python_yapf_executable	rc/plugins/ale.vim	/^let g:ale_python_yapf_executable='\/Users\/wangk\/anaconda3\/bin\/yapf'$/;"	v
+g:ale_set_balloons	rc/plugins/ale.vim	/^let g:ale_set_balloons = 1$/;"	v
+g:ale_set_loclist	rc/plugins/ale.vim	/^let g:ale_set_loclist = 0$/;"	v
+g:ale_set_quickfix	rc/plugins/ale.vim	/^let g:ale_set_quickfix = 0$/;"	v
+g:ale_sign_error	rc/plugins/ale.vim	/^let g:ale_sign_error = '✘'$/;"	v
+g:ale_sign_warning	rc/plugins/ale.vim	/^let g:ale_sign_warning = '⚡'$/;"	v
+g:asyncrun_open	rc/plugins/asyncrun.vim	/^let g:asyncrun_open = 10$/;"	v
+g:choosewin_overlay_enable	rc/plugins/choosewin.vim	/^let g:choosewin_overlay_enable = 1$/;"	v
+g:coc_global_extensions	rc/plugins/coc.vim	/^let g:coc_global_extensions = [$/;"	v
+g:coc_start_at_startup	rc/plugins/coc.vim	/^let g:coc_start_at_startup=0$/;"	v
+g:echodoc#type	rc/plugins/echodoc.vim	/^let g:echodoc#type = "signature"$/;"	v
+g:echodoc_enable_at_startup	rc/plugins/echodoc.vim	/^let g:echodoc_enable_at_startup = 1$/;"	v
+g:floaterm_background	rc/plugins/vim_floaterm.vim	/^let g:floaterm_background = "2E2C2C"$/;"	v
+g:floaterm_height	rc/plugins/vim_floaterm.vim	/^let g:floaterm_height = 0.4$/;"	v
+g:floaterm_position	rc/plugins/vim_floaterm.vim	/^let g:floaterm_position = "bottomleft"$/;"	v
+g:floaterm_width	rc/plugins/vim_floaterm.vim	/^let g:floaterm_width = 0.99$/;"	v
+g:floaterm_wintype	rc/plugins/vim_floaterm.vim	/^let g:floaterm_wintype = "floating"$/;"	v
+g:fzf_buffers_jump	rc/plugins/fzf.vim	/^let g:fzf_buffers_jump = 1$/;"	v
+g:fzf_colors	rc/plugins/fzf.vim	/^let g:fzf_colors = {$/;"	v
+g:fzf_commands_expect	rc/plugins/fzf.vim	/^let g:fzf_commands_expect = 'alt-enter,ctrl-x'$/;"	v
+g:fzf_layout	rc/plugins/fzf.vim	/^let g:fzf_layout = { 'down': '~30%' }$/;"	v
+g:fzf_layout	rc/plugins/fzf.vim	/^let g:fzf_layout = { 'window': 'call Centered_floating_window()' }$/;"	v
+g:fzf_preview_window	rc/plugins/fzf.vim	/^let g:fzf_preview_window = ''$/;"	v
+g:gruvbox_contrast_dark	rc/plugins/ui.vim	/^let g:gruvbox_contrast_dark='hard'$/;"	v
+g:gruvbox_invert_selection	rc/plugins/ui.vim	/^let g:gruvbox_invert_selection=0$/;"	v
+g:header_auto_add_header	rc/plugins/vim_header.vim	/^let g:header_auto_add_header = 0$/;"	v
+g:header_field_author	rc/plugins/vim_header.vim	/^let g:header_field_author = 'Kai Wang'$/;"	v
+g:header_field_author_email	rc/plugins/vim_header.vim	/^let g:header_field_author_email = 'wkcosmology@gmail.com'$/;"	v
+g:header_field_modified_timestamp	rc/plugins/vim_header.vim	/^let g:header_field_modified_timestamp = 0$/;"	v
+g:header_field_timestamp_format	rc/plugins/vim_header.vim	/^let g:header_field_timestamp_format = '%m.%d.%Y'$/;"	v
+g:indentLine_char_list	rc/plugins/ui.vim	/^let g:indentLine_char_list = ['|', '¦', '┆', '┊']$/;"	v
+g:indentLine_fileTypeExclude	rc/plugins/vimtex.vim	/^let g:indentLine_fileTypeExclude = ['tex']$/;"	v
+g:indentLine_setColors	rc/plugins/ui.vim	/^let g:indentLine_setColors = 0$/;"	v
+g:python3_host_prog	rc/plugins/others.vim	/^let g:python3_host_prog = '\/Users\/wangk\/anaconda3\/bin\/python3'$/;"	v
+g:python_highlight_all	rc/plugins/ui.vim	/^let g:python_highlight_all = 1$/;"	v
+g:python_highlight_space_errors	rc/plugins/ui.vim	/^let g:python_highlight_space_errors = 0$/;"	v
+g:scrolloff_fraction	rc/plugins/vim_scrolloff_fraction.vim	/^let g:scrolloff_fraction = 0.15$/;"	v
+g:session_autoload	rc/plugins/vim_session.vim	/^let g:session_autoload='no'$/;"	v
+g:session_autosave	rc/plugins/vim_session.vim	/^let g:session_autosave='no'$/;"	v
+g:tagbar_autofocus	rc/plugins/tagbar.vim	/^let g:tagbar_autofocus = 1$/;"	v
+g:tagbar_compact	rc/plugins/tagbar.vim	/^let g:tagbar_compact = 1$/;"	v
+g:tagbar_position	rc/plugins/tagbar.vim	/^let g:tagbar_position = 'left'$/;"	v
+g:templates_directory	rc/plugins/vim_template.vim	/^let g:templates_directory='~\/.config\/nvim\/vim_template\/'$/;"	v
+g:tex_conceal	rc/plugins/vim_markdown.vim	/^let g:tex_conceal = ''$/;"	v
+g:tex_conceal	rc/plugins/vimtex.vim	/^let g:tex_conceal = ''$/;"	v
+g:tex_flavor	rc/plugins/vimtex.vim	/^let g:tex_flavor = 'latex'$/;"	v
+g:trigger_size	rc/plugins/coc.vim	/^let g:trigger_size = 0.5 * 1048576$/;"	v
+g:ultisnips_javascript	rc/plugins/ultisnip.vim	/^let g:ultisnips_javascript = {$/;"	v
+g:ultisnips_python_style	rc/plugins/ultisnip.vim	/^let g:ultisnips_python_style = "numpy"$/;"	v
+g:vim_isort_config_overrides	rc/plugins/vim_isort.vim	/^let g:vim_isort_config_overrides = {$/;"	v
+g:vim_markdown_conceal	rc/plugins/vim_markdown.vim	/^let g:vim_markdown_conceal = 0$/;"	v
+g:vim_markdown_conceal_code_blocks	rc/plugins/vim_markdown.vim	/^let g:vim_markdown_conceal_code_blocks = 0$/;"	v
+g:vim_markdown_folding_disabled	rc/plugins/vim_markdown.vim	/^let g:vim_markdown_folding_disabled = 1$/;"	v
+g:vim_markdown_math	rc/plugins/vim_markdown.vim	/^let g:vim_markdown_math = 1$/;"	v
+g:vimtex_compiler_callback_hooks	rc/plugins/vimtex.vim	/^let g:vimtex_compiler_callback_hooks = ['UpdateSkim']$/;"	v
+g:vimtex_compiler_progname	rc/plugins/vimtex.vim	/^let g:vimtex_compiler_progname = 'nvr'$/;"	v
+g:vimtex_compiler_tectonic	rc/plugins/vimtex.vim	/^let g:vimtex_compiler_tectonic = {$/;"	v
+g:vimtex_quickfix_enabled	rc/plugins/vimtex.vim	/^let g:vimtex_quickfix_enabled=1$/;"	v
+g:vimtex_quickfix_open_on_warning	rc/plugins/vimtex.vim	/^let g:vimtex_quickfix_open_on_warning=0$/;"	v
+g:vimtex_view_automatic	rc/plugins/vimtex.vim	/^let g:vimtex_view_automatic = 1$/;"	v
+g:vimtex_view_general_options	rc/plugins/vimtex.vim	/^let g:vimtex_view_general_options = '-r @line @pdf @tex'$/;"	v
+g:vimtex_view_general_viewer	rc/plugins/vimtex.vim	/^let g:vimtex_view_general_viewer$/;"	v
+g:vimtex_view_method	rc/plugins/vimtex.vim	/^let g:vimtex_view_method = 'skim'$/;"	v
+g:ycm_add_preview_to_completeopt	rc/plugins/youcompleteme.vim	/^let g:ycm_add_preview_to_completeopt=0$/;"	v
+g:ycm_auto_trigger	rc/plugins/youcompleteme.vim	/^let g:ycm_auto_trigger = 1$/;"	v
+g:ycm_autoclose_preview_window_after_completion	rc/plugins/youcompleteme.vim	/^let g:ycm_autoclose_preview_window_after_completion = 1$/;"	v
+g:ycm_cache_omnifunc	rc/plugins/youcompleteme.vim	/^let g:ycm_cache_omnifunc=0$/;"	v
+g:ycm_collect_identifiers_from_comments_and_strings	rc/plugins/youcompleteme.vim	/^let g:ycm_collect_identifiers_from_comments_and_strings=1$/;"	v
+g:ycm_collect_identifiers_from_tags_files	rc/plugins/youcompleteme.vim	/^let g:ycm_collect_identifiers_from_tags_files=0$/;"	v
+g:ycm_complete_in_strings	rc/plugins/youcompleteme.vim	/^let g:ycm_complete_in_strings = 1$/;"	v
+g:ycm_confirm_extra_conf	rc/plugins/youcompleteme.vim	/^let g:ycm_confirm_extra_conf=0$/;"	v
+g:ycm_disable_for_files_larger_than_kb	rc/plugins/youcompleteme.vim	/^let g:ycm_disable_for_files_larger_than_kb = 1000$/;"	v
+g:ycm_enable_diagnostic_highlighting	rc/plugins/youcompleteme.vim	/^let g:ycm_enable_diagnostic_highlighting = 0$/;"	v
+g:ycm_enable_diagnostic_signs	rc/plugins/youcompleteme.vim	/^let g:ycm_enable_diagnostic_signs = 0$/;"	v
+g:ycm_filetype_whitelist	rc/plugins/youcompleteme.vim	/^let g:ycm_filetype_whitelist = {$/;"	v
+g:ycm_global_ycm_extra_conf	rc/plugins/youcompleteme.vim	/^let g:ycm_global_ycm_extra_conf='~\/.ycm_extra_conf.py'$/;"	v
+g:ycm_key_list_previous_completion	rc/keymapping.vim	/^let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']$/;"	v
+g:ycm_key_list_select_completion	rc/keymapping.vim	/^let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']$/;"	v
+g:ycm_max_num_candidates	rc/plugins/youcompleteme.vim	/^let g:ycm_max_num_candidates=50$/;"	v
+g:ycm_min_num_identifier_candidate_chars	rc/plugins/youcompleteme.vim	/^let g:ycm_min_num_identifier_candidate_chars = 2$/;"	v
+g:ycm_min_num_of_chars_for_completion	rc/plugins/youcompleteme.vim	/^let g:ycm_min_num_of_chars_for_completion=2$/;"	v
+g:ycm_seed_identifiers_with_syntax	rc/plugins/youcompleteme.vim	/^let g:ycm_seed_identifiers_with_syntax=0$/;"	v
+g:ycm_semantic_triggers	rc/plugins/youcompleteme.vim	/^let g:ycm_semantic_triggers =  {$/;"	v
+g:ycm_show_diagnostics_ui	rc/plugins/youcompleteme.vim	/^let g:ycm_show_diagnostics_ui=0$/;"	v
+g:ycm_use_clangd	rc/plugins/youcompleteme.vim	/^let g:ycm_use_clangd = 1 " very important!!!$/;"	v
+g:ycm_use_ultisnips_completer	rc/plugins/youcompleteme.vim	/^let g:ycm_use_ultisnips_completer=1$/;"	v
+ga	rc/plugins/vim_easy_align.vim	/^nmap ga <Plug>(EasyAlign)$/;"	m
+ga	rc/plugins/vim_easy_align.vim	/^xmap ga <Plug>(EasyAlign)$/;"	m
+get_comment_format	pythonx/vimsnippets.py	/^def get_comment_format():$/;"	f
+get_option	pythonx/javascript_snippets.py	/^def get_option(snip, option, default=None):$/;"	f
+h	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> h$/;"	m
+has_cjk	pythonx/vimsnippets.py	/^def has_cjk(s):$/;"	f
+hugefile	rc/plugins/coc.vim	/^augroup hugefile$/;"	a
+interface	coc-settings.json	/^		"interface": "\\uf417",$/;"	s	object:suggest.completionItemKindLabels
+j	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> j$/;"	m
+k	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> k$/;"	m
+keepcursorpos	rc/plugins/others.vim	/^augroup keepcursorpos$/;"	a
+keyword	coc-settings.json	/^		"keyword": "\\uf1de",$/;"	s	object:suggest.completionItemKindLabels
+keyword_spacing	pythonx/javascript_snippets.py	/^def keyword_spacing(snip):$/;"	f
+l	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> l$/;"	m
+languageserver	coc-settings.json	/^"languageserver": {$/;"	o
+lexical	rc/plugins/others.vim	/^augroup lexical$/;"	a
+list.insertMappings	coc-settings.json	/^"list.insertMappings": {$/;"	o
+lua	coc-settings.json	/^    "lua": {$/;"	o	object:languageserver
+m	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> m$/;"	m
+make_box	pythonx/vimsnippets.py	/^def make_box(twidth, bwidth=None):$/;"	f
+mapleader	rc/keymapping.vim	/^let mapleader=' '$/;"	v
+method	coc-settings.json	/^		"method": "\\uf09a",$/;"	s	object:suggest.completionItemKindLabels
+module	coc-settings.json	/^		"module": "\\uf40d",$/;"	s	object:suggest.completionItemKindLabels
+o	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> o$/;"	m
+operator	coc-settings.json	/^		"operator": "\\u03a8",$/;"	s	object:suggest.completionItemKindLabels
+p	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> p$/;"	m
+project_opened	.ropeproject/config.py	/^def project_opened(project):$/;"	f
+property	coc-settings.json	/^		"property": "\\ue624",$/;"	s	object:suggest.completionItemKindLabels
+python.analysis.diagnosticEnabled	coc-settings.json	/^"python.analysis.diagnosticEnabled": false,$/;"	b
+python.autoComplete.extraPaths	coc-settings.json	/^"python.autoComplete.extraPaths": ["\/Users\/wangk\/anaconda3\/lib\/python3.7\/site-packages\/"]/;"	a
+python.condaPath	coc-settings.json	/^"python.condaPath": "\/Users\/wangk\/anaconda3\/bin\/conda",$/;"	s
+python.formatting.provider	coc-settings.json	/^"python.formatting.provider": "yapf",$/;"	s
+python.linting.enabled	coc-settings.json	/^"python.linting.enabled": false,$/;"	b
+python.pythonPath	coc-settings.json	/^"python.pythonPath": "\/Users\/wangk\/anaconda3\/bin\/python3",$/;"	s
+python.terminal.executeInFileDir	coc-settings.json	/^"python.terminal.executeInFileDir": true,$/;"	b
+q	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> q$/;"	m
+r	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> r$/;"	m
+reference	coc-settings.json	/^		"reference": "\\ufa46",$/;"	s	object:suggest.completionItemKindLabels
+rootPatterns	coc-settings.json	/^      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git\/"],$/;"	a	object:languageserver.clangd
+s:CdPwd	rc/keymapping.vim	/^fun s:CdPwd()$/;"	f
+s:Hover	rc/plugins/youcompleteme.vim	/^function s:Hover()$/;"	f
+s:OnExit	rc/script.vim	/^function! s:OnExit(job_id, status, event) dict$/;"	f
+s:Terminal	rc/script.vim	/^function! s:Terminal(cmd)$/;"	f
+s:bibtex_cite_sink	rc/plugins/fzf.vim	/^function! s:bibtex_cite_sink(lines)$/;"	f
+s:closefloatingwin	rc/keymapping.vim	/^fun! s:closefloatingwin()$/;"	f
+s:defx_my_settings	rc/plugins/defx.vim	/^function! s:defx_my_settings() abort$/;"	f
+s:fzf_project	rc/plugins/fzf.vim	/^function! s:fzf_project(lines)$/;"	f
+s:fzf_root	rc/keymapping.vim	/^fun! s:fzf_root()$/;"	f
+s:fzf_sink	rc/plugins/fzf.vim	/^function! s:fzf_sink(what)$/;"	f
+s:fzf_task	rc/plugins/fzf.vim	/^function! s:fzf_task()$/;"	f
+s:get_registers	rc/plugins/fzf.vim	/^function! s:get_registers() abort$/;"	f
+s:registers	rc/plugins/fzf.vim	/^function! s:registers(...) abort$/;"	f
+s:show_documentation	rc/keymapping.vim	/^function! s:show_documentation()$/;"	f
+search	rc/keymapping.vim	/^augroup search$/;"	a
+semi	pythonx/javascript_snippets.py	/^def semi(snip):$/;"	f
+set_prefs	.ropeproject/config.py	/^def set_prefs(prefs):$/;"	f
+signature.enable	coc-settings.json	/^"signature.enable": true,$/;"	b
+signature.target	coc-settings.json	/^"signature.target": "echo",$/;"	s
+snippet	coc-settings.json	/^		"snippet": "\\ue60b",$/;"	s	object:suggest.completionItemKindLabels
+space_before_function_paren	pythonx/javascript_snippets.py	/^def space_before_function_paren(snip):$/;"	f
+struct	coc-settings.json	/^		"struct": "\\ufb44",$/;"	s	object:suggest.completionItemKindLabels
+suggest.completionItemKindLabels	coc-settings.json	/^"suggest.completionItemKindLabels": {$/;"	o
+suggest.echodocSupport	coc-settings.json	/^"suggest.echodocSupport": true,$/;"	b
+suggest.enablePreview	coc-settings.json	/^"suggest.enablePreview": true,$/;"	b
+suggest.floatEnable	coc-settings.json	/^"suggest.floatEnable": true,$/;"	b
+suggest.keepCompleteopt	coc-settings.json	/^"suggest.keepCompleteopt": false,$/;"	b
+suggest.maxCompleteItemCount	coc-settings.json	/^"suggest.maxCompleteItemCount": 20,$/;"	n
+suggest.minTriggerInputLength	coc-settings.json	/^"suggest.minTriggerInputLength": 2,$/;"	n
+switchcocsuggest	rc/plugins/coc.vim	/^augroup switchcocsuggest$/;"	a
+t_group	rc/keymapping.vim	/^augroup t_group$/;"	a
+test#neovim#term_position	rc/plugins/vim_test.vim	/^let test#neovim#term_position = 'topleft'$/;"	v
+test#python#pytest#executable	rc/plugins/vim_test.vim	/^let test#python#pytest#executable = '\/Users\/wangk\/anaconda3\/bin\/pytest'$/;"	v
+test#python#runner	rc/plugins/vim_test.vim	/^let test#python#runner = 'pytest'$/;"	v
+test#strategy	rc/plugins/vim_test.vim	/^let test#strategy = 'neovim'$/;"	v
+text	coc-settings.json	/^		"text": "\\ue612",$/;"	s	object:suggest.completionItemKindLabels
+typeParameter	coc-settings.json	/^		"typeParameter": "\\uf728",$/;"	s	object:suggest.completionItemKindLabels
+unit	coc-settings.json	/^		"unit": "\\uf475",$/;"	s	object:suggest.completionItemKindLabels
+value	coc-settings.json	/^		"value": "\\uf89f",$/;"	s	object:suggest.completionItemKindLabels
+variable	coc-settings.json	/^		"variable": "\\ue79b",$/;"	s	object:suggest.completionItemKindLabels
+vimtex	rc/plugins/vimtex.vim	/^augroup vimtex$/;"	a
+yank.enableCompletion	coc-settings.json	/^"yank.enableCompletion": false,$/;"	b
+yank.highlight.enable	coc-settings.json	/^"yank.highlight.enable": false,$/;"	b
+yank.list.maxsize	coc-settings.json	/^"yank.list.maxsize": 50,$/;"	n
+ycmgotomap	rc/keymapping.vim	/^augroup ycmgotomap$/;"	a
+yy	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> yy$/;"	m
+~	rc/plugins/defx.vim	/^  nnoremap <silent><buffer><expr> ~$/;"	m

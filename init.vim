@@ -1,5 +1,5 @@
 function! Dot(path)
-  return "~/.config/nvim/" . a:path
+  return '~/.config/nvim/' . a:path
 endfunction
 
 " excute all the files under rc/ and rc/plugins/
@@ -9,3 +9,5 @@ endfor
 for file in split(glob(Dot('rc/plugins/*.vim')), '\n')
   execute 'source' file
 endfor
+
+execute 'source ~/.config/nvim/rc/keymapping.vim'
