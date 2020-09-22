@@ -47,7 +47,7 @@ nnoremap <silent> <leader>sp :PRg<CR>
 " fuzzy search tasks
 nnoremap <silent> <leader>st :AsyncTaskFzf<CR>
 " yank history
-nnoremap <silent> <space>sy  :<C-u>CocList yank<cr>
+nnoremap <silent> <space>sy  :FZFYank<cr>
 augroup search
     autocmd!
     autocmd FileType c,h,cpp,hpp,python,javascript,vim,lua nnoremap <silent> <leader>so :BTags <CR>
@@ -80,6 +80,7 @@ nnoremap <silent> <leader>bb :Buffers <CR>
 nmap <silent> <leader>bd :Bwipeout<CR>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>
+nmap <silent> <leader>bs :FSHere<CR>
 " nmap cd call
 nmap cd :call <SID>CdPwd()<cr>
 

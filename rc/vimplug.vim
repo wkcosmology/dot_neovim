@@ -114,9 +114,10 @@ Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
 " Doxygen docstring for C++
-Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 " GDB
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh', 'for': ['c', 'cpp', 'h', 'hpp']}
+Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 
 " ---------------------------------------------------------------------------
 " Git
