@@ -5,6 +5,7 @@ let g:coc_global_extensions = [
             \ 'coc-yank',
             \ 'coc-json',
             \ 'coc-vimlsp',
+            \ 'coc-explorer',
             \ 'coc-vimtex',
             \ 'coc-snippets',
             \ 'coc-html',
@@ -54,20 +55,17 @@ nnoremap <expr><C-p> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
 " change the suggest.autoTrigger for different filetype {{
 augroup switchcocsuggest
     autocmd!
-    autocmd FileType cpp,hpp,h,c let b:coc_suggest_disable=1
-    autocmd FileType vim,python,tex,javascript :call coc#config("suggest.autoTrigger", "always")
-    autocmd FileType cpp,hpp,h,c :call coc#config("suggest.autoTrigger", "none")
+    autocmd BufEnter *.cpp,*.hpp,*.h,*.c let b:coc_suggest_disable=1
+    autocmd BufEnter *.vim,*.py,*.tex,*.js :call coc#config("suggest.autoTrigger", "always")
+    autocmd BufEnter *.cpp,*.hpp,*.h,*.c :call coc#config("suggest.autoTrigger", "none")
 augroup END
-" }}
 
-" abandoned config {{
-" inoremap <silent><expr> <TAB>
-"             \ pumvisible() ? coc#_select_confirm() :
-"             \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"             \ <SID>check_back_space() ? "\<TAB>" :
-"             \ coc#refresh()
-" function! s:check_back_space() abort
-"     let col = col('.') - 1
-"     return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-" }}
+let g:coc_explorer_global_presets = {
+\   'floatingRightside': {
+\     'reveal': 'current buffer',
+\     'position': 'floating',
+\     'floating-position': 'right-center',
+\     'floating-width': 50,
+\     'floating-height': &lines - 2,
+\   },
+\ }

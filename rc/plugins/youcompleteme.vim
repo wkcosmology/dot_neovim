@@ -1,10 +1,10 @@
 let g:ycm_filetype_whitelist = {
-            \ "c":1,
-            \ "cpp":1,
-            \ "h":1,
-            \ "sh":1,
-            \ "zsh":1
-            \ }
+    \ 'c':1,
+    \ 'cpp':1,
+    \ 'h':1,
+    \ 'sh':1,
+    \ 'zsh':1
+    \ }
 set completeopt=menu,menuone,noinsert,noselect
 " ycm auto completion only triggered by the following symbols
 " In other cases, you should use Ctrl-Space to trigger the completion
@@ -22,7 +22,7 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_use_clangd = 1 " very important!!!
-let g:ycm_clangd_args = ["--completion-style=detailed"]
+let g:ycm_clangd_args = ['--completion-style=detailed']
 
 " ---------------------------------------------------------------
 "  diagnostic

@@ -69,7 +69,7 @@ nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>
 " fuzzy search for my projects
 nnoremap <silent> <Leader>fp :FZFProject <CR>
 " open defx file tree
-nnoremap <silent> <space>ft :DefxDefault <CR>
+nnoremap <space>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:h')<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " B-group: buffers
