@@ -62,7 +62,7 @@ let g:ale_c_clangformat_options='-style="{
     \ IndentWidth : 4,
     \ TabWidth : 4,
     \ UseTab : Never,
-    \ AlignAfterOpenBracket : false,
+    \ AlignAfterOpenBracket : AlwaysBreak,
     \ AllowShortBlocksOnASingleLine : false,
     \ AllowShortCaseLabelsOnASingleLine : false,
     \ AllowShortFunctionsOnASingleLine : Inline,

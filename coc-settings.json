@@ -104,7 +104,7 @@
     "p": "pasteFile",
     "d": "delete",
 
-    "a": "addFile",
+    "N": "addFile",
     "r": "rename",
 
     ".": "toggleHidden",

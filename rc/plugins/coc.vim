@@ -20,7 +20,7 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 " using <C-space> to trigger the completion
-autocmd FileType python inoremap <silent><expr> <c-space> coc#refresh()
+" autocmd FileType python inoremap <silent><expr> <c-space> coc#refresh()
 " }}
 
 " let coc server begins 500ms after vim start {{

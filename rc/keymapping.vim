@@ -47,7 +47,7 @@ nnoremap <silent> <leader>sp :PRg<CR>
 " fuzzy search tasks
 nnoremap <silent> <leader>st :AsyncTaskFzf<CR>
 " yank history
-nnoremap <silent> <space>sy  :FZFYank<cr>
+nnoremap <silent> <space>sy  :CocFzfList yank<cr>
 augroup search
     autocmd!
     autocmd FileType c,h,cpp,hpp,python,javascript,vim,lua nnoremap <silent> <leader>so :BTags <CR>
@@ -69,7 +69,7 @@ nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>
 " fuzzy search for my projects
 nnoremap <silent> <Leader>fp :FZFProject <CR>
 " open defx file tree
-nnoremap <space>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:h')<CR>
+nnoremap <silent> <Leader>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:h')<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " B-group: buffers
@@ -225,7 +225,7 @@ if !exists('*DeleteHiddenBuffers') " Clear all hidden buffers when running
         let tpbl=[]
         call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
         for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-            silent execute 'bwipeout' buf
+            silent execute 'bwipeout!' buf
         endfor
     endfunction
 endif

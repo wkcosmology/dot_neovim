@@ -59,6 +59,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " fzf for branches
 Plug 'stsewd/fzf-checkout.vim'
+" using fzf window for coc
+Plug 'antoinemadec/coc-fzf'
 
 " ---------------------------------------------------------------------------
 " Buffer/Window/Session

@@ -1,16 +1,15 @@
 let g:ycm_filetype_whitelist = {
-    \ 'c':1,
-    \ 'cpp':1,
-    \ 'h':1,
-    \ 'sh':1,
-    \ 'zsh':1
-    \ }
+    \'c':1,
+    \'cpp':1,
+    \'h':1,
+    \'hpp':1,
+    \}
 set completeopt=menu,menuone,noinsert,noselect
 " ycm auto completion only triggered by the following symbols
 " In other cases, you should use Ctrl-Space to trigger the completion
 let g:ycm_semantic_triggers =  {
             \   'c,h': ['->', '.'],
-            \   'cpp,hpp,cuda,objcpp': ['->', '.', '::'],
+            \   'cpp,hpp,cuda': ['->', '.', '::'],
             \ }
 
 " ---------------------------------------------------------------
@@ -22,7 +21,17 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_use_clangd = 1 " very important!!!
-let g:ycm_clangd_args = ['--completion-style=detailed']
+let g:ycm_clangd_args = [
+    \'--completion-style=detailed',
+    \'-pretty',
+    \'--header-insertion=never',
+    \'-fallback-style=none'
+    \]
+" Let clangd fully control code completion
+" This will disable the YCM completion behavior
+" let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath('clangd')
 
 " ---------------------------------------------------------------
 "  diagnostic
@@ -86,14 +95,4 @@ function s:Hover()
     " close the window once the cursor moved
     autocmd CursorMoved <buffer> ++once call nvim_win_close(s:win, v:false)
 endfunction
-" autocmd FileType c,cpp,h,hpp nnoremap <silent> K :call <SID>Hover()<CR>
 command! YcmGetDocFloatWin :call <SID>Hover()
-
-" " open quickfix window after 
-" function! s:CustomizeYcmQuickFixWindow()
-"   " Move the window to the top of the screen.
-"   wincmd K
-"   " Set the window height to 5.
-"   5wincmd _
-" endfunction
-" autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
