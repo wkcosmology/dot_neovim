@@ -31,15 +31,15 @@ let g:ale_linters = {
     \'go': ['gofmt', 'golint'],
     \'python': ['flake8'],
     \'javascript': ['eslint'],
-    \'c': ['gcc'],
-    \'h': ['gcc'],
-    \'cpp': ['g++'],
-    \'hpp': ['g++'],
+    \'c': ['clang'],
+    \'h': ['clang'],
+    \'cpp': ['clang++'],
+    \'hpp': ['clang++'],
     \'vim':['vint'],
     \'text': [],
     \}
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
+let g:ale_c_gcc_options = '-O2 -std=c99'
+let g:ale_cpp_gcc_options = '-O2 -std=c++17'
 "}}
 
 " formater(fixer) config {{
@@ -50,6 +50,8 @@ let g:ale_fixers={
     \'cpp': ['clang-format'],
     \'hpp': ['clang-format']
     \}
+let g:ale_cpp_clangtidy_executable='/usr/local/bin/clang-tidy'
+let g:ale_cpp_clangd_executable='/usr/local/opt/llvm/bin/clangd'
 let g:ale_python_isort_executable='/Users/wangk/anaconda3/bin/isort'
 let g:ale_python_isort_options='-sl'
 let g:ale_python_yapf_executable='/Users/wangk/anaconda3/bin/yapf'
@@ -81,7 +83,7 @@ let g:ale_c_clangformat_options='-style="{
     \ ConstructorInitializerIndentWidth : 4,
     \ ContinuationIndentWidth : 4,
     \ Cpp11BracedListStyle : true,
-    \ IncludeBlocks : Regroup,
+    \ IncludeBlocks : Preserve,
     \ IndentWrappedFunctionNames : false,
     \ IndentFunctionDeclarationAfterType : false,
     \ IndentCaseLabels : false,

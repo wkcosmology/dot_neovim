@@ -30,10 +30,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'google/vim-searchindex'
 " define s as substitution
 Plug 'svermeulen/vim-easyclip'
-" file explorer
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'kristijanhusak/defx-git'
-Plug 'kristijanhusak/defx-icons'
 " Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
 " paired operation
@@ -45,6 +41,8 @@ Plug 'junegunn/vim-easy-align'
 " markdown
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+" document
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 
 " ---------------------------------------------------------------------------
 " coc/fzf
@@ -59,7 +57,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'pbogut/fzf-mru.vim'
 " fzf for branches
 Plug 'stsewd/fzf-checkout.vim'
-" using fzf window for coc
+" using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
 
 " ---------------------------------------------------------------------------
@@ -89,7 +87,7 @@ Plug 'Yggdroot/indentLine'
 " different color for nesting parenthese
 Plug 'junegunn/rainbow_parentheses.vim'
 " maximum and restore current window, powerful!!!
-Plug 'dhruvasagar/vim-zoom'
+Plug 'szw/vim-maximizer'
 " pretty tab line
 Plug 'gcmt/taboo.vim'
 " devicons
@@ -104,8 +102,6 @@ Plug 'kshenoy/vim-signature'
 " ---------------------------------------------------------------------------
 Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
 Plug 'vim-python/python-syntax', {'for': ['python']}
-" add docstring in different way, like numpy
-Plug 'wkcosmology/vim-pydocstring', {'for': ['python']}
 
 " ---------------------------------------------------------------------------
 " C/C++ related
@@ -114,11 +110,11 @@ Plug 'wkcosmology/vim-pydocstring', {'for': ['python']}
 Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
-" Doxygen docstring for C++
-Plug 'vim-scripts/DoxygenToolkit.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
+" Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
+Plug 'bfrg/vim-cpp-modern', {'for': ['c', 'cpp', 'h', 'hpp']}
 " GDB
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh', 'for': ['c', 'cpp', 'h', 'hpp']}
+" switch header and source file
 Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 
 " ---------------------------------------------------------------------------
@@ -153,8 +149,6 @@ Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 " spell check
 Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
-" undo tree
-Plug 'mbbill/undotree'
 " tag bar
 Plug 'majutsushi/tagbar'
 " gist

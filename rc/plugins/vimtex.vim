@@ -17,10 +17,12 @@ let g:vimtex_quickfix_enabled=1
 let g:vimtex_quickfix_open_on_warning=0
 " let g:vimtex_quickfix_latexlog = {'default' : 0}
 "
+" auto formatting
+let g:vimtex_format_enabled=1
 
 augroup vimtex
-  autocmd!
-  autocmd BufWritePost *.tex execute 'VimtexView'
+  au!
+  au User VimtexEventCompileSuccess execute 'VimtexView'
 augroup END
 
 " config for viewing though Skim

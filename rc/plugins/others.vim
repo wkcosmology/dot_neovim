@@ -14,6 +14,8 @@ set shiftwidth=4
 set expandtab
 " set colorcolumn
 set colorcolumn=120
+" https://github.com/bfrg/vim-cpp-modern
+let c_no_curly_error = 1
 
 " set smartcase
 set ignorecase
