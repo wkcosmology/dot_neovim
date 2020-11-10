@@ -1,3 +1,5 @@
+" this plugin messed my indent
+let g:polyglot_disabled = ['autoindent']
 function! Dot(path)
   return '~/.config/nvim/' . a:path
 endfunction

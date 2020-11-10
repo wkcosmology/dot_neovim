@@ -1,4 +1,4 @@
-" fzf basic configure {{
+" fzf basic configure
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_preview_window = ''
@@ -17,13 +17,26 @@ let g:fzf_colors = {
             \ 'marker':  ['fg', 'Keyword'],
             \ 'spinner': ['fg', 'Label'],
             \ 'header':  ['fg', 'Comment'] }
-" }}
 
-" for directly executing the command {{
+" CTRL-A CTRL-Q to select all and build quickfix list
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
+" for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-" }}
 
-" fzf floating window setting {{
+" fzf floating window setting
 let $FZF_DEFAULT_OPTS = '--layout=reverse'
 let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
 function! Centered_floating_window()

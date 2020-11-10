@@ -98,6 +98,16 @@ snippet fig "Figure environment" b
 \end{figure}
 endsnippet
 
+
+snippet fig* "Figure* environment" b
+\begin{figure*}
+	\centering
+	\includegraphics[width=${3:0.8}\linewidth]{${4:name.ext}}
+	\caption{$0}%
+	\label{fig:${4/(\w+)\.\w+/$1/}}
+\end{figure*}
+endsnippet
+
 snippet enum "Enumerate" b
 \begin{enumerate}
 	\item $0

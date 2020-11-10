@@ -23,16 +23,13 @@
 "python.analysis.diagnosticEnabled": false,
 "python.linting.enabled": false,
 
+"lua.enable": true,
+"lua.commandPath": "/usr/local/bin/lua-lsp",
+
 "yank.highlight.enable": false,
 "yank.list.maxsize": 50,
 "yank.enableCompletion": false,
 
-"languageserver": {
-    "lua": {
-        "command": "lua-lsp",
-        "filetypes": ["lua"]
-        }
-      },
 "list.insertMappings": {
     "<C-r>": "do:refresh",
     "<C-n>": "normal:j",

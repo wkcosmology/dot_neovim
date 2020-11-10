@@ -4,9 +4,9 @@
 " set the leader to space
 let mapleader=' '
 " use Esc to exit terminal
-tnoremap <Esc> <C-\><C-n><CR>
+tnoremap <Esc> <C-\><C-n><cr>
 " tagbar
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<cr>
 " alias to left and right in insert mode
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
@@ -39,18 +39,22 @@ augroup END
 " S-group: fuzzy search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fuzzy searching command
-nnoremap <silent> <leader>: :Commands<CR>
+nnoremap <silent> <leader>: :Commands<cr>
 " fuzzy search content
-nnoremap <silent> <leader>ss :BLines<CR>
+nnoremap <silent> <leader>ss :BLines<cr>
 " fuzzy search content in project
-nnoremap <silent> <leader>sp :PRg<CR>
+nnoremap <silent> <leader>sp :PRg<cr>
 " fuzzy search tasks
-nnoremap <silent> <leader>st :AsyncTaskFzf<CR>
+nnoremap <silent> <leader>st :AsyncTaskFzf<cr>
+" search with Ggrep, no fuzzy matching
+nnoremap <silent> <leader>sg :AsyncTask grep<cr>
 " yank history
 nnoremap <silent> <space>sy  :CocFzfList yank<cr>
+" marks
+nnoremap <silent> <space>sm :Marks<cr>
 augroup search
     autocmd!
-    autocmd FileType c,h,cpp,hpp,python,javascript,vim,lua nnoremap <silent> <leader>so :BTags <CR>
+    autocmd FileType c,h,cpp,hpp,python,javascript,vim,lua nnoremap <silent> <leader>so :BTags <cr>
     autocmd FileType tex noremap <silent><leader>so :FZFTexToc<cr>
     autocmd FileType tex noremap <silent><leader>sb :FZFBibtex<cr>
 augroup END
@@ -59,28 +63,28 @@ augroup END
 " F-group: File related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " save the file
-nnoremap <silent> <leader>fs :w<CR>
+nnoremap <silent> <leader>fs :w<cr>
 " reload the vimrc setting
-nnoremap <silent> <leader>feR :so $MYVIMRC<CR>
+nnoremap <silent> <leader>feR :so $MYVIMRC<cr>
 " fuzzy search most recent file
-nnoremap <silent> <leader>fr :FZFMru <CR>
+nnoremap <silent> <leader>fr :FZFMru <cr>
 " fuzzy search files under current project
-nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<CR>
+nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<cr>
 " fuzzy search for my projects
-nnoremap <silent> <Leader>fp :FZFProject <CR>
+nnoremap <silent> <Leader>fp :FZFProject <cr>
 " open defx file tree
-nnoremap <silent> <Leader>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:h')<CR>
+nnoremap <silent> <Leader>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:p:h')<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " B-group: buffers
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fuzzy search buffers
-nnoremap <silent> <leader>bb :Buffers <CR>
+nnoremap <silent> <leader>bb :Buffers <cr>
 " close current buffer
-nmap <silent> <leader>bd :Bwipeout<CR>
+nmap <silent> <leader>bd :Bwipeout<cr>
 " close other buffers except the current one
-nmap <silent> <leader>bD :DeleteHiddenBuffers<CR>
-nmap <silent> <leader>bs :FSHere<CR>
+nmap <silent> <leader>bD :DeleteHiddenBuffers<cr>
+nmap <silent> <leader>bs :FSHere<cr>
 " nmap cd call
 nmap cd :call <SID>CdPwd()<cr>
 
@@ -88,33 +92,38 @@ nmap cd :call <SID>CdPwd()<cr>
 " <C-t>-group: tabs
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <C-t> <Nop>
-nmap <C-t>c :tabclose<CR>
 nmap <C-t>n :TabooOpen 
 nmap <C-t>r :TabooRename 
+nmap <C-t>c :tabclose<cr>
+nmap <C-t>j :tabprevious<cr> 
+nmap <C-t>k :tabnext<cr> 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " window related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " toggle zoom
-nmap <C-w>m <Plug>(zoom-toggle)
+" nmap <C-w>m :MaximizerToggle<cr>
+let g:maximizer_default_mapping_key = '<C-w>m'
 " choose the window
 nmap <C-w>w  <Plug>(choosewin)
 " close the location list and quickfix window
-nnoremap <silent> <leader>lc :ccl\|lcl<CR>
-noremap <F3> :call asyncrun#quickfix_toggle(10)<cr>
+nnoremap <silent> <leader>lc :ccl\|lcl<cr>
+noremap <silent> <F3> :call asyncrun#quickfix_toggle(10)<cr>
 " exit window using <C-g>
 augroup exitwithq
     autocmd!
-    autocmd FileType help,qf,defx,fugitive,list,git,gista-list nnoremap <buffer> <C-g> :close<cr>
+    autocmd FileType help,qf,defx,fugitive,list,git,gista-list,fugitiveblame nnoremap <buffer> <C-g> :close<cr>
+    autocmd FileType help,qf,defx,fugitive,list,git,gista-list inoremap <buffer> <C-g> :close<cr>
     autocmd FileType list inoremap <buffer> <C-g> :close<cr>
     autocmd FileType floaterm tnoremap <C-g> <C-\><C-n>:close<cr>
+    autocmd FileType floaterm inoremap <C-g> <C-\><C-n>:close<cr>
     " unmap q
     autocmd FileType fugitive,gista-list nnoremap <buffer> q <nop>
 augroup END
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" T-group Async-task/floaterm/vim-test
+" T-group Async-task/terminal/vim-test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup t_group
     autocmd!
@@ -127,20 +136,20 @@ nnoremap <leader>tn :FloatermNew<cr>
 nnoremap [t :FloatermPrev<cr><C-\><C-n><cr>
 nnoremap ]t :FloatermNext<cr><C-\><C-n><cr>
 " test the nearest object to the cursor
-nnoremap <leader>te :TestNearest<CR>
+nnoremap <leader>te :TestNearest<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Git
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>gd :Gvdiffsplit!<cr>
-nnoremap <leader>gdh :diffget //2<cr>
-nnoremap <leader>gdl :diffget //3<cr>
+nnoremap <leader>gh :diffget //2<cr>
+nnoremap <leader>gl :diffget //3<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gg :G<cr>
 nnoremap <leader>gv :GV<cr>
-nnoremap <leader>gl :Gclog<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gb :GBranches<cr>
+nnoremap <leader>gm :Gblame<cr>
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gs :Gista list<cr>
 
@@ -150,7 +159,7 @@ nnoremap <leader>gs :Gista list<cr>
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " clear all the diagnostic 
-nmap <silent> <leader>ec :ALEResetBuffer<CR>
+nmap <silent> <leader>ec :ALEResetBuffer<cr>
 nmap <F1> :ALEFix<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,12 +167,12 @@ nmap <F1> :ALEFix<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup cocmapping
     autocmd!
-    autocmd FileType python,javascript,vim,lua nmap \r  <Plug>(coc-rename)
-    autocmd FileType python,javascript,vim,lua nmap <silent> gd <Plug>(coc-definition)
-    autocmd FileType python,javascript,vim,lua nmap <silent> gr <Plug>(coc-references)
-    autocmd FileType python,javascript,vim,lua nmap <silent> gi <Plug>(coc-implementation)
-    autocmd FileType python,javascript,vim,lua nmap <silent> gt <Plug>(coc-type-definition)
-    autocmd FileType python,javascript,vim,lua nnoremap <silent> K :call <SID>show_documentation()<CR>
+    autocmd BufEnter *py,*vim,*.tex,*.js nmap \r  <Plug>(coc-rename)
+    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gd <Plug>(coc-definition)
+    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gr <Plug>(coc-references)
+    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gi <Plug>(coc-implementation)
+    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gt <Plug>(coc-type-definition)
+    autocmd BufEnter *py,*vim,*.tex,*.js nnoremap <silent> K :call <SID>show_documentation()<cr>
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,12 +182,12 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 augroup ycmgotomap
     autocmd!
-    autocmd FileType c,cpp,h,hpp nmap gd :YcmCompleter GoToInclude<cr>
-    autocmd FileType c,cpp,h,hpp nmap gt :YcmCompleter GetType<cr>
-    autocmd FileType c,cpp,h,hpp nmap gi :YcmCompleter GotoInclude<cr>
-    autocmd FileType c,cpp,h,hpp nmap gr :YcmCompleter GoToReferences<cr>
-    autocmd FileType c,cpp,h,hpp nmap K :YcmGetDocFloatWin<cr>
-    autocmd FileType c,cpp,h,hpp nmap \r :YcmCompleter RefactorRename 
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gd :YcmCompleter GoToDefinition<cr>
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gt :YcmCompleter GetType<cr>
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gi :YcmCompleter GoToInclude<cr>
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gr :YcmCompleter GoToReferences<cr>
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap K :YcmGetDocFloatWin<cr>
+    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap \r :YcmCompleter RefactorRename 
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

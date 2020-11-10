@@ -25,7 +25,8 @@ let g:ycm_clangd_args = [
     \'--completion-style=detailed',
     \'-pretty',
     \'--header-insertion=never',
-    \'-fallback-style=none'
+    \'-fallback-style=none',
+    \'--cross-file-rename'
     \]
 " Let clangd fully control code completion
 " This will disable the YCM completion behavior
