@@ -41,7 +41,7 @@ augroup END
 " fuzzy searching command
 nnoremap <silent> <leader>: :Commands<cr>
 " fuzzy search content
-nnoremap <silent> <leader>ss :BLines<cr>
+nnoremap <silent> <leader>ss :Snippets<cr>
 " fuzzy search content in project
 nnoremap <silent> <leader>sp :PRg<cr>
 " fuzzy search tasks
@@ -49,7 +49,7 @@ nnoremap <silent> <leader>st :AsyncTaskFzf<cr>
 " search with Ggrep, no fuzzy matching
 nnoremap <silent> <leader>sg :AsyncTask grep<cr>
 " yank history
-nnoremap <silent> <space>sy  :CocFzfList yank<cr>
+nnoremap <silent> <space>sy  :CocList yank<cr>
 " marks
 nnoremap <silent> <space>sm :Marks<cr>
 augroup search
@@ -84,6 +84,7 @@ nnoremap <silent> <leader>bb :Buffers <cr>
 nmap <silent> <leader>bd :Bwipeout<cr>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<cr>
+" switch header/source
 nmap <silent> <leader>bs :FSHere<cr>
 " nmap cd call
 nmap cd :call <SID>CdPwd()<cr>
@@ -118,7 +119,7 @@ augroup exitwithq
     autocmd FileType floaterm tnoremap <C-g> <C-\><C-n>:close<cr>
     autocmd FileType floaterm inoremap <C-g> <C-\><C-n>:close<cr>
     " unmap q
-    autocmd FileType fugitive,gista-list nnoremap <buffer> q <nop>
+    autocmd FileType fugitiveblame,fugitive,gista-list nnoremap <buffer> q <nop>
 augroup END
 
 
@@ -151,6 +152,7 @@ nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gb :GBranches<cr>
 nnoremap <leader>gm :Gblame<cr>
 nnoremap <leader>gP :Gpush<cr>
+nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gista list<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -167,12 +169,12 @@ nmap <F1> :ALEFix<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup cocmapping
     autocmd!
-    autocmd BufEnter *py,*vim,*.tex,*.js nmap \r  <Plug>(coc-rename)
-    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gd <Plug>(coc-definition)
-    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gr <Plug>(coc-references)
-    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gi <Plug>(coc-implementation)
-    autocmd BufEnter *py,*vim,*.tex,*.js nmap <silent> gt <Plug>(coc-type-definition)
-    autocmd BufEnter *py,*vim,*.tex,*.js nnoremap <silent> K :call <SID>show_documentation()<cr>
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap \r  <Plug>(coc-rename)
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gd <Plug>(coc-definition)
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gr <Plug>(coc-references)
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gi <Plug>(coc-implementation)
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gt <Plug>(coc-type-definition)
+    autocmd BufEnter *.py,*.vim,*.tex,*.js nnoremap <silent> K :call <SID>show_documentation()<cr>
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

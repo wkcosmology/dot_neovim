@@ -43,6 +43,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " document
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+" Plug 'andymass/vim-matchup'
 
 " ---------------------------------------------------------------------------
 " coc/fzf
@@ -59,6 +60,7 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " ---------------------------------------------------------------------------
 " Buffer/Window/Session
@@ -110,7 +112,8 @@ Plug 'vim-python/python-syntax', {'for': ['python']}
 Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
-" Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
+" cpp highlight
 Plug 'bfrg/vim-cpp-modern', {'for': ['c', 'cpp', 'h', 'hpp']}
 " GDB
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh', 'for': ['c', 'cpp', 'h', 'hpp']}
@@ -153,6 +156,7 @@ Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
 Plug 'majutsushi/tagbar'
 " gist
 Plug 'lambdalisue/vim-gista'
+Plug 'lifepillar/vim-cheat40'
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

@@ -1,7 +1,7 @@
 " required by vimtex
+let g:tex_flavor = 'latex'
 let g:tex_conceal = ''
 let g:vimtex_compiler_progname = 'nvr'
-let g:tex_flavor = 'latex'
 let g:indentLine_fileTypeExclude = ['tex']
 let g:vimtex_compiler_tectonic = {
         \ 'backend' : 'nvim',
@@ -16,9 +16,17 @@ let g:vimtex_compiler_tectonic = {
 let g:vimtex_quickfix_enabled=1
 let g:vimtex_quickfix_open_on_warning=0
 " let g:vimtex_quickfix_latexlog = {'default' : 0}
-"
 " auto formatting
 let g:vimtex_format_enabled=1
+" disable matchparen, using vim-matchup instead.
+" Some problem for matchup when input the $$
+" let g:matchup_override_vimtex=1
+" let g:matchup_matchparen_enabled=1
+" fold
+let g:vimtex_fold_enabled=0
+let g:vimtex_fold_manual=0
+" close conceal
+let g:vimtex_syntax_conceal_default=0
 
 augroup vimtex
   au!

@@ -1,4 +1,4 @@
-" general config {{
+" general config
 let g:ale_linters_explicit = 1
 " enable lint on save
 let g:ale_lint_on_text_changed = 'never'
@@ -7,9 +7,8 @@ let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_enter = 0
 " disable other functions
 let g:ale_completion_enabled = 0
-"}}
 
-" UI {{
+" UI
 let g:airline#extensions#ale#enabled = 1
 let g:ale_list_window_size = 5
 let g:ale_set_loclist = 0
@@ -22,9 +21,8 @@ let g:ale_open_list = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"}}
 
-" linter {{
+" linter
 let g:ale_linters = {
     \'csh': ['shell'],
     \'zsh': ['shell'],
@@ -37,18 +35,19 @@ let g:ale_linters = {
     \'hpp': ['clang++'],
     \'vim':['vint'],
     \'text': [],
+    \'tex':['chktex']
     \}
 let g:ale_c_gcc_options = '-O2 -std=c99'
 let g:ale_cpp_gcc_options = '-O2 -std=c++17'
-"}}
+let g:ale_tex_chktex_options='-I -n1 -n2 -n24 -n8 -n11 -n13'
 
-" formater(fixer) config {{
+" formater(fixer) config
 let g:ale_fixers={
     \'python': ['yapf', 'isort'],
     \'c': ['clang-format'],
     \'h': ['clang-format'],
     \'cpp': ['clang-format'],
-    \'hpp': ['clang-format']
+    \'hpp': ['clang-format'],
     \}
 let g:ale_cpp_clangtidy_executable='/usr/local/bin/clang-tidy'
 let g:ale_cpp_clangd_executable='/usr/local/opt/llvm/bin/clangd'

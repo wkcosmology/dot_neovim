@@ -1,7 +1,7 @@
 let g:coc_global_extensions = [
             \ 'coc-lists',
-            \ 'coc-python',
             \ 'coc-tasks',
+            \ 'coc-jedi',
             \ 'coc-yank',
             \ 'coc-json',
             \ 'coc-vimlsp',
@@ -46,8 +46,11 @@ augroup END
 "}}
 
 " scroll the pop-up window {{
-nnoremap <expr><C-n> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
-nnoremap <expr><C-p> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+inoremap <silent><expr> <c-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-j>"
+inoremap <silent><expr> <c-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-k>"
+vnoremap <silent><expr> <c-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-j>"
+vnoremap <silent><expr> <c-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-k>"
+
 " }}
 
 " change the suggest.autoTrigger for different filetype {{

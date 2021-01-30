@@ -6,6 +6,8 @@ set background=dark
 let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
+" gruvbox
+let g:gruvbox_italicize_comments=1
 
 " disable c/c++ highlight, since I use another plugin
 let g:polyglot_disabled = ['c', 'cpp', 'h', 'hpp']
@@ -60,3 +62,5 @@ let g:airline_filetype_overrides = {
       \ 'help':  [ 'Help', '%f' ],
       \ 'vim-plug': [ 'Plugins', '' ],
       \ }
+
+highlight Comment cterm=italic gui=italic

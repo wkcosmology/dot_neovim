@@ -15,13 +15,19 @@
 
 "diagnostic.enable": false,
 
-"python.autoComplete.extraPaths": ["/Users/wangk/anaconda3/lib/python3.7/site-packages/"],
-"python.terminal.executeInFileDir": true,
-"python.pythonPath": "/Users/wangk/anaconda3/bin/python3",
-"python.condaPath": "/Users/wangk/anaconda3/bin/conda",
-"python.formatting.provider": "yapf",
-"python.analysis.diagnosticEnabled": false,
-"python.linting.enabled": false,
+"jedi.enable": true,
+"jedi.startupMessage": false,
+"jedi.markupKindPreferred": "markdown",
+"jedi.trace.server": "off",
+"jedi.jediSettings.autoImportModules": ["numpy", "pandas"],
+"jedi.executable.command": "jedi-language-server",
+"jedi.executable.args": [],
+"jedi.completion.disableSnippets": false,
+"jedi.diagnostics.enable": false,
+"jedi.diagnostics.didOpen": false,
+"jedi.diagnostics.didChange": false,
+"jedi.diagnostics.didSave": false,
+"jedi.workspace.extraPaths": [],
 
 "lua.enable": true,
 "lua.commandPath": "/usr/local/bin/lua-lsp",
@@ -78,7 +84,7 @@
     {"name": "file","expand": true}
     ],
 
-"explorer.keyMappings": {
+"explorer.keyMappings.global": {
     "i": false,
 
     "+": "toggleSelection",
