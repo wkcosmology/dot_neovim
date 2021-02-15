@@ -2,8 +2,8 @@
 " simple vim setting
 filetype plugin indent on
 syntax enable
-set number
-set relativenumber
+" hybrid line number
+set nu rnu
 " set cursorline!
 filetype plugin indent on
 " show existing tab with 4 spaces width

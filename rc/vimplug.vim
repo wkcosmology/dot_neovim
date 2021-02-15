@@ -43,7 +43,10 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 " document
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+" matchup, conflict with vimtex when input $$
 " Plug 'andymass/vim-matchup'
+" tagbar
+Plug 'liuchengxu/vista.vim'
 
 " ---------------------------------------------------------------------------
 " coc/fzf
@@ -60,7 +63,14 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
+" using coc-jedi with jedi-language-server for python
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
+
+" ---------------------------------------------------------------------------
+" build-in LSP
+" ---------------------------------------------------------------------------
+Plug 'nvim-lua/completion-nvim'
+Plug 'neovim/nvim-lspconfig'
 
 " ---------------------------------------------------------------------------
 " Buffer/Window/Session
@@ -108,7 +118,7 @@ Plug 'vim-python/python-syntax', {'for': ['python']}
 " ---------------------------------------------------------------------------
 " C/C++ related
 " ---------------------------------------------------------------------------
-" great auto completion tool
+" great auto completion tool, coc does not support trigger characters
 Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
@@ -124,7 +134,8 @@ Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 " Git
 " ---------------------------------------------------------------------------
 " show git modified line in the state column
-Plug 'mhinz/vim-signify'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 " powerful git tool
 Plug 'tpope/vim-fugitive'
 " github for fugitive
@@ -152,11 +163,12 @@ Plug 'lervag/vimtex'
 Plug 'sheerun/vim-polyglot'
 " spell check
 Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
-" tag bar
-Plug 'majutsushi/tagbar'
 " gist
 Plug 'lambdalisue/vim-gista'
 Plug 'lifepillar/vim-cheat40'
+" cheat
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-cheat.sh'
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

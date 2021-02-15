@@ -1,6 +1,7 @@
 let g:coc_global_extensions = [
             \ 'coc-lists',
             \ 'coc-tasks',
+            \ 'coc-html',
             \ 'coc-jedi',
             \ 'coc-yank',
             \ 'coc-json',
@@ -56,12 +57,13 @@ vnoremap <silent><expr> <c-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<
 " change the suggest.autoTrigger for different filetype {{
 augroup switchcocsuggest
     autocmd!
+    autocmd BufEnter * let b:coc_suggest_disable=0
+    autocmd BufEnter * :call coc#config("suggest.autoTrigger", "always")
+    autocmd BufEnter * inoremap <silent><expr> <c-space> coc#refresh()
     autocmd BufEnter *.cpp,*.hpp,*.h,*.c let b:coc_suggest_disable=1
-    autocmd BufEnter *.vim,*.py,*.tex,*.js let b:coc_suggest_disable=0
-    autocmd BufEnter *.vim,*.py,*.tex,*.js :call coc#config("suggest.autoTrigger", "always")
-    autocmd BufEnter *.vim,*.py,*.tex,*.js inoremap <silent><expr> <c-space> coc#refresh()
     autocmd BufEnter *.cpp,*.hpp,*.h,*.c :call coc#config("suggest.autoTrigger", "none")
 augroup END
+
 
 let g:coc_explorer_global_presets = {
 \   'floatingRightside': {

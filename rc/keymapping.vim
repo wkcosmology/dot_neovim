@@ -6,7 +6,8 @@ let mapleader=' '
 " use Esc to exit terminal
 tnoremap <Esc> <C-\><C-n><cr>
 " tagbar
-nmap <F8> :TagbarToggle<cr>
+nmap <silent> <leader>vv :Vista<cr>
+nmap <silent> <leader>vs :Vista finder<cr>
 " alias to left and right in insert mode
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
@@ -103,7 +104,6 @@ nmap <C-t>k :tabnext<cr>
 " window related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " toggle zoom
-" nmap <C-w>m :MaximizerToggle<cr>
 let g:maximizer_default_mapping_key = '<C-w>m'
 " choose the window
 nmap <C-w>w  <Plug>(choosewin)
@@ -113,8 +113,8 @@ noremap <silent> <F3> :call asyncrun#quickfix_toggle(10)<cr>
 " exit window using <C-g>
 augroup exitwithq
     autocmd!
-    autocmd FileType help,qf,defx,fugitive,list,git,gista-list,fugitiveblame nnoremap <buffer> <C-g> :close<cr>
-    autocmd FileType help,qf,defx,fugitive,list,git,gista-list inoremap <buffer> <C-g> :close<cr>
+    autocmd FileType fzf,help,qf,defx,fugitive,list,git,gista-list,fugitiveblame nnoremap <buffer> <C-g> :close<cr>
+    autocmd FileType fzf,help,qf,defx,fugitive,list,git,gista-list inoremap <buffer> <C-g> :close<cr>
     autocmd FileType list inoremap <buffer> <C-g> :close<cr>
     autocmd FileType floaterm tnoremap <C-g> <C-\><C-n>:close<cr>
     autocmd FileType floaterm inoremap <C-g> <C-\><C-n>:close<cr>
@@ -155,6 +155,11 @@ nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gista list<cr>
 
+nnoremap <leader>hs :lua require"gitsigns".stage_hunk()<cr>
+nnoremap <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
+nnoremap <leader>hr :lua require"gitsigns".reset_hunk()<cr>
+nnoremap <leader>hb :lua require"gitsigns".blame_line()<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale key mapping
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -165,25 +170,17 @@ nmap <silent> <leader>ec :ALEResetBuffer<cr>
 nmap <F1> :ALEFix<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" coc
+" coc & ycm
+" DO NOT change the order
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup cocmapping
+augroup cocycmmapping
     autocmd!
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap \r  <Plug>(coc-rename)
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gd <Plug>(coc-definition)
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gr <Plug>(coc-references)
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gi <Plug>(coc-implementation)
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nmap <silent> gt <Plug>(coc-type-definition)
-    autocmd BufEnter *.py,*.vim,*.tex,*.js nnoremap <silent> K :call <SID>show_documentation()<cr>
-augroup END
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" youcompleteme
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-augroup ycmgotomap
-    autocmd!
+    autocmd BufEnter * nmap \r  <Plug>(coc-rename)
+    autocmd BufEnter * nmap <silent> gd <Plug>(coc-definition)
+    autocmd BufEnter * nmap <silent> gr <Plug>(coc-references)
+    autocmd BufEnter * nmap <silent> gi <Plug>(coc-implementation)
+    autocmd BufEnter * nmap <silent> gt <Plug>(coc-type-definition)
+    autocmd BufEnter * nnoremap <silent> K :call <SID>show_documentation()<cr>
     autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gd :YcmCompleter GoToDefinition<cr>
     autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gt :YcmCompleter GetType<cr>
     autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gi :YcmCompleter GoToInclude<cr>
@@ -191,6 +188,12 @@ augroup ycmgotomap
     autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap K :YcmGetDocFloatWin<cr>
     autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap \r :YcmCompleter RefactorRename 
 augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" youcompleteme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " utilities

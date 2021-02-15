@@ -147,7 +147,6 @@ command! FZFBibtex :call fzf#run({
                 \ 'window': 'call Centered_floating_window()',
                 \ 'options': '--ansi --layout=reverse-list --expect=ctrl-t,<CR> --multi --prompt "Cite> "'})
 command! FZFTexToc :call vimtex#fzf#run('ctli', g:fzf_layout)
-" }}
 
 
 " fzf for project path {{

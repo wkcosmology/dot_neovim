@@ -11,6 +11,7 @@ let g:ycm_semantic_triggers =  {
             \   'c,h': ['->', '.'],
             \   'cpp,hpp,cuda': ['->', '.', '::'],
             \ }
+let g:ycm_key_invoke_completion = '<C-Space>'
 
 " ---------------------------------------------------------------
 " ycm config
