@@ -41,3 +41,7 @@ augroup lexical
   autocmd!
   autocmd FileType markdown,mkd,tex call lexical#init()
 augroup END
+
+hi HopNextKey guibg=#FFFF00 guifg=#000000
+hi HopNextKey1 guibg=#FFFF00 guifg=#000000
+hi HopNextKey2 guibg=#FFFF00 guifg=#000000

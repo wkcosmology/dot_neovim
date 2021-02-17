@@ -29,8 +29,12 @@
 "jedi.diagnostics.didSave": false,
 "jedi.workspace.extraPaths": [],
 
-"lua.enable": true,
-"lua.commandPath": "/usr/local/bin/lua-lsp",
+"languageserver": {
+  "lua": {
+    "command": "/Users/wangk/.luarocks/bin/lua-lsp",
+    "filetypes": ["lua"]
+  }
+},
 
 "yank.highlight.enable": false,
 "yank.list.maxsize": 50,
@@ -128,6 +132,7 @@
     "]c": "gitNext",
     ">>": "gitStage",
     "<<": "gitUnstage"
-    }
+    },
+    "clangd.path": "/Users/wangk/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
 }
 

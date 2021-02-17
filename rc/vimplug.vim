@@ -16,6 +16,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 " very powerful!!! easy motion
 Plug 'easymotion/vim-easymotion'
+Plug 'phaazon/hop.nvim'
 " for quick commentary
 Plug 'tpope/vim-commentary'
 " abbreviation substitution and Coerion
@@ -63,8 +64,6 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
-" using coc-jedi with jedi-language-server for python
-Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " ---------------------------------------------------------------------------
 " build-in LSP
@@ -113,7 +112,8 @@ Plug 'kshenoy/vim-signature'
 " python related
 " ---------------------------------------------------------------------------
 Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
-Plug 'vim-python/python-syntax', {'for': ['python']}
+" using coc-jedi with jedi-language-server for python
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " ---------------------------------------------------------------------------
 " C/C++ related
@@ -169,6 +169,15 @@ Plug 'lifepillar/vim-cheat40'
 " cheat
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
+
+" Plug 'tami5/sql.nvim'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-frecency.nvim'
+
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

@@ -22,14 +22,15 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-l> :nohlsearch<cr>
-" quit vim (disabled, since mistouch a lot) 
-" nnoremap <silent> <leader>qq :qall<cr>
 " easy motion setting
-nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
+nmap <silent> <leader>ju <Plug>(easymotion-overwin-f)
 nmap <silent> <leader>jl <Plug>(easymotion-bd-jk)
 nmap <silent> <leader>js <Plug>(easymotion-overwin-f2)
 nmap <silent> <leader>jw <Plug>(easymotion-bd-w)
 nmap <silent> <leader>je <Plug>(easymotion-bd-e)
+" nmap <silent> <leader>jj :call MyHop('char1')<cr>
+" nmap <silent> <leader>jw :call MyHop('word')<cr>
+" nmap <silent> <leader>jl :call MyHop('line')<cr>
 augroup align
     autocmd!
     autocmd FileType tex,markdown xmap ga <Plug>(EasyAlign)
@@ -44,20 +45,21 @@ nnoremap <silent> <leader>: :Commands<cr>
 " fuzzy search content
 nnoremap <silent> <leader>ss :Snippets<cr>
 " fuzzy search content in project
-nnoremap <silent> <leader>sp :PRg<cr>
+nnoremap <silent> <leader>sj :PRg<cr>
+nnoremap <silent> <leader>sp :call SearchPRg()<bar>redraw<cr>
 " fuzzy search tasks
 nnoremap <silent> <leader>st :AsyncTaskFzf<cr>
 " search with Ggrep, no fuzzy matching
 nnoremap <silent> <leader>sg :AsyncTask grep<cr>
 " yank history
-nnoremap <silent> <space>sy  :CocList yank<cr>
+nnoremap <silent> <space>sy  :CocFzfList yank<cr>
 " marks
 nnoremap <silent> <space>sm :Marks<cr>
 augroup search
     autocmd!
-    autocmd FileType c,h,cpp,hpp,python,javascript,vim,lua nnoremap <silent> <leader>so :BTags <cr>
-    autocmd FileType tex noremap <silent><leader>so :FZFTexToc<cr>
-    autocmd FileType tex noremap <silent><leader>sb :FZFBibtex<cr>
+    autocmd BufEnter * nnoremap <silent> <leader>so :BTags <cr>
+    autocmd BufEnter *.tex noremap <silent><leader>slo :FZFTexToc<cr>
+    autocmd BufEnter *.tex noremap <silent><leader>sb :FZFBibtex<cr>
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,7 +70,7 @@ nnoremap <silent> <leader>fs :w<cr>
 " reload the vimrc setting
 nnoremap <silent> <leader>feR :so $MYVIMRC<cr>
 " fuzzy search most recent file
-nnoremap <silent> <leader>fr :FZFMru <cr>
+nnoremap <silent> <leader>fr :FZFMru --preview '~/.vim/plugged/fzf.vim/bin/preview.sh {}'<cr>
 " fuzzy search files under current project
 nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<cr>
 " fuzzy search for my projects
@@ -86,7 +88,7 @@ nmap <silent> <leader>bd :Bwipeout<cr>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<cr>
 " switch header/source
-nmap <silent> <leader>bs :FSHere<cr>
+nmap <leader>bs :FSHere<cr>
 " nmap cd call
 nmap cd :call <SID>CdPwd()<cr>
 
@@ -159,6 +161,8 @@ nnoremap <leader>hs :lua require"gitsigns".stage_hunk()<cr>
 nnoremap <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
 nnoremap <leader>hr :lua require"gitsigns".reset_hunk()<cr>
 nnoremap <leader>hb :lua require"gitsigns".blame_line()<cr>
+
+nnoremap <leader>gt :FloatermNew --height=0.9 --width=0.8 --wintype=float --name=lazygit --position=center --autoclose=2 lazygit<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale key mapping
@@ -255,4 +259,5 @@ fun s:CdPwd()
     execute 'lcd %:p:h'
     echo 'Enter path >> ' . expand('%:p:h')
 endf
+eee
 

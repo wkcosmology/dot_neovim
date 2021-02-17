@@ -64,3 +64,9 @@ let g:airline_filetype_overrides = {
       \ }
 
 highlight Comment cterm=italic gui=italic
+" hop highlight
+highlight HopNextKey guifg=Black guibg=Yellow blend=0
+highlight HopNextKey1 guifg=Black guibg=Yellow blend=0
+highlight HopNextKey2 guifg=Black guibg=Yellow blend=0
+" My setting for echo message
+hi EchoHi guifg=#fabd2f
