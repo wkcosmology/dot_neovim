@@ -162,7 +162,11 @@ nnoremap <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
 nnoremap <leader>hr :lua require"gitsigns".reset_hunk()<cr>
 nnoremap <leader>hb :lua require"gitsigns".blame_line()<cr>
 
-nnoremap <leader>gt :FloatermNew --height=0.9 --width=0.8 --wintype=float --name=lazygit --position=center --autoclose=2 lazygit<cr>
+command FloatermNewLazyGit :FloatermNew 
+            \ --height=0.9 --width=0.8 --wintype=float
+            \ --name=lazygit --position=center --autoclose=2
+            \ lazygit
+nnoremap <leader>gt :FloatermNewLazyGit<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale key mapping
@@ -259,5 +263,3 @@ fun s:CdPwd()
     execute 'lcd %:p:h'
     echo 'Enter path >> ' . expand('%:p:h')
 endf
-eee
-

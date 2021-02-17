@@ -178,6 +178,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'nvim-telescope/telescope-frecency.nvim'
 
+" Plug 'hrsh7th/vim-vsnip'
+
+
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------
