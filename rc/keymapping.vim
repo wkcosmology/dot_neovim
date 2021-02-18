@@ -1,3 +1,8 @@
+" File: keymapping.vim
+" Author: Kai Wang
+" Created: 2021/02/18 
+" Description: Keymapping in vim
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fast editing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +129,7 @@ augroup exitwithq
     autocmd FileType floaterm tnoremap <C-g> <C-\><C-n>:close<cr>
     autocmd FileType floaterm inoremap <C-g> <C-\><C-n>:close<cr>
     autocmd FileType floaterm nnoremap <C-g> :close<cr>
+    autocmd FileType floaterm nnoremap q :close<cr>
     " unmap q
     autocmd FileType fugitiveblame,fugitive,gista-list nnoremap <buffer> q <nop>
 augroup END
@@ -180,30 +186,13 @@ nmap <silent> <leader>ec :ALEResetBuffer<cr>
 nmap <F1> :ALEFix<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" coc & ycm
-" DO NOT change the order
+" coc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup cocycmmapping
-    autocmd!
-    autocmd BufEnter * nmap \r  <Plug>(coc-rename)
-    autocmd BufEnter * nmap <silent> gd <Plug>(coc-definition)
-    autocmd BufEnter * nmap <silent> gr <Plug>(coc-references)
-    autocmd BufEnter * nmap <silent> gi <Plug>(coc-implementation)
-    autocmd BufEnter * nmap <silent> gt <Plug>(coc-type-definition)
-    autocmd BufEnter * nnoremap <silent> K :call <SID>show_documentation()<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gd :YcmCompleter GoToDefinition<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gt :YcmCompleter GetType<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gi :YcmCompleter GoToInclude<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap gr :YcmCompleter GoToReferences<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap K :YcmGetDocFloatWin<cr>
-    autocmd BufEnter *.c,*.h,*.hpp,*.cpp nmap \r :YcmCompleter RefactorRename 
-augroup END
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" youcompleteme
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+nmap \r  <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gt <Plug>(coc-type-definition)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " utilities

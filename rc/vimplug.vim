@@ -105,6 +105,8 @@ Plug 'gcmt/taboo.vim'
 Plug 'ryanoasis/vim-devicons'
 " choose the window
 Plug 't9md/vim-choosewin'
+" start up window
+Plug 'mhinz/vim-startify'
 
 " ---------------------------------------------------------------------------
 " python related
@@ -116,8 +118,6 @@ Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build'
 " ---------------------------------------------------------------------------
 " C/C++ related
 " ---------------------------------------------------------------------------
-" great auto completion tool, coc does not support trigger characters
-Plug 'ycm-core/YouCompleteMe' , {'for': ['c', 'cpp', 'h', 'hpp'], 'frozen': 1}
 " mpi highlight
 Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
@@ -132,7 +132,9 @@ Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 " Git
 " ---------------------------------------------------------------------------
 " show git modified line in the state column
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 " powerful git tool
 Plug 'tpope/vim-fugitive'
 " github for fugitive

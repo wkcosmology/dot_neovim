@@ -13,7 +13,7 @@ let g:fzf_colors = {
             \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
             \ 'hl+':     ['fg', 'Statement'],
             \ 'info':    ['fg', 'PreProc'],
-            \ 'border':  ['fg', 'Ignore'],
+            \ 'border':  ['fg', 'DarkYellow'],
             \ 'prompt':  ['fg', 'Typedef'],
             \ 'pointer': ['fg', 'Exception'],
             \ 'marker':  ['fg', 'Keyword'],

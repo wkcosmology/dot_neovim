@@ -43,7 +43,7 @@ let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#csv#enabled = 1
-let g:airline_extensions = ['ale', 'branch', 'fugitiveline', 'tabline', 'hunks', 'vimtex']
+let g:airline_extensions = ['ale', 'branch', 'fugitiveline', 'tabline']
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -62,7 +62,9 @@ let g:airline_filetype_overrides = {
       \ 'help':  [ 'Help', '%f' ],
       \ 'vim-plug': [ 'Plugins', '' ],
       \ }
+let g:airline_section_b = "%{get(b:,'gitsigns_status','')}  %{airline#util#wrap(airline#extensions#branch#get_head(),80)}"
 
+set conceallevel=0
 highlight Comment cterm=italic gui=italic
 " hop highlight
 " highlight HopNextKey guifg=Black guibg=Yellow blend=0

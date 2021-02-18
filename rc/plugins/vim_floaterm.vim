@@ -6,12 +6,10 @@ let g:floaterm_title = 'Terminal($1/$2)'
 hi FloatermBorder guibg=Normal guifg=DarkYellow
 hi Floaterm guibg=Normal
 
-autocmd FileType floaterm nnoremap <buffer> q :close<CR>
-
-
 let g:fzf_floaterm_newentries = {
   \ '+terminal' : {
-    \ 'title': 'Terminal' },
+    \ 'title': 'Terminal',
+    \ 'cmd': '' },
   \ '+ipython' : {
     \ 'title': 'IPython',
     \ 'cmd': 'ipython' },
