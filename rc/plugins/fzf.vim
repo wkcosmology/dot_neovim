@@ -179,6 +179,7 @@ function! s:fzf_task()
 endfunction
 command! -nargs=0 AsyncTaskFzf call s:fzf_task()
 
+" grep in fzf
 function! SearchPRg()
     call inputsave()
     echohl EchoHi

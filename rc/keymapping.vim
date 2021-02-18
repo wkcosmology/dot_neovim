@@ -23,7 +23,7 @@ cnoremap <C-b> <Left>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-l> :nohlsearch<cr>
 " easy motion setting
-nmap <silent> <leader>ju <Plug>(easymotion-overwin-f)
+nmap <silent> <leader>jj <Plug>(easymotion-overwin-f)
 nmap <silent> <leader>jl <Plug>(easymotion-bd-jk)
 nmap <silent> <leader>js <Plug>(easymotion-overwin-f2)
 nmap <silent> <leader>jw <Plug>(easymotion-bd-w)
@@ -113,6 +113,7 @@ nmap <C-w>w  <Plug>(choosewin)
 nnoremap <silent> <leader>lc :ccl\|lcl<cr>
 noremap <silent> <F3> :call asyncrun#quickfix_toggle(10)<cr>
 " exit window using <C-g>
+cmap <silent> <C-g> <esc><bar>:echon<cr>
 augroup exitwithq
     autocmd!
     autocmd FileType fzf,help,qf,defx,fugitive,list,git,gista-list,fugitiveblame nnoremap <buffer> <C-g> :close<cr>
@@ -156,11 +157,6 @@ nnoremap <leader>gm :Gblame<cr>
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gista list<cr>
-
-nnoremap <leader>hs :lua require"gitsigns".stage_hunk()<cr>
-nnoremap <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
-nnoremap <leader>hr :lua require"gitsigns".reset_hunk()<cr>
-nnoremap <leader>hb :lua require"gitsigns".blame_line()<cr>
 
 command FloatermNewLazyGit :FloatermNew 
             \ --height=0.9 --width=0.8 --wintype=float

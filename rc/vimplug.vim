@@ -68,8 +68,7 @@ Plug 'antoinemadec/coc-fzf'
 " ---------------------------------------------------------------------------
 " build-in LSP
 " ---------------------------------------------------------------------------
-Plug 'nvim-lua/completion-nvim'
-Plug 'neovim/nvim-lspconfig'
+" Plug 'neovim/nvim-lspconfig'
 
 " ---------------------------------------------------------------------------
 " Buffer/Window/Session
@@ -105,8 +104,6 @@ Plug 'gcmt/taboo.vim'
 Plug 'ryanoasis/vim-devicons'
 " choose the window
 Plug 't9md/vim-choosewin'
-" show marks
-Plug 'kshenoy/vim-signature'
 
 " ---------------------------------------------------------------------------
 " python related
@@ -134,8 +131,7 @@ Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 " Git
 " ---------------------------------------------------------------------------
 " show git modified line in the state column
-Plug 'nvim-lua/plenary.nvim'
-Plug 'lewis6991/gitsigns.nvim'
+Plug 'airblade/vim-gitgutter'
 " powerful git tool
 Plug 'tpope/vim-fugitive'
 " github for fugitive
@@ -159,8 +155,6 @@ Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 " vimtex
 Plug 'lervag/vimtex'
-" all the language syntax
-Plug 'sheerun/vim-polyglot'
 " spell check
 Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
 " gist
@@ -171,16 +165,6 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-
-
-" Plug 'tami5/sql.nvim'
-" Plug 'nvim-lua/popup.nvim'
-" Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-telescope/telescope-frecency.nvim'
-
-" Plug 'hrsh7th/vim-vsnip'
-
-
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

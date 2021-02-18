@@ -24,9 +24,9 @@ let g:ycm_confirm_extra_conf=0
 let g:ycm_use_clangd = 1 " very important!!!
 let g:ycm_clangd_args = [
     \'--completion-style=detailed',
-    \'-pretty',
+    \'--pretty',
     \'--header-insertion=never',
-    \'-fallback-style=none',
+    \'--fallback-style=none',
     \'--cross-file-rename'
     \]
 " Let clangd fully control code completion

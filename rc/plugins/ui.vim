@@ -65,8 +65,13 @@ let g:airline_filetype_overrides = {
 
 highlight Comment cterm=italic gui=italic
 " hop highlight
-highlight HopNextKey guifg=Black guibg=Yellow blend=0
-highlight HopNextKey1 guifg=Black guibg=Yellow blend=0
-highlight HopNextKey2 guifg=Black guibg=Yellow blend=0
+" highlight HopNextKey guifg=Black guibg=Yellow blend=0
+" highlight HopNextKey1 guifg=Black guibg=Yellow blend=0
+" highlight HopNextKey2 guifg=Black guibg=Yellow blend=0
 " My setting for echo message
 hi EchoHi guifg=#fabd2f
+" highlight for gitgutter
+highlight SignColumn guibg=Normal
+highlight GitGutterAdd    guifg=Yellow ctermfg=Yellow cterm=bold
+highlight GitGutterChange guifg=Cyan ctermfg=Cyan cterm=bold
+highlight GitGutterDelete guifg=Red ctermfg=Red cterm=bold
