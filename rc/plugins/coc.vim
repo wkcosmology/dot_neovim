@@ -46,15 +46,13 @@ augroup hugefile
 augroup END
 "}}
 
-" scroll the pop-up window {{
+" scroll the pop-up window
 inoremap <silent><expr> <c-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-j>"
 inoremap <silent><expr> <c-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-k>"
 vnoremap <silent><expr> <c-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-j>"
 vnoremap <silent><expr> <c-k> coc#float#has_scroll() ? coc#float#scroll(0) : "\<c-k>"
 
-" }}
-
-" change the suggest.autoTrigger for different filetype {{
+" change the suggest.autoTrigger for different filetype
 augroup switchcocsuggest
     autocmd!
     autocmd BufEnter * let b:coc_suggest_disable=0

@@ -20,6 +20,8 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-l> :nohlsearch<cr>
 " easy motion setting
@@ -49,8 +51,8 @@ nnoremap <silent> <leader>sj :PRg<cr>
 nnoremap <silent> <leader>sp :call SearchPRg()<bar>redraw<cr>
 " fuzzy search tasks
 nnoremap <silent> <leader>st :AsyncTaskFzf<cr>
-" search with Ggrep, no fuzzy matching
-nnoremap <silent> <leader>sg :AsyncTask grep<cr>
+" fuzzy search terminal
+nnoremap <silent> <leader>sg :Floaterms<cr>
 " yank history
 nnoremap <silent> <space>sy  :CocFzfList yank<cr>
 " marks
@@ -121,6 +123,7 @@ augroup exitwithq
     autocmd FileType list inoremap <buffer> <C-g> :close<cr>
     autocmd FileType floaterm tnoremap <C-g> <C-\><C-n>:close<cr>
     autocmd FileType floaterm inoremap <C-g> <C-\><C-n>:close<cr>
+    autocmd FileType floaterm nnoremap <C-g> :close<cr>
     " unmap q
     autocmd FileType fugitiveblame,fugitive,gista-list nnoremap <buffer> q <nop>
 augroup END
@@ -134,11 +137,14 @@ augroup t_group
     autocmd FileType c,cpp,h,cpp,python,javascript,lua noremap <silent><leader>tr :AsyncTask file-run<cr>
     autocmd FileType c,cpp,h,cpp,python,javascript,lua noremap <silent><leader>tb :AsyncTask file-build<cr>
 augroup END
-noremap <silent><leader>tf :AsyncTaskFzf<cr>
+noremap <silent> <leader>tf :AsyncTaskFzf<cr>
 nnoremap <leader>tt :FloatermToggle<cr>
 nnoremap <leader>tn :FloatermNew<cr>
-nnoremap [t :FloatermPrev<cr><C-\><C-n><cr>
-nnoremap ]t :FloatermNext<cr><C-\><C-n><cr>
+augroup floaterm
+    autocmd!
+    autocmd FileType floaterm nnoremap <buffer> [t :FloatermPrev<cr><C-\><C-n><cr>
+    autocmd FileType floaterm nnoremap <buffer> ]t :FloatermNext<cr><C-\><C-n><cr>
+augroup END
 " test the nearest object to the cursor
 nnoremap <leader>te :TestNearest<cr>
 
@@ -162,7 +168,7 @@ command FloatermNewLazyGit :FloatermNew
             \ --height=0.9 --width=0.8 --wintype=float
             \ --name=lazygit --position=center --autoclose=2
             \ lazygit
-nnoremap <leader>gt :FloatermNewLazyGit<cr>
+nnoremap <leader>gt :execute 'lcd %:p:h'<bar>:FloatermNewLazyGit<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ale key mapping

@@ -64,6 +64,7 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
+Plug 'voldikss/fzf-floaterm'
 
 " ---------------------------------------------------------------------------
 " build-in LSP
@@ -165,6 +166,7 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-cheat.sh'
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------

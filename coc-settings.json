@@ -14,6 +14,8 @@
 "suggest.keepCompleteopt": true,
 
 "diagnostic.enable": false,
+"diagnostic.enableSign": false,
+"diagnostic.messageTarget": "float",
 
 "jedi.enable": true,
 "jedi.startupMessage": false,
@@ -23,10 +25,10 @@
 "jedi.executable.command": "jedi-language-server",
 "jedi.executable.args": [],
 "jedi.completion.disableSnippets": false,
-"jedi.diagnostics.enable": false,
+"jedi.diagnostics.enable": true,
 "jedi.diagnostics.didOpen": false,
 "jedi.diagnostics.didChange": false,
-"jedi.diagnostics.didSave": false,
+"jedi.diagnostics.didSave": true,
 "jedi.workspace.extraPaths": [],
 
 "languageserver": {
