@@ -1,5 +1,8 @@
 set nocursorcolumn
 " theme
+syntax enable
+set noshowmode
+set conceallevel=0
 set termguicolors
 set shiftwidth=4
 set background=dark
@@ -8,27 +11,15 @@ colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
 " gruvbox
 let g:gruvbox_italicize_comments=1
-
-" disable c/c++ highlight, since I use another plugin
-let g:polyglot_disabled = ['c', 'cpp', 'h', 'hpp']
-
-" python-syntax
-let g:python_highlight_all = 1
-let g:python_highlight_space_errors = 0
+let g:gruvbox_transparent_bg=1
 " rainbow
 call rainbow_parentheses#activate()
-
 " indetLine config
 let g:indentLine_setColors = 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-" augroup quickfix
-"     autocmd!
-"     autocmd QuickFixCmdPost [^l]* cwindow
-"     autocmd QuickFixCmdPost l* lwindow
-" augroup END
-
+let g:indentLine_fileTypeExclude = ['tex', 'json'] " conceallevel related
 " airline
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -43,6 +34,7 @@ let g:airline#extensions#tabline#tabnr_formatter = 'tabnr'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#virtualenv#enabled = 0
 let g:airline#extensions#csv#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
 let g:airline_extensions = ['ale', 'branch', 'fugitiveline', 'tabline']
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -55,25 +47,33 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>[ <Plug>AirlineSelectPrevTab
 nmap <leader>] <Plug>AirlineSelectNextTab
+let g:airline_left_sep = ' '
+let g:airline_left_alt_sep = ' '
+let g:airline_right_sep = ' '
+let g:airline_right_alt_sep = ' '
+let g:airline_section_b = "%{airline#util#wrap(airline#extensions#branch#get_head(),80)} %{get(b:,'gitsigns_status','')}"
 
 let g:airline_filetype_overrides = {
-      \ 'coc-explorer':  [ 'CoC Explorer', '' ],
-      \ 'fugitive': ['fugitive', '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}'],
-      \ 'help':  [ 'Help', '%f' ],
-      \ 'vim-plug': [ 'Plugins', '' ],
-      \ }
-let g:airline_section_b = "%{get(b:,'gitsigns_status','')}  %{airline#util#wrap(airline#extensions#branch#get_head(),80)}"
+    \ 'coc-explorer':  [ 'CoC Explorer', '' ],
+    \ 'fugitive': ['fugitive', '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}'],
+    \ 'help':  [ 'Help', '%f' ],
+    \ 'vim-plug': [ 'Plugins', '' ],
+    \ }
 
-set conceallevel=0
 highlight Comment cterm=italic gui=italic
 " hop highlight
 " highlight HopNextKey guifg=Black guibg=Yellow blend=0
 " highlight HopNextKey1 guifg=Black guibg=Yellow blend=0
 " highlight HopNextKey2 guifg=Black guibg=Yellow blend=0
 " My setting for echo message
-hi EchoHi guifg=#fabd2f
+hi EchoHi guifg=Yellow cterm=bold
 " highlight for gitgutter
 highlight SignColumn guibg=Normal
 highlight GitGutterAdd    guifg=Yellow ctermfg=Yellow cterm=bold
 highlight GitGutterChange guifg=Cyan ctermfg=Cyan cterm=bold
 highlight GitGutterDelete guifg=Red ctermfg=Red cterm=bold
+" To enable transparent background in vim
+augroup TranspBg
+    autocmd!
+    autocmd VimEnter * hi Normal guibg=none
+augroup END

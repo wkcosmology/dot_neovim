@@ -93,8 +93,9 @@
 "explorer.file.autoReveal": false,
 "explorer.floating.border.chars": ["─", "│", "─", "│", "╭", "╮", "╯", "╰"],
 "explorer.quitOnOpen": true,
+"explorer.git.enable": true,
 "explorer.file.root.template": "[icon] [title] [hidden & 1] [fullpath]",
-"explorer.file.child.template": "[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1] [link growRight 1 omitCenter 5] [size]",
+"explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [filename omitCenter 1] [link growRight 1 omitCenter 5] [size]",
 "explorer.sources": [
     {"name": "buffer","expand": true},
     {"name": "file","expand": true}
@@ -144,6 +145,6 @@
     "]c": "gitNext",
     ">>": "gitStage",
     "<<": "gitUnstage"
-    },
+    }
 }
 

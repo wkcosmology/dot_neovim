@@ -10,19 +10,15 @@
 let mapleader=' '
 " use Esc to exit terminal
 tnoremap <Esc> <C-\><C-n><cr>
+" Let Y yank to the line end
+nnoremap Y y$
 " tagbar
-nmap <silent> <leader>vv :Vista<cr>
-nmap <silent> <leader>vs :Vista finder<cr>
+nnoremap <silent> <leader>vv :Vista<cr>
+" work around https://github.com/liuchengxu/vista.vim/issues/385
+" nnoremap <silent> <leader>vs :call vista#finder#fzf#Run('coc')<cr>
 " alias to left and right in insert mode
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
-inoremap <C-n> <Down>
-inoremap <C-p> <Up>
-inoremap <C-a> <Home>
-inoremap <C-e> <End>
-" alias to left and right in command mode
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-j> <Down>
@@ -64,7 +60,7 @@ nnoremap <silent> <space>sy  :CocFzfList yank<cr>
 nnoremap <silent> <space>sm :Marks<cr>
 augroup search
     autocmd!
-    autocmd BufEnter * nnoremap <silent> <leader>so :BTags <cr>
+    autocmd BufEnter * nnoremap <silent> <leader>so :BTags<cr>
     autocmd BufEnter *.tex noremap <silent><leader>slo :FZFTexToc<cr>
     autocmd BufEnter *.tex noremap <silent><leader>sb :FZFBibtex<cr>
 augroup END
@@ -79,7 +75,7 @@ nnoremap <silent> <leader>feR :so $MYVIMRC<cr>
 " fuzzy search most recent file
 nnoremap <silent> <leader>fr :FZFMru --preview '~/.vim/plugged/fzf.vim/bin/preview.sh {}'<cr>
 " fuzzy search files under current project
-nnoremap <silent> <Leader>ff :exe 'Files ' . <SID>fzf_root()<cr>
+nnoremap <silent> <Leader>ff :FZFProjectFile<cr>
 " fuzzy search for my projects
 nnoremap <silent> <Leader>fp :FZFProject <cr>
 " open defx file tree
@@ -91,7 +87,7 @@ nnoremap <silent> <Leader>ft :execute'CocCommand explorer --preset floatingRight
 " fuzzy search buffers
 nnoremap <silent> <leader>bb :Buffers <cr>
 " close current buffer
-nmap <silent> <leader>bd :Bwipeout<cr>
+nmap <silent> <leader>bd :Bdelete<cr>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<cr>
 " switch header/source
@@ -170,6 +166,13 @@ nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gp :Gpull<cr>
 nnoremap <leader>gs :Gista list<cr>
 
+" hunk related
+nnoremap <silent> <leader>hs :lua require"gitsigns".stage_hunk()<cr>
+nnoremap <silent> <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
+nnoremap <silent> <leader>hr :lua require"gitsigns".reset_hunk()<cr>
+nnoremap <silent> <leader>hp :lua require"gitsigns".preview_hunk()<cr>
+nnoremap <silent> <leader>hb :lua require"gitsigns".blame_line()<cr>
+
 command FloatermNewLazyGit :FloatermNew 
             \ --height=0.9 --width=0.8 --wintype=float
             \ --name=lazygit --position=center --autoclose=2
@@ -193,6 +196,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gt <Plug>(coc-type-definition)
+augroup CocSuggest
+    autocmd!
+    autocmd BufEnter * call coc#config("suggest.autoTrigger", "always")
+    autocmd BufEnter *.cpp,*.c,*.hpp,&.h call coc#config("suggest.autoTrigger", "trigger")
+augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " utilities
@@ -248,6 +256,7 @@ fun! s:fzf_root()
     let path = finddir('.git', expand('%:p:h').';')
     return fnamemodify(substitute(path, '.git', '', ''), ':p:h')
 endfun
+command FZFProjectFile :execute'Files ' . <SID>fzf_root()
 
 " cd the path of current buffer
 fun s:CdPwd()

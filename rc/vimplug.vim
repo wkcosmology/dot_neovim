@@ -10,13 +10,15 @@ call plug#begin('~/.vim/plugged')
 " ---------------------------------------------------------------------------
 " highlights patterns and ranges, and preview
 Plug 'markonm/traces.vim'
+" enhance * search
+Plug 'haya14busa/vim-asterisk'
 " powerful!!! operate on surround
 Plug 'tpope/vim-surround'
 " enhance . operate, support more like vim-surround
 Plug 'tpope/vim-repeat'
 " very powerful!!! easy motion
 Plug 'easymotion/vim-easymotion'
-Plug 'phaazon/hop.nvim'
+" Plug 'phaazon/hop.nvim'
 " for quick commentary
 Plug 'tpope/vim-commentary'
 " abbreviation substitution and Coerion
@@ -30,7 +32,7 @@ Plug 'jiangmiao/auto-pairs'
 " display number of matchings
 Plug 'google/vim-searchindex'
 " define s as substitution
-Plug 'svermeulen/vim-easyclip'
+Plug 'svermeulen/vim-subversive'
 " Great snippet tool, need backend source
 Plug 'SirVer/ultisnips'
 " paired operation
@@ -40,14 +42,16 @@ Plug 'tpope/vim-eunuch'
 " align
 Plug 'junegunn/vim-easy-align'
 " markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular', { 'for': ['md'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['md'] }
 " document
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-" matchup, conflict with vimtex when input $$
-" Plug 'andymass/vim-matchup'
+" matchup
+Plug 'andymass/vim-matchup'
 " tagbar
 Plug 'liuchengxu/vista.vim'
+" undo tree visualizer
+Plug 'mbbill/undotree', { 'on': ['UndotreeToggle', 'UndotreeShow'] }
 
 " ---------------------------------------------------------------------------
 " coc/fzf
@@ -64,7 +68,7 @@ Plug 'pbogut/fzf-mru.vim'
 Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
-Plug 'voldikss/fzf-floaterm'
+Plug 'voldikss/fzf-floaterm', { 'on': ['FloatermNew', 'Floaterms', 'FloatermToggle']}
 
 " ---------------------------------------------------------------------------
 " build-in LSP
@@ -77,8 +81,8 @@ Plug 'voldikss/fzf-floaterm'
 " kill the buffer while keep the window
 Plug 'moll/vim-bbye'
 " the following two plugs is for session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc', { 'on':  ['OpenSession', 'SaveSession', 'ViewSession'] }
+Plug 'xolox/vim-session', { 'on':  ['OpenSession', 'SaveSession', 'ViewSession'] }
 
 " ---------------------------------------------------------------------------
 " ui
@@ -91,8 +95,6 @@ Plug 'Shougo/echodoc.vim'
 Plug 'drzel/vim-scrolloff-fraction'
 " great tabline and stateline
 Plug 'vim-airline/vim-airline'
-" theme for airline
-Plug 'vim-airline/vim-airline-themes'
 " show the vertical lines to represent the indent
 Plug 'Yggdroot/indentLine'
 " different color for nesting parenthese
@@ -104,25 +106,21 @@ Plug 'gcmt/taboo.vim'
 " devicons
 Plug 'ryanoasis/vim-devicons'
 " choose the window
-Plug 't9md/vim-choosewin'
+Plug 't9md/vim-choosewin', 
 " start up window
 Plug 'mhinz/vim-startify'
 
 " ---------------------------------------------------------------------------
 " python related
 " ---------------------------------------------------------------------------
-Plug 'jeetsukumaran/vim-pythonsense', {'for': ['python']}
+" python text object, functions, classes etc.
+Plug 'jeetsukumaran/vim-pythonsense', {'for': ['py']}
 " using coc-jedi with jedi-language-server for python
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build' }
 
 " ---------------------------------------------------------------------------
 " C/C++ related
 " ---------------------------------------------------------------------------
-" mpi highlight
-Plug 'jiangxincode/mpi.vim', {'for': ['c', 'cpp', 'h', 'hpp']}
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': ['c', 'cpp', 'h', 'hpp']}
-" cpp highlight
-Plug 'bfrg/vim-cpp-modern', {'for': ['c', 'cpp', 'h', 'hpp']}
 " GDB
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh', 'for': ['c', 'cpp', 'h', 'hpp']}
 " switch header and source file
@@ -132,42 +130,40 @@ Plug 'derekwyatt/vim-fswitch', {'for': ['c', 'cpp', 'h', 'hpp']}
 " Git
 " ---------------------------------------------------------------------------
 " show git modified line in the state column
-" Plug 'airblade/vim-gitgutter'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 " powerful git tool
 Plug 'tpope/vim-fugitive'
-" github for fugitive
-Plug 'tpope/vim-rhubarb'
 " tree like git browser
-Plug 'junegunn/gv.vim'
+Plug 'junegunn/gv.vim', { 'on': 'GV' }
 
 " ---------------------------------------------------------------------------
 " Anxuliary
 " ---------------------------------------------------------------------------
 " Great terminal tool
-Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm', { 'on': ['FloatermNew', 'Floaterms', 'FloatermToggle']}
 " asynchronously check error
 Plug 'dense-analysis/ale'
 " add head information
 Plug 'alpertuna/vim-header', { 'on': 'AddHeader'}
 " run the test file, support many filetypes, including python
-Plug 'vim-test/vim-test'
+Plug 'vim-test/vim-test', {'on': ['TestNearest', 'TestFile']}
 " task control
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
 " vimtex
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': ['tex'] }
 " spell check
-Plug 'reedes/vim-lexical', {'for': ['tex', 'markdown']}
+Plug 'reedes/vim-lexical', { 'for': ['tex', 'markdown'] }
 " gist
-Plug 'lambdalisue/vim-gista'
-Plug 'lifepillar/vim-cheat40'
+Plug 'lambdalisue/vim-gista', { 'on': ['Gista'] }
+" Cheatsheet for vim
+Plug 'lifepillar/vim-cheat40', { 'on': ['Cheat'] }
 " cheat
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-cheat.sh'
+Plug 'RishabhRD/popfix', { 'on': ['Cheat', 'CheatList'] }
+Plug 'RishabhRD/nvim-cheat.sh', { 'on': ['Cheat', 'CheatList'] }
 " treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 call plug#end()

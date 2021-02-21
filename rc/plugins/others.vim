@@ -1,9 +1,8 @@
 " my config--------------------------------------------------------------------
 " simple vim setting
 filetype plugin indent on
-syntax enable
 " hybrid line number
-set nu rnu
+set number relativenumber
 " set cursorline!
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -41,7 +40,3 @@ augroup lexical
   autocmd!
   autocmd FileType markdown,mkd,tex call lexical#init()
 augroup END
-
-hi HopNextKey guibg=#FFFF00 guifg=#000000
-hi HopNextKey1 guibg=#FFFF00 guifg=#000000
-hi HopNextKey2 guibg=#FFFF00 guifg=#000000

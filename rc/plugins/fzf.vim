@@ -141,6 +141,7 @@ function! s:fzf_project(lines)
     let l:line_list = split(a:lines[0])
     echo 'Enter Project: ' . l:line_list[0] . ' >> Path: ' . l:line_list[1]
     execute ':cd '. l:line_list[1]
+    execute 'Files ' . l:line_list[1]
 endfunction
 
 command! FZFProject :call fzf#run({
