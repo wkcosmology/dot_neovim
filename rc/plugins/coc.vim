@@ -1,16 +1,15 @@
 let g:coc_global_extensions = [
             \ 'coc-lists',
-            \ 'coc-tasks',
             \ 'coc-clangd',
             \ 'coc-html',
             \ 'coc-jedi',
             \ 'coc-yank',
             \ 'coc-json',
             \ 'coc-vimlsp',
-            \ 'coc-explorer',
-            \ 'coc-vimtex',
             \ 'coc-snippets',
-            \ 'coc-github',
+            \ 'coc-explorer',
+            \ 'coc-tsserver',
+            \ 'coc-vimtex',
             \ 'coc-html',
             \ 'coc-lua',
             \ 'coc-css']
@@ -24,17 +23,28 @@ set shortmess+=c
 set signcolumn=yes
 
 " manual trigger completion
-autocmd BufEnter * inoremap <silent><expr> <c-space> coc#refresh()
+augroup coccompletion
+    autocmd!
+    autocmd BufEnter * inoremap <silent><expr> <c-space> coc#refresh()
+augroup END
 
-" let coc server begins 500ms after vim start {{
+" completion source
+let g:coc_sources_disable_map = {
+            \ 'cpp': ['around', 'buffer'],
+            \ 'hpp': ['around', 'buffer'],
+            \ 'c': ['around', 'buffer'],
+            \ 'h': ['around', 'buffer'],
+            \ 'python': ['around', 'buffer'],
+            \ }
+
+" let coc server begins 500ms after vim start
 let g:coc_start_at_startup=0
 function! CocTimerStart(timer)
     exec 'CocStart'
 endfunction
 call timer_start(500,'CocTimerStart',{'repeat':1})
-" }}
 
-" forbid coc for file size > 0.5MB {{
+" forbid coc for file size > 0.5MB
 let g:trigger_size = 0.5 * 1048576
 augroup hugefile
     autocmd!
@@ -48,7 +58,6 @@ augroup hugefile
                 \ endif |
                 \ unlet size
 augroup END
-"}}
 
 " scroll the pop-up window
 inoremap <silent><expr> <c-j> coc#float#has_scroll() ? coc#float#scroll(1) : "\<c-j>"

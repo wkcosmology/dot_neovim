@@ -9,18 +9,18 @@
 "suggest.noselect": true,
 "suggest.enablePreselect": false,
 "suggest.maxCompleteItemCount": 20,
-"suggest.floatEnable": true,
-"suggest.enablePreview": true,
+"suggest.floatEnable": false,
+"suggest.enablePreview": false,
 "suggest.echodocSupport": true,
 "suggest.minTriggerInputLength": 2,
 "suggest.keepCompleteopt": false,
-"suggest.autoTrigger": "trigger",
+"suggest.autoTrigger": "always",
 
 "clangd.arguments": [
     "--completion-style=detailed",
     "--pretty",
     "--header-insertion=never",
-    "--fallback-style=none"],
+    "--index=false"],
 "clangd.disableDiagnostics": true,
 
 "diagnostic.enable": false,

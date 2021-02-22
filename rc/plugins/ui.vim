@@ -13,7 +13,7 @@ let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_transparent_bg=1
 " rainbow
-call rainbow_parentheses#activate()
+" call rainbow_parentheses#activate()
 " indetLine config
 let g:indentLine_setColors = 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']

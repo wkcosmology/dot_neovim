@@ -196,11 +196,11 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gt <Plug>(coc-type-definition)
-augroup CocSuggest
-    autocmd!
-    autocmd BufEnter * call coc#config("suggest.autoTrigger", "always")
-    autocmd BufEnter *.cpp,*.c,*.hpp,&.h call coc#config("suggest.autoTrigger", "trigger")
-augroup END
+" augroup CocSuggest
+"     autocmd!
+"     autocmd BufEnter * call coc#config("suggest.autoTrigger", "always")
+"     autocmd BufEnter *.cpp,*.c,*.hpp,&.h call coc#config("suggest.autoTrigger", "always")
+" augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " utilities

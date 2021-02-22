@@ -98,7 +98,7 @@ Plug 'vim-airline/vim-airline'
 " show the vertical lines to represent the indent
 Plug 'Yggdroot/indentLine'
 " different color for nesting parenthese
-Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'junegunn/rainbow_parentheses.vim'
 " maximum and restore current window, powerful!!!
 Plug 'szw/vim-maximizer'
 " pretty tab line
