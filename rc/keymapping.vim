@@ -23,6 +23,8 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <silent> <C-l> :nohlsearch<cr>
 " easy motion setting
@@ -47,11 +49,6 @@ augroup END
 nnoremap <silent> <leader>: :Commands<cr>
 " fuzzy search content
 nnoremap <silent> <leader>ss :Snippets<cr>
-" fuzzy search content in project
-nnoremap <silent> <leader>sj :PRg<cr>
-nnoremap <silent> <leader>sp :call SearchPRg()<bar>redraw<cr>
-" fuzzy search tasks
-nnoremap <silent> <leader>st :AsyncTaskFzf<cr>
 " fuzzy search terminal
 nnoremap <silent> <leader>sg :Floaterms<cr>
 " yank history
@@ -61,23 +58,27 @@ nnoremap <silent> <space>sm :Marks<cr>
 augroup search
     autocmd!
     autocmd BufEnter * nnoremap <silent> <leader>so :BTags<cr>
-    autocmd BufEnter *.tex noremap <silent><leader>slo :FZFTexToc<cr>
+    autocmd BufEnter *.tex noremap <silent><leader>so :FZFTexToc<cr>
     autocmd BufEnter *.tex noremap <silent><leader>sb :FZFBibtex<cr>
 augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" P-group: Project related
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fuzzy search for my projects
+nnoremap <silent> <Leader>pp :FZFProject <cr>
+nnoremap <silent> <leader>ps :call SearchPRg()<bar>redraw<cr>
+" fuzzy search files under current project
+nnoremap <silent> <Leader>pf :FZFProjectFile<cr>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " F-group: File related
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " save the file
 nnoremap <silent> <leader>fs :w<cr>
-" reload the vimrc setting
-nnoremap <silent> <leader>feR :so $MYVIMRC<cr>
 " fuzzy search most recent file
 nnoremap <silent> <leader>fr :FZFMru --preview '~/.vim/plugged/fzf.vim/bin/preview.sh {}'<cr>
-" fuzzy search files under current project
-nnoremap <silent> <Leader>ff :FZFProjectFile<cr>
-" fuzzy search for my projects
-nnoremap <silent> <Leader>fp :FZFProject <cr>
 " open defx file tree
 nnoremap <silent> <Leader>ft :execute'CocCommand explorer --preset floatingRightside ' . expand('%:p:h')<cr>
 
@@ -90,7 +91,7 @@ nnoremap <silent> <leader>bb :Buffers <cr>
 nmap <silent> <leader>bd :Bdelete<cr>
 " close other buffers except the current one
 nmap <silent> <leader>bD :DeleteHiddenBuffers<cr>
-" switch header/source
+" buffer switch, switch header/source
 nmap <leader>bs :FSHere<cr>
 " nmap cd call
 nmap cd :call <SID>CdPwd()<cr>
@@ -102,8 +103,8 @@ nmap <C-t> <Nop>
 nmap <C-t>n :TabooOpen 
 nmap <C-t>r :TabooRename 
 nmap <C-t>c :tabclose<cr>
-nmap <C-t>j :tabprevious<cr> 
-nmap <C-t>k :tabnext<cr> 
+nmap <C-t>h :tabprevious<cr> 
+nmap <C-t>l :tabnext<cr> 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " window related
@@ -134,14 +135,16 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " T-group Async-task/terminal/vim-test
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <silent> <leader>tf :AsyncTaskFzf<cr>
+nnoremap <leader>tt :FloatermToggle<cr>
+nnoremap <leader>tn :FloatermNew<cr>
+
 augroup t_group
     autocmd!
     autocmd FileType c,cpp,h,cpp,python,javascript,lua noremap <silent><leader>tr :AsyncTask file-run<cr>
     autocmd FileType c,cpp,h,cpp,python,javascript,lua noremap <silent><leader>tb :AsyncTask file-build<cr>
 augroup END
-noremap <silent> <leader>tf :AsyncTaskFzf<cr>
-nnoremap <leader>tt :FloatermToggle<cr>
-nnoremap <leader>tn :FloatermNew<cr>
+
 augroup floaterm
     autocmd!
     autocmd FileType floaterm nnoremap <buffer> [t :FloatermPrev<cr><C-\><C-n><cr>
@@ -159,19 +162,18 @@ nnoremap <leader>gl :diffget //3<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gg :G<cr>
 nnoremap <leader>gv :GV<cr>
-nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gb :GBranches<cr>
 nnoremap <leader>gm :Gblame<cr>
-nnoremap <leader>gP :Gpush<cr>
-nnoremap <leader>gp :Gpull<cr>
+nnoremap <leader>gP :Git push<cr>
+nnoremap <leader>gp :Git pull<cr>
 nnoremap <leader>gs :Gista list<cr>
 
-" hunk related
-nnoremap <silent> <leader>hs :lua require"gitsigns".stage_hunk()<cr>
-nnoremap <silent> <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
-nnoremap <silent> <leader>hr :lua require"gitsigns".reset_hunk()<cr>
-nnoremap <silent> <leader>hp :lua require"gitsigns".preview_hunk()<cr>
-nnoremap <silent> <leader>hb :lua require"gitsigns".blame_line()<cr>
+" " hunk related
+" nnoremap <silent> <leader>hs :lua require"gitsigns".stage_hunk()<cr>
+" nnoremap <silent> <leader>hu :lua require"gitsigns".undo_stage_hunk()<cr>
+" nnoremap <silent> <leader>hr :lua require"gitsigns".reset_hunk()<cr>
+" nnoremap <silent> <leader>hp :lua require"gitsigns".preview_hunk()<cr>
+" nnoremap <silent> <leader>hb :lua require"gitsigns".blame_line()<cr>
 
 command FloatermNewLazyGit :FloatermNew 
             \ --height=0.9 --width=0.8 --wintype=float
@@ -196,11 +198,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gt <Plug>(coc-type-definition)
-" augroup CocSuggest
-"     autocmd!
-"     autocmd BufEnter * call coc#config("suggest.autoTrigger", "always")
-"     autocmd BufEnter *.cpp,*.c,*.hpp,&.h call coc#config("suggest.autoTrigger", "always")
-" augroup END
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " utilities

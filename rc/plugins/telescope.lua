@@ -1,4 +1,3 @@
-lua << EOF
 local actions = require('telescope.actions')
 require('telescope').setup{
   defaults = {
@@ -44,24 +43,28 @@ require('telescope').setup{
             ["<C-n>"] = actions.move_selection_next,
             ["<C-p>"] = actions.move_selection_previous,
 
-            ["<C-g>"] = actions.close,
+            ["<C-c>"] = actions.close,
 
             ["<Down>"] = actions.move_selection_next,
             ["<Up>"] = actions.move_selection_previous,
 
-            ["<CR>"] = actions.goto_file_selection_edit + actions.center,
-            ["<C-x>"] = actions.goto_file_selection_split,
-            ["<C-v>"] = actions.goto_file_selection_vsplit,
-            ["<C-t>"] = actions.goto_file_selection_tabedit,
+            ["<CR>"] = actions.select_default + actions.center,
+            ["<C-x>"] = actions.select_horizontal,
+            ["<C-v>"] = actions.select_vertical,
+            ["<C-t>"] = actions.select_tab,
 
             ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,
         },
         n = {
-            ["<CR>"] = actions.goto_file_selection_edit + actions.center,
-            ["<C-x>"] = actions.goto_file_selection_split,
-            ["<C-v>"] = actions.goto_file_selection_vsplit,
-            ["<C-t>"] = actions.goto_file_selection_tabedit,
+            ["<CR>"] = actions.select_default + actions.center,
+            ["<C-x>"] = actions.select_horizontal,
+            ["<C-v>"] = actions.select_vertical,
+            ["<C-t>"] = actions.select_tab,
+
+            ["<esc>"] = actions.close,
+            ["<C-c>"] = actions.close,
+            ["q"] = actions.close,
 
             ["j"] = actions.move_selection_next,
             ["k"] = actions.move_selection_previous,
@@ -77,9 +80,7 @@ require('telescope').setup{
 }
 
 local Telescope = require('telescope')
-local actions = require('telescope.actions')
-
 Telescope.load_extension("frecency")
+Telescope.load_extension("z")
 
 print("Test function")
-EOF

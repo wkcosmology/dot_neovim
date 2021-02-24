@@ -28,15 +28,6 @@ augroup coccompletion
     autocmd BufEnter * inoremap <silent><expr> <c-space> coc#refresh()
 augroup END
 
-" completion source
-let g:coc_sources_disable_map = {
-            \ 'cpp': ['around', 'buffer'],
-            \ 'hpp': ['around', 'buffer'],
-            \ 'c': ['around', 'buffer'],
-            \ 'h': ['around', 'buffer'],
-            \ 'python': ['around', 'buffer'],
-            \ }
-
 " let coc server begins 500ms after vim start
 let g:coc_start_at_startup=0
 function! CocTimerStart(timer)

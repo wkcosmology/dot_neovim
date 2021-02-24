@@ -3,25 +3,38 @@
 "coc.preferences.hoverTarget": "float",
 "coc.preferences.previewAutoClose": false,
 
-"signature.target": "echo",
-"signature.enable": true,
+"signature.enable": false,
 
 "suggest.noselect": true,
 "suggest.enablePreselect": false,
-"suggest.maxCompleteItemCount": 20,
+"suggest.maxCompleteItemCount": 15,
 "suggest.floatEnable": false,
 "suggest.enablePreview": false,
 "suggest.echodocSupport": true,
 "suggest.minTriggerInputLength": 2,
 "suggest.keepCompleteopt": false,
-"suggest.autoTrigger": "always",
+"suggest.detailField": "preview",
+"suggest.maxCompleteItemCount": 10,
+"suggest.labelMaxLength": 100,
+"suggest.removeDuplicateItems": true,
+"suggest.disableMenu": true,
+
+"coc.source.around.enable": false,
+"coc.source.buffer.enable": false,
+
+"codeLens.enable": true,
 
 "clangd.arguments": [
     "--completion-style=detailed",
+    "--all-scopes-completion=false",
     "--pretty",
     "--header-insertion=never",
-    "--index=false"],
+    "--index=true"
+],
 "clangd.disableDiagnostics": true,
+"clangd.fallbackFlags": [
+    "-std=c++17"
+],
 
 "diagnostic.enable": false,
 "diagnostic.enableSign": false,
@@ -56,7 +69,7 @@
     "<C-r>": "do:refresh",
     "<C-n>": "normal:j",
     "<C-p>": "normal:k",
-    "<C-g>": "do:exit"
+    "<C-c>": "do:exit"
     },
 
 "suggest.completionItemKindLabels": {
@@ -132,7 +145,7 @@
 
     "?": "help",
     "q": "quit",
-    "<C-g>": "quit",
+    "<C-c>": "quit",
     "<esc>": "esc",
     "X": "systemExecute",
 

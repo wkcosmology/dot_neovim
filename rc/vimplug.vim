@@ -69,6 +69,7 @@ Plug 'stsewd/fzf-checkout.vim'
 " using fzf window for coc, current for coc-yank
 Plug 'antoinemadec/coc-fzf'
 Plug 'voldikss/fzf-floaterm', { 'on': ['FloatermNew', 'Floaterms', 'FloatermToggle']}
+Plug 'rafcamlet/coc-nvim-lua', { 'for': ['lua'] }
 
 " ---------------------------------------------------------------------------
 " build-in LSP
@@ -87,8 +88,8 @@ Plug 'xolox/vim-session', { 'on':  ['OpenSession', 'SaveSession', 'ViewSession']
 " ---------------------------------------------------------------------------
 " ui
 " ---------------------------------------------------------------------------
-" Plug 'crusoexia/vim-monokai'
-Plug 'morhetz/gruvbox'
+" color theme
+Plug 'gruvbox-community/gruvbox'
 " show the doc on echo
 Plug 'Shougo/echodoc.vim'
 " let the cursor stay away from ceil and bottom
@@ -97,8 +98,6 @@ Plug 'drzel/vim-scrolloff-fraction'
 Plug 'vim-airline/vim-airline'
 " show the vertical lines to represent the indent
 Plug 'Yggdroot/indentLine'
-" different color for nesting parenthese
-" Plug 'junegunn/rainbow_parentheses.vim'
 " maximum and restore current window, powerful!!!
 Plug 'szw/vim-maximizer'
 " pretty tab line
@@ -165,6 +164,18 @@ Plug 'RishabhRD/nvim-cheat.sh', { 'on': ['Cheat', 'CheatList'] }
 " treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'hrsh7th/nvim-compe'
+
+" Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'tami5/sql.nvim'
+" Plug 'nvim-telescope/telescope-frecency.nvim'
+" Plug 'nvim-telescope/telescope-z.nvim'
 
 call plug#end()
 " end of vim plugins manager:vim-plug------------------------------------------
