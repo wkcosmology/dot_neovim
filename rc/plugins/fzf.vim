@@ -176,3 +176,66 @@ function! SearchPRg()
     endif
   echohl None
 endfunction
+
+
+function! s:fzf_z(lines)
+    let l:line_list = split(a:lines[0], '|')
+    echo 'Enter Path >> ' . l:line_list[0]
+    execute ':cd '. l:line_list[0]
+    execute 'Files ' . l:line_list[0]
+endfunction
+
+command! FZFZ :call fzf#run({
+    \ 'source': 'cat ~/.z | cut -d "|" -f 1',
+    \ 'sink*': function('<sid>fzf_z'),
+    \ 'window': 'call Centered_floating_window()',
+    \ 'options': '--ansi --multi --prompt "Z jump> "'})
+
+" fzf highlights
+function! s:fzf_highlight_sink(line)
+    echo a:line
+endfunction
+
+function! s:fzf_highlight(show_code)
+    redir => cout
+    silent highlight
+    redir END
+    let raw_list = split(cout, "\n")
+    if !a:show_code
+        let list = []
+        let list_hi = []
+        for l in raw_list
+            if l[0] !=# ' '
+                let l_list = split(l)
+                call add(list, l_list[0] . '  xxx')
+                call add(list_hi, l_list[0])
+            endif
+        endfor
+        call fzf#run({
+            \ 'source': list,
+            \ 'sink*': function('s:fzf_highlight_sink'),
+            \ 'window': 'call Centered_floating_window()',
+            \ 'options': '--ansi --multi --prompt "Highlights > "'})
+        for l in list_hi
+            call matchadd(l, '\v\zs' . l . ' +xxx\ze')
+        endfor
+    else
+        let list = []
+        for l in raw_list
+            if l[0] !=# ' '
+                call add(list, l)
+            endif
+        endfor
+        call fzf#run({
+            \ 'source': list,
+            \ 'sink*': function('s:fzf_highlight_sink'),
+            \ 'window': 'call Centered_floating_window()',
+            \ 'options': '--ansi --multi --prompt "Highlights > "'})
+        for l in list
+            let l_list = split(l)
+            call matchadd(l_list[0], '\v\zs' . l_list[0] . ' +xxx\ze')
+        endfor
+    endif
+endfunction
+command! FZFHighlight call s:fzf_highlight(v:false)
+command! FZFHighlightWithCode call s:fzf_highlight(v:true)
